@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d226b8df324b7295123324042481f2, type: 3}
   m_Name: LobbyOptions
   m_EditorClassIdentifier: 
-  Name: Test Lobby
-  Privacy: 1
-  MaxPlayer: 2
+  lobbyName: Lobby name
+  privacy: 1
+  maxPlayer: 2

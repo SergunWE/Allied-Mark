@@ -33,7 +33,7 @@ namespace NetworkFramework.Managers
 
             try
             {
-                _lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyOptions.Name, 
+                _lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyOptions.LobbyName, 
                     lobbyOptions.MaxPlayer, options);
             }
             catch (Exception)
