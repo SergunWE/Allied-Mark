@@ -1,4 +1,5 @@
 using System;
+using NetworkFramework.Data;
 using NetworkFramework.Managers;
 using TMPro;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace NetworkFramework.MonoBehaviour_Components
         public UnityEvent<bool> lobbyCreated;
         public UnityEvent<bool> lobbyJoined;
 
+        [SerializeField] private LobbyOptionsSo lobbyOptions;
         private static LobbyManager _lobbyManager;
 
         private void Awake()
@@ -21,7 +23,7 @@ namespace NetworkFramework.MonoBehaviour_Components
 
         public async void CreateLobby()
         {
-            lobbyCreated?.Invoke(await _lobbyManager.CreateLobbyAsync(4, false, null));
+            lobbyCreated?.Invoke(await _lobbyManager.CreateLobbyAsync(lobbyOptions, null));
         }
 
         public async void JoinLobbyByCode(string code)

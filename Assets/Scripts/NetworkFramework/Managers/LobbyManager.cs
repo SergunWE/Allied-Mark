@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using NetworkFramework;
+using NetworkFramework.Data;
 using Unity.Services.Authentication;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
@@ -20,21 +20,21 @@ namespace NetworkFramework.Managers
         {
         }
 
-        public async Task<bool> CreateLobbyAsync(int maxPlayers, bool isPrivate, Dictionary<string, string> data)
+        public async Task<bool> CreateLobbyAsync(LobbyOptionsSo lobbyOptions, Dictionary<string, string> data)
         {
             if (!AuthenticationService.Instance.IsSignedIn) return false;
             Player player = new Player(AuthenticationService.Instance.PlayerId);
-
-            string lobbyName = "new lobby";
+            
             CreateLobbyOptions options = new CreateLobbyOptions
             {
                 Player = player,
-                IsPrivate = isPrivate
+                IsPrivate = lobbyOptions.Privacy,
             };
 
             try
             {
-                _lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers, options);
+                _lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyOptions.Name, 
+                    lobbyOptions.MaxPlayer, options);
             }
             catch (Exception)
             {
