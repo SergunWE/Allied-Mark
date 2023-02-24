@@ -4,13 +4,21 @@
     <option name="wasInitialized" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0361c9b0-9fbf-49ff-bf14-f633ec594e36" name="Changes" comment="Added SO for storing lobby options">
+    <list default="true" id="0361c9b0-9fbf-49ff-bf14-f633ec594e36" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/Event System.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/Event System/Events.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/Event System/Events/Editor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/Event System/Events/Editor/EventEditor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/Event System/Events/Editor/EventEditor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/Event System/Events/GameEvent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/Event System/Events/GameEvent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/Event System/Events/GameEventListener.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/Event System/Events/GameEventListener.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/SO/Game Events.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/SO/Game Events/Lobby.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/SO/Game Events/Lobby/LobbyOptionsChanged.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/SO/Game Events/Lobby/LobbyOptionsChanged.asset.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Allied Mark/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Allied Mark/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenuScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenuScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MenuControllers/MainMenuController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MenuControllers/MainMenuController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/Data/LobbyOptionsSo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/Data/LobbyOptionsSo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/Managers/LobbyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/Managers/LobbyManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/SO/LobbyOptions.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/SO/LobbyOptions.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +29,12 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/e7d1408e55c84257914b44765b3ed76345000/c4/9dd5a436/02000019pdb48.il" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/75633565436c42f0a6426b33f0132ade46a800/6f/9c9e3191/Task.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7b2a272e51214e2f91bbc4fb4f28eff8159400/e6/f6bad854/SceneManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Project unity/Allied Mark/Assets/Scenes/MainMenuScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MenuControllers/MainMenuController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/Project unity/Allied Mark/Assets/Scripts/MenuControllers/MainMenuController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MenuControllers/SignInMenuController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/Project unity/Allied Mark/Assets/Scripts/NetworkFramework/Data/LobbyOptionsSo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Project unity/Allied Mark/Assets/Scripts/NetworkFramework/Managers/LobbyManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.core@1.7.0/Runtime/Core/IUnityServices.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.core@1.7.0/Runtime/Core/UnityServices.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.lobby@1.0.3/Runtime/SDK/CreateLobbyOptions.cs" root0="SKIP_HIGHLIGHTING" />
@@ -51,6 +63,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ReSpellerSettingsId&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -96,10 +109,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="10408">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="10408" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -124,7 +137,7 @@
       <workItem from="1675540358172" duration="8242000" />
       <workItem from="1675611594317" duration="3475000" />
       <workItem from="1676840373620" duration="1151000" />
-      <workItem from="1677241297300" duration="4310000" />
+      <workItem from="1677241297300" duration="5667000" />
     </task>
     <task id="LOCAL-00001" summary="Add Auth and Lobby Managers">
       <created>1675021833642</created>
@@ -147,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677249887552</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added ability to change lobby options">
+      <created>1677252460649</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1677252460649</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,6 +182,7 @@
     <MESSAGE value="Add Auth and Lobby Managers" />
     <MESSAGE value="Refactoring and add joined to lobby" />
     <MESSAGE value="Added SO for storing lobby options" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added SO for storing lobby options" />
+    <MESSAGE value="Added ability to change lobby options" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added ability to change lobby options" />
   </component>
 </project>
