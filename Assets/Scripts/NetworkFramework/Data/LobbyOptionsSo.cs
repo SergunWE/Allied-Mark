@@ -1,40 +1,49 @@
+using NetworkFramework.EventSystem.Events;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 namespace NetworkFramework.Data
 {
     [CreateAssetMenu(menuName = "Lobby/Lobby Options")]
     public class LobbyOptionsSo : ScriptableObject
     {
+        [SerializeField] private GameEvent changed;
+
         [SerializeField] private string lobbyName;
         [SerializeField] private bool privacy;
         [SerializeField] private int maxPlayer;
 
         private void OnValidate()
         {
-            if (string.IsNullOrEmpty(lobbyName))
-            {
-                lobbyName = "Lobby name";
-            }
+            CheckOptions();
+        }
 
+        private void CheckOptions()
+        {
+            lobbyName ??= "";
             if (maxPlayer <= 0)
             {
                 maxPlayer = 1;
             }
+
+            changed.Raise();
         }
 
         public void SetMaxPlayer(string value)
         {
             if (int.TryParse(value, out int maxPlayerValue))
             {
-                maxPlayer = maxPlayerValue;
+                MaxPlayer = maxPlayerValue;
             }
         }
 
         public string LobbyName
         {
             get => lobbyName;
-            set => lobbyName = value;
+            set
+            {
+                lobbyName = value;
+                CheckOptions();
+            } 
         }
 
         public bool Privacy
@@ -46,7 +55,11 @@ namespace NetworkFramework.Data
         public int MaxPlayer
         {
             get => maxPlayer;
-            set => maxPlayer = value;
+            set
+            {
+                maxPlayer = value;
+                CheckOptions();
+            }
         }
     }
 }

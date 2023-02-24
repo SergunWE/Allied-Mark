@@ -14,8 +14,13 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private Toggle lobbyPrivacy;
 
     [SerializeField] private LobbyOptionsSo lobbyOptions;
-    
+
     private void Awake()
+    {
+        OnLobbyOptionsChanged();
+    }
+
+    public void OnLobbyOptionsChanged()
     {
         lobbyName.text = lobbyOptions.LobbyName;
         lobbyMaxPlayer.text = lobbyOptions.MaxPlayer.ToString();

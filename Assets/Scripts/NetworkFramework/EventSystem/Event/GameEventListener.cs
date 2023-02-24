@@ -6,12 +6,9 @@ namespace NetworkFramework.EventSystem.Events
 {
     public class GameEventListener : MonoBehaviour
     {
-        [FormerlySerializedAs("Event")]
-        [Tooltip("Event to register with.")]
         [SerializeField]
         private GameEvent gameEvent;
 
-        [Tooltip("Response to invoke when Event is raised.")]
         public UnityEvent response;
 
         private void OnEnable()
