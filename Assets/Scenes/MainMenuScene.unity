@@ -693,6 +693,7 @@ MonoBehaviour:
   lobbyCreated: {fileID: 11400000, guid: 747202d1c0a15744f87f981c57f2ae69, type: 2}
   lobbyJoined: {fileID: 11400000, guid: f870759962203da4792951b7dbb1907c, type: 2}
   lobbyOptions: {fileID: 11400000, guid: c4d8894a104f0104e9d7bf9671e34659, type: 2}
+  lobbyPlayerData: {fileID: 11400000, guid: 767638c644d1c3e479735f856213addb, type: 2}
 --- !u!4 &752613832
 Transform:
   m_ObjectHideFlags: 0

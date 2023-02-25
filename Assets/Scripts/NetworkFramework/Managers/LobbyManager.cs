@@ -20,21 +20,22 @@ namespace NetworkFramework.Managers
         {
         }
 
-        public async Task<bool> CreateLobbyAsync(LobbyOptionsSo lobbyOptions, Dictionary<string, string> data)
+        public async Task<bool> CreateLobbyAsync(string lobbyName, int maxPlayers, bool isPrivate,
+            Dictionary<string, PlayerDataObject> data)
         {
             if (!AuthenticationService.Instance.IsSignedIn) return false;
-            Player player = new Player(AuthenticationService.Instance.PlayerId);
-            
+            Player player = new Player(AuthenticationService.Instance.PlayerId, null, data);
+
             CreateLobbyOptions options = new CreateLobbyOptions
             {
                 Player = player,
-                IsPrivate = lobbyOptions.Privacy,
+                IsPrivate = isPrivate,
             };
 
             try
             {
-                _lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyOptions.LobbyName, 
-                    lobbyOptions.MaxPlayer, options);
+                _lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, 
+                    maxPlayers, options);
             }
             catch (Exception)
             {

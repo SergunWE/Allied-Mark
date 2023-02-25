@@ -4,7 +4,7 @@ using UnityEngine;
 namespace NetworkFramework.Data
 {
     [CreateAssetMenu(menuName = "Lobby/Lobby Options")]
-    public class LobbyOptionsSo : ScriptableObject
+    public class LobbyOptions : ScriptableObject
     {
         [SerializeField] private GameEvent changed;
 
@@ -20,10 +20,12 @@ namespace NetworkFramework.Data
         private void CheckOptions()
         {
             lobbyName ??= "";
-            if (maxPlayer <= 0)
+            maxPlayer = maxPlayer switch
             {
-                maxPlayer = 1;
-            }
+                <= 0 => 1,
+                > GlobalConstants.MaxPlayersLobby => GlobalConstants.MaxPlayersLobby,
+                _ => maxPlayer
+            };
 
             changed.Raise();
         }

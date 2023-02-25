@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb9102845f1f4eae9ca35c45410990f9, type: 3}
+  m_Name: LobbyPlayerData
+  m_EditorClassIdentifier: 
+  playerData:
+  - key: PlayerName
+    value:
+      value: TestPlayerName
+      visibility: 2
+  - key: PlayerReady
+    value:
+      value: False
+      visibility: 2

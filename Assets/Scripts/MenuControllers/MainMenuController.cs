@@ -13,7 +13,7 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private TMP_InputField lobbyMaxPlayer;
     [SerializeField] private Toggle lobbyPrivacy;
 
-    [SerializeField] private LobbyOptionsSo lobbyOptions;
+    [SerializeField] private LobbyOptions lobbyOptions;
 
     private void Awake()
     {

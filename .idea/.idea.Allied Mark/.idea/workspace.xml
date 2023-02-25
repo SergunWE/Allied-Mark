@@ -4,49 +4,7 @@
     <option name="wasInitialized" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0361c9b0-9fbf-49ff-bf14-f633ec594e36" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/EventSystem.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/EventSystem/Event.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/EventSystem/Event/Editor.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/EventSystem/Event/Editor/EventEditor.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/EventSystem/Event/Editor/EventEditor.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/EventSystem/Event/GameEvent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/EventSystem/Event/GameEvent.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/EventSystem/Event/GameEventListener.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/EventSystem/Event/GameEventListener.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/EventSystem/EventParameter.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/EventSystem/EventParameter/Bool.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/EventSystem/EventParameter/Bool/GameEventBool.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/EventSystem/EventParameter/Bool/GameEventListenerBool.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/EventSystem/EventParameter/Bool/GameEventListenerBool.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/EventSystem/EventParameter/GameEventListenerParameter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/EventSystem/EventParameter/GameEventListenerParameter.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/EventSystem/EventParameter/GameEventParameter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/EventSystem/EventParameter/GameEventParameter.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/SO/Data.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/SO/Data/LobbyOptions.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/SO/Data/LobbyOptions.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/SO/Game Events/Lobby/LobbyCreated.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/SO/Game Events/Lobby/LobbyCreated.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/SO/Game Events/Lobby/LobbyJoined.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/SO/Game Events/Lobby/LobbyJoined.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Allied Mark/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Allied Mark/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenuScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenuScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MenuControllers/MainMenuController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MenuControllers/MainMenuController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/Data/LobbyOptionsSo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/Data/LobbyOptionsSo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/Event System.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/Event System/Events.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/Event System/Events/Editor.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/Event System/Events/Editor/EventEditor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/Event System/Events/Editor/EventEditor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/Event System/Events/GameEvent.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/Event System/Events/GameEvent.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/Event System/Events/GameEventListener.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/Event System/Events/GameEventListener.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/MonoBehaviour Components/LobbyComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/MonoBehaviour Components/LobbyComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/SO/LobbyOptions.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NetworkFramework/SO/LobbyOptions.asset.meta" beforeDir="false" />
-    </list>
+    <list default="true" id="d8e0a867-d0b5-4407-a180-b3a4a11a78ef" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,8 +21,11 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/NetworkFramework/EventSystem/Event/GameEventListener.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/NetworkFramework/EventSystem/EventParameter/GameEventListenerParameter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/NetworkFramework/EventSystem/EventParameter/GameEventParameter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/Project unity/Allied Mark/Assets/Scripts/NetworkFramework/GlobalConstants.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.core@1.7.0/Runtime/Core/IUnityServices.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.core@1.7.0/Runtime/Core/UnityServices.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.lobby@1.0.3/Runtime/Models/Player.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.lobby@1.0.3/Runtime/Models/PlayerDataObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.lobby@1.0.3/Runtime/SDK/CreateLobbyOptions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.lobby@1.0.3/Runtime/SDK/ILobbyService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_InputField.cs" root0="SKIP_HIGHLIGHTING" />

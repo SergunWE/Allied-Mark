@@ -11,7 +11,8 @@ namespace NetworkFramework.MonoBehaviour_Components
         public GameEventBool lobbyCreated;
         public GameEventBool lobbyJoined;
 
-        [SerializeField] private LobbyOptionsSo lobbyOptions;
+        [SerializeField] private LobbyOptions lobbyOptions;
+        [SerializeField] private LobbyPlayerData lobbyPlayerData;
         private static LobbyManager _lobbyManager;
 
         private void Awake()
@@ -21,7 +22,8 @@ namespace NetworkFramework.MonoBehaviour_Components
 
         public async void CreateLobby()
         {
-            lobbyCreated.Raise(await _lobbyManager.CreateLobbyAsync(lobbyOptions, null));
+            lobbyCreated.Raise(await _lobbyManager.CreateLobbyAsync(lobbyOptions.LobbyName, lobbyOptions.MaxPlayer, 
+                lobbyOptions.Privacy, lobbyPlayerData.GetDictionary));
         }
 
         public async void JoinLobbyByCode(string code)
