@@ -20,16 +20,17 @@ namespace NetworkFramework.Managers
         {
         }
 
-        public async Task<bool> CreateLobbyAsync(string lobbyName, int maxPlayers, bool isPrivate,
-            Dictionary<string, PlayerDataObject> data)
+        public async Task<bool> CreateLobbyAsync(string lobbyName, int maxPlayers, bool isPrivate, 
+            Dictionary<string, DataObject> lobbyData = null, Dictionary<string, PlayerDataObject> playerData = null)
         {
             if (!AuthenticationService.Instance.IsSignedIn) return false;
-            Player player = new Player(AuthenticationService.Instance.PlayerId, null, data);
+            Player player = new Player(AuthenticationService.Instance.PlayerId, null, playerData);
 
             CreateLobbyOptions options = new CreateLobbyOptions
             {
                 Player = player,
                 IsPrivate = isPrivate,
+                Data = lobbyData
             };
 
             try
@@ -55,7 +56,7 @@ namespace NetworkFramework.Managers
             return true;
         }
 
-        public async Task<bool> JoinLobbyAsync(string code)
+        public async Task<bool> JoinLobbyByCodeAsync(string code)
         {
             try
             {

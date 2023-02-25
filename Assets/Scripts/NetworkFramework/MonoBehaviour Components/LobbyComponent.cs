@@ -12,6 +12,7 @@ namespace NetworkFramework.MonoBehaviour_Components
         public GameEventBool lobbyJoined;
 
         [SerializeField] private LobbyOptions lobbyOptions;
+        [SerializeField] private LobbyData lobbyData;
         [SerializeField] private LobbyPlayerData lobbyPlayerData;
         private static LobbyManager _lobbyManager;
 
@@ -23,12 +24,12 @@ namespace NetworkFramework.MonoBehaviour_Components
         public async void CreateLobby()
         {
             lobbyCreated.Raise(await _lobbyManager.CreateLobbyAsync(lobbyOptions.LobbyName, lobbyOptions.MaxPlayer, 
-                lobbyOptions.Privacy, lobbyPlayerData.GetDictionary));
+                lobbyOptions.Privacy, lobbyData.GetDictionary, lobbyPlayerData.GetDictionary));
         }
 
         public async void JoinLobbyByCode(string code)
         {
-            lobbyJoined.Raise(await _lobbyManager.JoinLobbyAsync(code));
+            lobbyJoined.Raise(await _lobbyManager.JoinLobbyByCodeAsync(code));
         }
         
         public void JoinLobbyByCode(TMP_InputField tmpInputField)

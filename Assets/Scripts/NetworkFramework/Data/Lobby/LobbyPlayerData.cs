@@ -10,7 +10,7 @@ namespace NetworkFramework.Data
     public class LobbyPlayerData : ScriptableObject
     {
         [SerializeField]
-        private List<LobbyData<PlayerData>> playerData;
+        private List<DictionaryElement<PlayerDictionaryElement>> playerData;
 
         private Dictionary<string, PlayerDataObject> _dictionary;
 
@@ -40,7 +40,7 @@ namespace NetworkFramework.Data
     }
 
     [Serializable]
-    public class PlayerData
+    public class PlayerDictionaryElement
     {
         [SerializeField]
         public string value;
