@@ -14,13 +14,12 @@ namespace NetworkFramework.Managers
     {
         private Lobby _lobby;
         private Thread _heartbeatLobbyThread;
-        private Thread _refreshLobbyThread;
 
         public LobbyManager()
         {
         }
 
-        public async Task<bool> CreateLobbyAsync(string lobbyName, int maxPlayers, bool isPrivate, 
+        public async Task<bool> CreateLobbyAsync(string lobbyName, int maxPlayers, bool isPrivate,
             Dictionary<string, DataObject> lobbyData = null, Dictionary<string, PlayerDataObject> playerData = null)
         {
             if (!AuthenticationService.Instance.IsSignedIn) return false;
@@ -35,7 +34,7 @@ namespace NetworkFramework.Managers
 
             try
             {
-                _lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, 
+                _lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName,
                     maxPlayers, options);
             }
             catch (Exception)
@@ -46,10 +45,6 @@ namespace NetworkFramework.Managers
             _heartbeatLobbyThread?.Abort();
             _heartbeatLobbyThread = new Thread(HeartbeatLobbyThread);
             _heartbeatLobbyThread.Start();
-
-            _refreshLobbyThread?.Abort();
-            _refreshLobbyThread = new Thread(RefreshLobbyThread);
-            _refreshLobbyThread.Start();
 
             Debug.Log($"Lobby Id: {_lobby.Id}");
             Debug.Log($"Lobby Code: {_lobby.LobbyCode}");
@@ -64,11 +59,7 @@ namespace NetworkFramework.Managers
                 Player player = new Player(AuthenticationService.Instance.PlayerId, null, null);
                 options.Player = player;
                 _lobby = await LobbyService.Instance.JoinLobbyByCodeAsync(code, options);
-                if (_lobby == null) return false;
-                _refreshLobbyThread?.Abort();
-                _refreshLobbyThread = new Thread(RefreshLobbyThread);
-                _refreshLobbyThread.Start();
-                return true;
+                return _lobby != null;
             }
             catch (Exception e)
             {
@@ -76,7 +67,31 @@ namespace NetworkFramework.Managers
                 return false;
             }
         }
+        
+        public async Task<bool> RefreshLobbyDataAsync()
+        {
+            if (_lobby == null) return false;
+            try
+            {
+                var newLobby = await LobbyService.Instance.GetLobbyAsync(_lobby.Id);
+                if (_lobby.LastUpdated < newLobby.LastUpdated)
+                {
+                    _lobby = newLobby;
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e.Message);
+                return false;
+            }
+        }
 
+        public bool LobbyExist()
+        {
+            return _lobby != null;
+        }
+        
         public string GetLobbyCode()
         {
             return _lobby?.LobbyCode;
@@ -103,38 +118,9 @@ namespace NetworkFramework.Managers
             }
         }
 
-        private void RefreshLobbyThread()
-        {
-            while (true)
-            {
-                try
-                {
-                    Task<Lobby> task = LobbyService.Instance.GetLobbyAsync(_lobby.Id);
-                    task.Wait();
-                    Lobby newLobby = task.Result;
-                    if (_lobby.LastUpdated < newLobby.LastUpdated)
-                    {
-                        _lobby = newLobby;
-                    }
-
-                    Thread.Sleep(GlobalConstants.RefreshLobbyDelayMilliseconds);
-                }
-                catch (ThreadAbortException)
-                {
-                    return;
-                }
-                catch (Exception e)
-                {
-                    Debug.Log($"The RefreshLobby thread ended with an error - {e.Message}");
-                    return;
-                }
-            }
-        }
-
         ~LobbyManager()
         {
             _heartbeatLobbyThread?.Abort();
-            _refreshLobbyThread?.Abort();
         }
     }
 }
