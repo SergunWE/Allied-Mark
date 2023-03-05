@@ -419,8 +419,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 752613831}
-        m_TargetAssemblyTypeName: NetworkFramework.MonoBehaviour_Components.LobbyComponent,
+      - m_Target: {fileID: 752613836}
+        m_TargetAssemblyTypeName: NetworkFramework.MonoBehaviour_Components.LobbyConnectorComponent,
           Assembly-CSharp
         m_MethodName: CreateLobby
         m_Mode: 1
@@ -667,7 +667,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 752613832}
-  - component: {fileID: 752613831}
+  - component: {fileID: 752613836}
   - component: {fileID: 752613835}
   - component: {fileID: 752613834}
   - component: {fileID: 752613833}
@@ -678,24 +678,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &752613831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 752613830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8149e852d9848f0aa61263d178d6643, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lobbyCreated: {fileID: 11400000, guid: 747202d1c0a15744f87f981c57f2ae69, type: 2}
-  lobbyJoined: {fileID: 11400000, guid: f870759962203da4792951b7dbb1907c, type: 2}
-  lobbyRefreshed: {fileID: 11400000, guid: 0d44f651fd7e4eb409b4b27d5395e458, type: 2}
-  lobbyOptions: {fileID: 11400000, guid: c4d8894a104f0104e9d7bf9671e34659, type: 2}
-  lobbyData: {fileID: 11400000, guid: fe340adc64154a1479bb4e4411061f39, type: 2}
-  lobbyPlayerData: {fileID: 11400000, guid: 767638c644d1c3e479735f856213addb, type: 2}
 --- !u!4 &752613832
 Transform:
   m_ObjectHideFlags: 0
@@ -795,6 +777,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &752613836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752613830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827cb77a76824e2089927c2d8e9c6344, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lobbyCreated: {fileID: 11400000, guid: 747202d1c0a15744f87f981c57f2ae69, type: 2}
+  lobbyJoined: {fileID: 11400000, guid: f870759962203da4792951b7dbb1907c, type: 2}
+  lobbyOptions: {fileID: 11400000, guid: c4d8894a104f0104e9d7bf9671e34659, type: 2}
+  lobbyInternalData: {fileID: 11400000, guid: fe340adc64154a1479bb4e4411061f39, type: 2}
+  lobbyInternalPlayerData: {fileID: 11400000, guid: 767638c644d1c3e479735f856213addb,
+    type: 2}
 --- !u!1 &868041094
 GameObject:
   m_ObjectHideFlags: 0
@@ -2001,8 +2001,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 752613831}
-        m_TargetAssemblyTypeName: NetworkFramework.MonoBehaviour_Components.LobbyComponent,
+      - m_Target: {fileID: 752613836}
+        m_TargetAssemblyTypeName: NetworkFramework.MonoBehaviour_Components.LobbyConnectorComponent,
           Assembly-CSharp
         m_MethodName: JoinLobbyByCode
         m_Mode: 2

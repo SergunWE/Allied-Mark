@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f70bd4f2e3eb48709d0e25d255e695c7, type: 3}
-  m_Name: LobbyData
+  m_Name: LobbyInternalData
   m_EditorClassIdentifier: 
   playerData:
   - key: LobbyLevel

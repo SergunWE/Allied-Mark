@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace NetworkFramework.EventSystem.Events
+namespace NetworkFramework.EventSystem.Event
 {
     [CustomEditor(typeof(GameEvent), editorForChildClasses: true)]
     public class EventEditor : Editor

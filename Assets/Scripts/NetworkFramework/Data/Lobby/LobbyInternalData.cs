@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 namespace NetworkFramework.Data
 {
     [CreateAssetMenu(menuName = "Lobby/Lobby Data")]
-    public class LobbyData : ScriptableObject
+    public class LobbyInternalData : ScriptableObject
     {
         [SerializeField]
         private List<DictionaryElement<LobbyDictionaryElement>> playerData;

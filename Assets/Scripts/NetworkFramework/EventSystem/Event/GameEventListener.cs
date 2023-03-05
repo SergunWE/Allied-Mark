@@ -2,7 +2,7 @@
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 
-namespace NetworkFramework.EventSystem.Events
+namespace NetworkFramework.EventSystem.Event
 {
     public class GameEventListener : MonoBehaviour
     {

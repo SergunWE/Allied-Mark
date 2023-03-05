@@ -1,4 +1,4 @@
-using NetworkFramework.EventSystem.Events;
+using NetworkFramework.EventSystem.Event;
 using UnityEngine;
 
 namespace NetworkFramework.Data
