@@ -19,5 +19,5 @@ MonoBehaviour:
       visibility: 2
   - key: PlayerReady
     value:
-      value: False
+      value: True
       visibility: 2
