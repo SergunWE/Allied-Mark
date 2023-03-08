@@ -21,7 +21,6 @@ namespace NetworkFramework.LobbyCore
         {
             if (!AuthenticationService.Instance.IsSignedIn) return false;
             Player player = new Player(AuthenticationService.Instance.PlayerId, null, playerData);
-
             CreateLobbyOptions options = new CreateLobbyOptions
             {
                 Player = player,
@@ -44,14 +43,33 @@ namespace NetworkFramework.LobbyCore
             return true;
         }
 
-        public async Task<bool> JoinLobbyByCodeAsync(string code)
+        public async Task<bool> JoinLobbyByCodeAsync(string code, Dictionary<string, PlayerDataObject> playerData = null)
         {
             try
             {
                 JoinLobbyByCodeOptions options = new JoinLobbyByCodeOptions();
-                Player player = new Player(AuthenticationService.Instance.PlayerId, null, null);
+                Player player = new Player(AuthenticationService.Instance.PlayerId, null, playerData);
                 options.Player = player;
                 CurrentLobby = await LobbyService.Instance.JoinLobbyByCodeAsync(code, options);
+                return CurrentLobby != null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
+        public async Task<bool> JoinLobbyQuickAsync(Dictionary<string, PlayerDataObject> playerData = null)
+        {
+            try
+            {
+                Player player = new Player(AuthenticationService.Instance.PlayerId, null, playerData);
+                QuickJoinLobbyOptions options = new QuickJoinLobbyOptions
+                {
+                    Player = player
+                };
+                CurrentLobby = await LobbyService.Instance.QuickJoinLobbyAsync(options);
                 return CurrentLobby != null;
             }
             catch (Exception e)

@@ -1,10 +1,8 @@
-using System;
 using NetworkFramework.Data;
 using NetworkFramework.EventSystem.EventParameter;
 using NetworkFramework.LobbyCore;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace NetworkFramework.MonoBehaviour_Components
 {
@@ -30,9 +28,14 @@ namespace NetworkFramework.MonoBehaviour_Components
                 lobbyOptions.Privacy, lobbyInternalData.GetDictionary, lobbyInternalPlayerData.GetDictionary));
         }
 
+        public async void JoinLobbyQuick()
+        {
+            lobbyJoined.Raise(await _core.JoinLobbyQuickAsync(lobbyInternalPlayerData.GetDictionary));
+        }
+
         public async void JoinLobbyByCode(string code)
         {
-            lobbyJoined.Raise(await _core.JoinLobbyByCodeAsync(code));
+            lobbyJoined.Raise(await _core.JoinLobbyByCodeAsync(code, lobbyInternalPlayerData.GetDictionary));
         }
         
         public void JoinLobbyByCode(TMP_InputField tmpInputField)
