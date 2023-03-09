@@ -7,36 +7,30 @@ using UnityEngine.Serialization;
 namespace NetworkFramework.Data
 {
     [CreateAssetMenu(menuName = "Lobby/Lobby Data")]
-    public class LobbyInternalData : ScriptableObject
+    public class LobbyInternalData : InternalData<DataObject, LobbyDictionaryElement>
     {
-        [SerializeField]
-        private List<DictionaryElement<LobbyDictionaryElement>> playerData;
+        [SerializeField] private int lobbyLevel;
 
-        private Dictionary<string, DataObject> _dictionary;
-
-        private void OnValidate()
+        protected override void UpdateBasicData()
         {
-            InitDictionary();
+            AddElement(DataKeys.LobbyLevel, 
+                new DataObject(DataObject.VisibilityOptions.Public, lobbyLevel.ToString()));
         }
 
-        private void OnEnable()
+        public override void AddCustomElement(string key, LobbyDictionaryElement element)
         {
-            InitDictionary();
+            Dictionary.Add(key, new DataObject(element.visibility, element.value));
+            onDataUpdated.Raise();
         }
 
-        private void InitDictionary()
+        public void SetLevel(int level)
         {
-            if(playerData == null || playerData.Count == 0) return;
-            _dictionary ??= new Dictionary<string, DataObject>();
-            foreach (var data in playerData)
-            {
-                if (_dictionary.ContainsKey(data.key)) continue;
-                var value = data.value;
-                _dictionary.Add(data.key, new DataObject(value.visibility, value.value));
-            }
+            if (level == lobbyLevel) return;
+            AddElement(DataKeys.LobbyLevel, 
+                new DataObject(DataObject.VisibilityOptions.Public, lobbyLevel.ToString()));
+            lobbyLevel = level;
+            onDataUpdated.Raise();
         }
-
-        public Dictionary<string, DataObject> GetDictionary => _dictionary;
     }
 
     [Serializable]

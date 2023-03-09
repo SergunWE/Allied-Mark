@@ -25,7 +25,6 @@ namespace NetworkFramework.MonoBehaviour_Components
         private void OnEnable()
         {
             _core.OnLobbyDataUpdated += lobbyRefreshed.Raise;
-            _core.OnLobbyDataUpdated += () => Debug.Log("Data updated");
         }
 
         private void OnDisable()

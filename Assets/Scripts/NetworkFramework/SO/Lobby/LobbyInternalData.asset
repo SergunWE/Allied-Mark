@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f70bd4f2e3eb48709d0e25d255e695c7, type: 3}
   m_Name: LobbyInternalData
   m_EditorClassIdentifier: 
-  playerData:
-  - key: LobbyLevel
-    value:
-      value: 1
-      visibility: 1
+  onDataUpdated: {fileID: 0}
+  customData: []
+  lobbyLevel: 1

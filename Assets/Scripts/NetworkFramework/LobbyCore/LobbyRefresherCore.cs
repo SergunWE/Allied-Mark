@@ -60,6 +60,7 @@ namespace NetworkFramework.LobbyCore
                 try
                 {
                     LobbyService.Instance.SendHeartbeatPingAsync(LobbyData.Current.Id);
+                    Debug.Log("HeartBeat");
                     Thread.Sleep(GlobalConstants.HeartbeatLobbyDelayMilliseconds);
                 }
                 catch (ThreadAbortException)
@@ -87,7 +88,7 @@ namespace NetworkFramework.LobbyCore
                     {
                         OnLobbyDataUpdated?.Invoke();
                     }
-
+                    Debug.Log("UpdateLobby");
                     Thread.Sleep(GlobalConstants.RefreshLobbyDelayMilliseconds);
                 }
                 catch (ThreadAbortException)

@@ -12,12 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb9102845f1f4eae9ca35c45410990f9, type: 3}
   m_Name: LobbyPlayerData
   m_EditorClassIdentifier: 
-  playerData:
-  - key: PlayerName
-    value:
-      value: TestPlayerName
-      visibility: 2
-  - key: PlayerReady
-    value:
-      value: True
-      visibility: 2
+  onDataUpdated: {fileID: 11400000, guid: a4a78b494274cbe45b0785c00590f510, type: 2}
+  customData: []
+  playerName: 727
+  playerReady: 0

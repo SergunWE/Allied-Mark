@@ -2,41 +2,46 @@ using System;
 using System.Collections.Generic;
 using Unity.Services.Lobbies.Models;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace NetworkFramework.Data
 {
     [CreateAssetMenu(menuName = "Lobby/Lobby Player Data")]
-    public class LobbyInternalPlayerData : ScriptableObject
+    public class LobbyInternalPlayerData : InternalData<PlayerDataObject, PlayerDictionaryElement>
     {
-        [SerializeField]
-        private List<DictionaryElement<PlayerDictionaryElement>> playerData;
+        [SerializeField] private string playerName = "";
+        [SerializeField] private bool playerReady = false;
 
-        private Dictionary<string, PlayerDataObject> _dictionary;
-
-        private void OnValidate()
+        protected override void UpdateBasicData()
         {
-            InitDictionary();
+            AddElement(DataKeys.PlayerName, 
+                new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, playerName));
+            AddElement(DataKeys.PlayerReady, 
+                new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, playerReady.ToString()));
         }
 
-        private void OnEnable()
+        public override void AddCustomElement(string key, PlayerDictionaryElement element)
         {
-            InitDictionary();
+            Dictionary.Add(key, new PlayerDataObject(element.visibility, element.value));
+            onDataUpdated.Raise();
         }
 
-        private void InitDictionary()
+        public void SetName(string newName)
         {
-            if(playerData == null || playerData.Count == 0) return;
-            _dictionary ??= new Dictionary<string, PlayerDataObject>();
-            foreach (var data in playerData)
-            {
-                if (_dictionary.ContainsKey(data.key)) continue;
-                var value = data.value;
-                _dictionary.Add(data.key, new PlayerDataObject(value.visibility, value.value));
-            }
+            if (newName == null || newName == playerName) return;
+            playerName = newName;
+            AddElement(DataKeys.PlayerName, 
+                new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, playerName));
+            onDataUpdated.Raise();
         }
 
-        public Dictionary<string, PlayerDataObject> GetDictionary => _dictionary;
+        public void SetReady(bool ready)
+        {
+            if(ready == playerReady) return;
+            playerReady = ready;
+            AddElement(DataKeys.PlayerReady, 
+                new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, playerReady.ToString()));
+            onDataUpdated.Raise();
+        }
     }
 
     [Serializable]
