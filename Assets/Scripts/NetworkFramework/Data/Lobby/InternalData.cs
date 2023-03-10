@@ -39,7 +39,7 @@ namespace NetworkFramework.Data
         
         protected void AddElement(string key, TDict element)
         {
-            Dictionary.Add(key, element);
+            Dictionary[key] =  element;
         }
         
         protected abstract void UpdateBasicData();

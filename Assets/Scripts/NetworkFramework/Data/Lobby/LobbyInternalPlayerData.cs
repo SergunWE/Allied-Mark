@@ -21,7 +21,7 @@ namespace NetworkFramework.Data
 
         public override void AddCustomElement(string key, PlayerDictionaryElement element)
         {
-            Dictionary.Add(key, new PlayerDataObject(element.visibility, element.value));
+            Dictionary[key] = new PlayerDataObject(element.visibility, element.value);
             onDataUpdated.Raise();
         }
 
