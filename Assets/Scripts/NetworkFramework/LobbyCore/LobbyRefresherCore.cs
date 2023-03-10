@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Unity.Services.Authentication;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 using UnityEngine;
@@ -22,6 +23,7 @@ namespace NetworkFramework.LobbyCore
 
         public void StartHeartbeat()
         {
+            if(CurrentLobby.HostId != AuthenticationService.Instance.PlayerId) return;
             _heartbeatLobbyThread?.Abort();
             _heartbeatLobbyThread = new Thread(HeartbeatLobbyThread);
             _heartbeatLobbyThread.Start();
