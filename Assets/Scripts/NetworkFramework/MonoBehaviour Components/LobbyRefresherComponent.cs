@@ -7,6 +7,7 @@ namespace NetworkFramework.MonoBehaviour_Components
     public class LobbyRefresherComponent : MonoBehaviour
     {
         [SerializeField] private GameEvent lobbyRefreshed;
+        [SerializeField] private GameEvent lobbyLeaved;
         
         private LobbyRefresherCore _core;
         private bool _isUpdate;
@@ -39,13 +40,21 @@ namespace NetworkFramework.MonoBehaviour_Components
             _core.OnLobbyDataUpdated -= OnLobbyUpdated;
         }
 
-        public void StartSync()
+        private void StartSync()
         {
             _core.StartHeartbeat();
             _core.StartRefresh();
         }
+        
+        public async void LeaveLobby()
+        {
+            if ((await _core.LeaveLobbyAsync()).Success)
+            {
+                lobbyLeaved.Raise();
+            }
+        }
 
-        public void OnLobbyUpdated()
+        private void OnLobbyUpdated()
         {
             _isUpdate = true;
         }

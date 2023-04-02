@@ -35,7 +35,7 @@ namespace NetworkFramework.LobbyCore
             _refreshLobbyThread = new Thread(RefreshLobbyThread);
             _refreshLobbyThread.Start();
         }
-        
+
         public async Task<TaskStatus> RefreshLobbyDataAsync()
         {
             if (CurrentLobby == null) return new TaskStatus(false, new Exception("Lobby not exist"));
@@ -55,13 +55,34 @@ namespace NetworkFramework.LobbyCore
             }
         }
         
+        public async Task<TaskStatus> LeaveLobbyAsync()
+        {
+            try
+            {
+                await LobbyService.Instance.RemovePlayerAsync(CurrentLobby.Id, AuthenticationService.Instance.PlayerId);
+                StopUpdatingLobby();
+                return new TaskStatus(true);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return new TaskStatus(false, e);
+            }
+        }
+        
+        private void StopUpdatingLobby()
+        {
+            _heartbeatLobbyThread?.Abort();
+            _refreshLobbyThread?.Abort();
+        }
+        
         private void HeartbeatLobbyThread()
         {
             while (true)
             {
                 try
                 {
-                    LobbyService.Instance.SendHeartbeatPingAsync(LobbyData.Current.Id);
+                    LobbyService.Instance.SendHeartbeatPingAsync(CurrentLobby.Id);
                     Debug.Log("HeartBeat");
                     Thread.Sleep(GlobalConstants.HeartbeatLobbyDelayMilliseconds);
                 }
@@ -107,7 +128,6 @@ namespace NetworkFramework.LobbyCore
 
         ~LobbyRefresherCore()
         {
-            OnLobbyDataUpdated = null;
             _heartbeatLobbyThread?.Abort();
             _refreshLobbyThread?.Abort();
         }
