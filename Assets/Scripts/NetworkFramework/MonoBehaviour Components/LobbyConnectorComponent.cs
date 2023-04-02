@@ -24,18 +24,18 @@ namespace NetworkFramework.MonoBehaviour_Components
 
         public async void CreateLobby()
         {
-            lobbyCreated.Raise(await _core.CreateLobbyAsync(lobbyOptions.LobbyName, lobbyOptions.MaxPlayer,
-                lobbyOptions.Privacy, lobbyInternalData.GetDictionary, lobbyInternalPlayerData.GetDictionary));
+            lobbyCreated.Raise((await _core.CreateLobbyAsync(lobbyOptions.LobbyName, lobbyOptions.MaxPlayer,
+                lobbyOptions.Privacy, lobbyInternalData.GetDictionary, lobbyInternalPlayerData.GetDictionary)).Success);
         }
 
         public async void JoinLobbyQuick()
         {
-            lobbyJoined.Raise(await _core.JoinLobbyQuickAsync(lobbyInternalPlayerData.GetDictionary));
+            lobbyJoined.Raise((await _core.JoinLobbyQuickAsync(lobbyInternalPlayerData.GetDictionary)).Success);
         }
 
         public async void JoinLobbyByCode(string code)
         {
-            lobbyJoined.Raise(await _core.JoinLobbyByCodeAsync(code, lobbyInternalPlayerData.GetDictionary));
+            lobbyJoined.Raise((await _core.JoinLobbyByCodeAsync(code, lobbyInternalPlayerData.GetDictionary)).Success);
         }
         
         public void JoinLobbyByCode(TMP_InputField tmpInputField)

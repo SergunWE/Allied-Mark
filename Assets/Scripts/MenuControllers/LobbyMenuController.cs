@@ -5,9 +5,9 @@ using UnityEngine;
 public class LobbyMenuController : MonoBehaviour
 {
     [SerializeField] private TMP_Text lobbyCodeText;
-    
-    void Start()
+
+    private void Start()
     {
-        lobbyCodeText.text = LobbyData.Current.LobbyCode;
+        lobbyCodeText.text =  $"Lobby code:{LobbyData.Current.LobbyCode}";
     }
 }

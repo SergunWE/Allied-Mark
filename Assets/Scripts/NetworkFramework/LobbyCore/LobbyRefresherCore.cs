@@ -36,9 +36,9 @@ namespace NetworkFramework.LobbyCore
             _refreshLobbyThread.Start();
         }
         
-        public async Task<bool> RefreshLobbyDataAsync()
+        public async Task<TaskStatus> RefreshLobbyDataAsync()
         {
-            if (CurrentLobby == null) return false;
+            if (CurrentLobby == null) return new TaskStatus(false, new Exception("Lobby not exist"));
             try
             {
                 var newLobby = await LobbyService.Instance.GetLobbyAsync(CurrentLobby.Id);
@@ -46,12 +46,12 @@ namespace NetworkFramework.LobbyCore
                 {
                     CurrentLobby = newLobby;
                 }
-                return true;
+                return new TaskStatus(true);
             }
             catch (Exception e)
             {
                 Debug.Log(e.Message);
-                return false;
+                return new TaskStatus(false, e);
             }
         }
         
@@ -85,12 +85,12 @@ namespace NetworkFramework.LobbyCore
                 {
                     var task = RefreshLobbyDataAsync();
                     task.Wait();
-                    bool result = task.Result;
-                    if (result)
+                    var result = task.Result;
+                    if (result.Success)
                     {
+                        Debug.Log("UpdateLobby");
                         OnLobbyDataUpdated?.Invoke();
                     }
-                    Debug.Log("UpdateLobby");
                     Thread.Sleep(GlobalConstants.RefreshLobbyDelayMilliseconds);
                 }
                 catch (ThreadAbortException)
