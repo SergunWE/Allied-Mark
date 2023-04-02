@@ -1,4 +1,3 @@
-using System;
 using NetworkFramework.EventSystem.Event;
 using NetworkFramework.LobbyCore;
 using UnityEngine;
@@ -10,6 +9,7 @@ namespace NetworkFramework.MonoBehaviour_Components
         [SerializeField] private GameEvent lobbyRefreshed;
         
         private LobbyRefresherCore _core;
+        private bool _isUpdate;
 
         private void Awake()
         {
@@ -22,20 +22,32 @@ namespace NetworkFramework.MonoBehaviour_Components
             StartSync();
         }
 
+        private void FixedUpdate()
+        {
+            if (!_isUpdate) return;
+            lobbyRefreshed.Raise();
+            _isUpdate = false;
+        }
+
         private void OnEnable()
         {
-            _core.OnLobbyDataUpdated += lobbyRefreshed.Raise;
+            _core.OnLobbyDataUpdated += OnLobbyUpdated;
         }
 
         private void OnDisable()
         {
-            _core.OnLobbyDataUpdated -= lobbyRefreshed.Raise;
+            _core.OnLobbyDataUpdated -= OnLobbyUpdated;
         }
 
         public void StartSync()
         {
             _core.StartHeartbeat();
             _core.StartRefresh();
+        }
+
+        public void OnLobbyUpdated()
+        {
+            _isUpdate = true;
         }
     }
 }

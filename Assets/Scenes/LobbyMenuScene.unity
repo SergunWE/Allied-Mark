@@ -439,6 +439,7 @@ GameObject:
   - component: {fileID: 578721598}
   - component: {fileID: 578721599}
   - component: {fileID: 578721600}
+  - component: {fileID: 578721601}
   m_Layer: 0
   m_Name: Lobby
   m_TagString: Untagged
@@ -491,6 +492,35 @@ MonoBehaviour:
   - {fileID: 2132368061}
   - {fileID: 2087072979}
   - {fileID: 336457467}
+--- !u!114 &578721601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578721595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e839e4c12473014b9b3d3faccc0f61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 0d44f651fd7e4eb409b4b27d5395e458, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 578721600}
+        m_TargetAssemblyTypeName: NetworkFramework.MonoBehaviour_Components.LobbyPlayerDisplayer,
+          Assembly-CSharp
+        m_MethodName: OnLobbyRefreshed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &729008829
 GameObject:
   m_ObjectHideFlags: 0

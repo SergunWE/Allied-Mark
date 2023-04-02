@@ -18,13 +18,13 @@ namespace NetworkFramework.MonoBehaviour_Components
 
         public void OnLobbyRefreshed()
         {
-            //change to Update
-            //SetViews();
+            SetViews();
         }
 
         private void SetViews()
         {
             var currentPlayers = LobbyData.Current.Players;
+            Debug.Log(currentPlayers.Count);
             for (int i = 0; i < currentPlayers.Count; i++)
             {
                 var playerData = currentPlayers[i].Data;
@@ -35,11 +35,6 @@ namespace NetworkFramework.MonoBehaviour_Components
             {
                 playerViews[i].HidePlayer();
             }
-        }
-
-        private void UpdateViews()
-        {
-            
         }
     }
 }
