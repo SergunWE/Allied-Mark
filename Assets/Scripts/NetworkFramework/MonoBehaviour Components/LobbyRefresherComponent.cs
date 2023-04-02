@@ -17,12 +17,6 @@ namespace NetworkFramework.MonoBehaviour_Components
             _core ??= new LobbyRefresherCore();
         }
 
-        private void Start()
-        {
-            if (!LobbyData.LobbyExist) return;
-            StartSync();
-        }
-
         private void FixedUpdate()
         {
             if (!_isUpdate) return;
@@ -33,17 +27,14 @@ namespace NetworkFramework.MonoBehaviour_Components
         private void OnEnable()
         {
             _core.OnLobbyDataUpdated += OnLobbyUpdated;
+            _core.StartHeartbeat();
+            _core.StartRefresh();
         }
 
         private void OnDisable()
         {
             _core.OnLobbyDataUpdated -= OnLobbyUpdated;
-        }
-
-        private void StartSync()
-        {
-            _core.StartHeartbeat();
-            _core.StartRefresh();
+            _core.StopUpdatingLobby();
         }
         
         public async void LeaveLobby()

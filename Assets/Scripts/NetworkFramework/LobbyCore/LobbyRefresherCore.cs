@@ -70,7 +70,7 @@ namespace NetworkFramework.LobbyCore
             }
         }
         
-        private void StopUpdatingLobby()
+        public void StopUpdatingLobby()
         {
             _heartbeatLobbyThread?.Abort();
             _refreshLobbyThread?.Abort();
@@ -124,12 +124,6 @@ namespace NetworkFramework.LobbyCore
                     return;
                 }
             }
-        }
-
-        ~LobbyRefresherCore()
-        {
-            _heartbeatLobbyThread?.Abort();
-            _refreshLobbyThread?.Abort();
         }
     }
 }
