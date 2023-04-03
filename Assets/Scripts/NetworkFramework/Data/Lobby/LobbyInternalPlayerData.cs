@@ -8,17 +8,63 @@ namespace NetworkFramework.Data
     [CreateAssetMenu(menuName = "Lobby/Lobby Player Data")]
     public class LobbyInternalPlayerData : InternalData<PlayerDataObject, PlayerDictionaryElement>
     {
-        [SerializeField] private string playerName = "";
-        [SerializeField] private bool playerReady = false;
+        // ReSharper disable once InconsistentNaming
+        [SerializeField] private string _playerName;
+        public string PlayerName
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_playerName))
+                {
+                    _playerName = $"Player{Random.Range(0, 10000)}";
+                }
 
-        private string PlayerName => string.IsNullOrEmpty(playerName) ? $"Player{Random.Range(0, 10000)}" : playerName;
+                return _playerName;
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value) || value == _playerName) return;
+                _playerName = value;
+                AddElement(DataKeysConstants.PlayerName.Key,
+                    new PlayerDataObject(DataKeysConstants.PlayerName.Visibility, PlayerName));
+                onDataUpdated.Raise();
+            }
+        }
+
+        // ReSharper disable once InconsistentNaming
+        [SerializeField] private bool _playerReady;
+        public bool PlayerReady
+        {
+            get => _playerReady;
+            set
+            {
+                if (value == _playerReady) return;
+                _playerReady = value;
+                AddElement(DataKeysConstants.PlayerReady.Key,
+                    new PlayerDataObject(DataKeysConstants.PlayerReady.Visibility, _playerReady.ToString()));
+                onDataUpdated.Raise();
+            }
+        }
+
+        private void Awake()
+        {
+            _playerName = "";
+            _playerReady = false;
+        }
+
+        private void OnEnable()
+        {
+            #if UNITY_EDITOR
+            Awake();
+            #endif
+        }
 
         protected override void UpdateBasicData()
         {
-            AddElement(DataKeysConstants.PlayerName.Key, 
+            AddElement(DataKeysConstants.PlayerName.Key,
                 new PlayerDataObject(DataKeysConstants.PlayerName.Visibility, PlayerName));
-            AddElement(DataKeysConstants.PlayerReady.Key, 
-                new PlayerDataObject(DataKeysConstants.PlayerReady.Visibility, playerReady.ToString()));
+            AddElement(DataKeysConstants.PlayerReady.Key,
+                new PlayerDataObject(DataKeysConstants.PlayerReady.Visibility, _playerReady.ToString()));
         }
 
         public override void AddCustomElement(string key, PlayerDictionaryElement element)
@@ -26,32 +72,12 @@ namespace NetworkFramework.Data
             Dictionary[key] = new PlayerDataObject(element.visibility, element.value);
             onDataUpdated.Raise();
         }
-
-        public void SetName(string newName)
-        {
-            if (string.IsNullOrEmpty(newName) || newName == playerName) return;
-            playerName = newName;
-            AddElement(DataKeysConstants.PlayerName.Key, 
-                new PlayerDataObject(DataKeysConstants.PlayerName.Visibility, PlayerName));
-            onDataUpdated.Raise();
-        }
-
-        public void SetReady(bool ready)
-        {
-            if(ready == playerReady) return;
-            playerReady = ready;
-            AddElement(DataKeysConstants.PlayerReady.Key, 
-                new PlayerDataObject(DataKeysConstants.PlayerReady.Visibility, playerReady.ToString()));
-            onDataUpdated.Raise();
-        }
     }
 
     [Serializable]
     public class PlayerDictionaryElement
     {
-        [SerializeField]
-        public string value;
-        [SerializeField]
-        public PlayerDataObject.VisibilityOptions visibility;
+        [SerializeField] public string value;
+        [SerializeField] public PlayerDataObject.VisibilityOptions visibility;
     }
 }

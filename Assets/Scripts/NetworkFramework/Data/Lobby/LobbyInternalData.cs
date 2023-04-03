@@ -1,8 +1,6 @@
 using System;
-using System.Collections.Generic;
 using Unity.Services.Lobbies.Models;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace NetworkFramework.Data
 {
@@ -10,12 +8,10 @@ namespace NetworkFramework.Data
     public class LobbyInternalData : InternalData<DataObject, LobbyDictionaryElement>
     {
         [SerializeField] private int lobbyLevel;
-
         protected override void UpdateBasicData()
         {
-            AddElement(DataKeysConstants.LobbyLevel.Key, 
-                new DataObject(DataKeysConstants.LobbyLevel.Visibility, 
-                    lobbyLevel.ToString()));
+            AddElement(DataKeysConstants.LobbyLevel.Key,
+                new DataObject(DataKeysConstants.LobbyLevel.Visibility, lobbyLevel.ToString()));
         }
 
         public override void AddCustomElement(string key, LobbyDictionaryElement element)
@@ -27,7 +23,7 @@ namespace NetworkFramework.Data
         public void SetLevel(int level)
         {
             if (level == lobbyLevel) return;
-            AddElement(DataKeysConstants.LobbyLevel.Key, 
+            AddElement(DataKeysConstants.LobbyLevel.Key,
                 new DataObject(DataKeysConstants.LobbyLevel.Visibility, lobbyLevel.ToString()));
             lobbyLevel = level;
             onDataUpdated.Raise();
@@ -37,9 +33,7 @@ namespace NetworkFramework.Data
     [Serializable]
     public class LobbyDictionaryElement
     {
-        [SerializeField]
-        public string value;
-        [SerializeField]
-        public DataObject.VisibilityOptions visibility;
+        [SerializeField] public string value;
+        [SerializeField] public DataObject.VisibilityOptions visibility;
     }
 }

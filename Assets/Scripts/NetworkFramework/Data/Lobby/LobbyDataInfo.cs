@@ -1,11 +1,11 @@
 namespace NetworkFramework.Data
 {
-    public struct LobbyData<T>
+    public struct LobbyDataInfo<T>
     {
         public readonly string Key;
         public readonly T Visibility;
         
-        public LobbyData(string key, T visibility)
+        public LobbyDataInfo(string key, T visibility)
         {
             Key = key;
             Visibility = visibility;

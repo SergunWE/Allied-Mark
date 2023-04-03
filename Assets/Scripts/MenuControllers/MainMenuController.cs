@@ -1,6 +1,4 @@
-using System;
 using NetworkFramework.Data;
-using NetworkFramework.MonoBehaviour_Components;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,12 +10,15 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private TMP_InputField lobbyName;
     [SerializeField] private TMP_InputField lobbyMaxPlayer;
     [SerializeField] private Toggle lobbyPrivacy;
+    [SerializeField] private TMP_InputField playerName;
 
     [SerializeField] private LobbyOptions lobbyOptions;
+    [SerializeField] private LobbyInternalPlayerData internalPlayerData;
 
     private void Awake()
     {
         OnLobbyOptionsChanged();
+        OnPlayerOptionsChanged();
     }
 
     public void OnLobbyOptionsChanged()
@@ -25,6 +26,11 @@ public class MainMenuController : MonoBehaviour
         lobbyName.text = lobbyOptions.LobbyName;
         lobbyMaxPlayer.text = lobbyOptions.MaxPlayer.ToString();
         lobbyPrivacy.isOn = lobbyOptions.Privacy;
+    }
+
+    public void OnPlayerOptionsChanged()
+    {
+        playerName.text = internalPlayerData.PlayerName;
     }
 
     public void OnLobbyCreated(bool successful)

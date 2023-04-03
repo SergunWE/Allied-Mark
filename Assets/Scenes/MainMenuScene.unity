@@ -656,7 +656,7 @@ MonoBehaviour:
       - m_Target: {fileID: 11400000, guid: 767638c644d1c3e479735f856213addb, type: 2}
         m_TargetAssemblyTypeName: NetworkFramework.Data.LobbyInternalPlayerData,
           Assembly-CSharp
-        m_MethodName: SetName
+        m_MethodName: set_PlayerName
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1268,7 +1268,9 @@ MonoBehaviour:
   lobbyName: {fileID: 868041096}
   lobbyMaxPlayer: {fileID: 2036984158}
   lobbyPrivacy: {fileID: 1001224108}
+  playerName: {fileID: 282952184}
   lobbyOptions: {fileID: 11400000, guid: c4d8894a104f0104e9d7bf9671e34659, type: 2}
+  internalPlayerData: {fileID: 11400000, guid: 767638c644d1c3e479735f856213addb, type: 2}
 --- !u!4 &930675160
 Transform:
   m_ObjectHideFlags: 0
