@@ -1,7 +1,7 @@
 using System;
-using System.Collections.Generic;
 using Unity.Services.Lobbies.Models;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace NetworkFramework.Data
 {
@@ -11,10 +11,12 @@ namespace NetworkFramework.Data
         [SerializeField] private string playerName = "";
         [SerializeField] private bool playerReady = false;
 
+        private string PlayerName => string.IsNullOrEmpty(playerName) ? $"Player{Random.Range(0, 10000)}" : playerName;
+
         protected override void UpdateBasicData()
         {
             AddElement(DataKeys.PlayerName, 
-                new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, playerName));
+                new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, PlayerName));
             AddElement(DataKeys.PlayerReady, 
                 new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, playerReady.ToString()));
         }
@@ -27,10 +29,10 @@ namespace NetworkFramework.Data
 
         public void SetName(string newName)
         {
-            if (newName == null || newName == playerName) return;
+            if (string.IsNullOrEmpty(newName) || newName == playerName) return;
             playerName = newName;
             AddElement(DataKeys.PlayerName, 
-                new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, playerName));
+                new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, PlayerName));
             onDataUpdated.Raise();
         }
 
