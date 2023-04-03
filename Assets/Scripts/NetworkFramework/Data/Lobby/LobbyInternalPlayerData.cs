@@ -15,9 +15,9 @@ namespace NetworkFramework.Data
 
         protected override void UpdateBasicData()
         {
-            AddElement(DataKeys.PlayerName, 
+            AddElement(DataKeysConstants.PlayerName, 
                 new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, PlayerName));
-            AddElement(DataKeys.PlayerReady, 
+            AddElement(DataKeysConstants.PlayerReady, 
                 new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, playerReady.ToString()));
         }
 
@@ -31,7 +31,7 @@ namespace NetworkFramework.Data
         {
             if (string.IsNullOrEmpty(newName) || newName == playerName) return;
             playerName = newName;
-            AddElement(DataKeys.PlayerName, 
+            AddElement(DataKeysConstants.PlayerName, 
                 new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, PlayerName));
             onDataUpdated.Raise();
         }
@@ -40,7 +40,7 @@ namespace NetworkFramework.Data
         {
             if(ready == playerReady) return;
             playerReady = ready;
-            AddElement(DataKeys.PlayerReady, 
+            AddElement(DataKeysConstants.PlayerReady, 
                 new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, playerReady.ToString()));
             onDataUpdated.Raise();
         }

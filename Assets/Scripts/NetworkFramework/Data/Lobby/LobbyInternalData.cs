@@ -13,7 +13,7 @@ namespace NetworkFramework.Data
 
         protected override void UpdateBasicData()
         {
-            AddElement(DataKeys.LobbyLevel, 
+            AddElement(DataKeysConstants.LobbyLevel, 
                 new DataObject(DataObject.VisibilityOptions.Public, lobbyLevel.ToString()));
         }
 
@@ -26,7 +26,7 @@ namespace NetworkFramework.Data
         public void SetLevel(int level)
         {
             if (level == lobbyLevel) return;
-            AddElement(DataKeys.LobbyLevel, 
+            AddElement(DataKeysConstants.LobbyLevel, 
                 new DataObject(DataObject.VisibilityOptions.Public, lobbyLevel.ToString()));
             lobbyLevel = level;
             onDataUpdated.Raise();

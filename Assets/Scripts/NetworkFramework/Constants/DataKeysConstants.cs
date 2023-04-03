@@ -1,6 +1,6 @@
 namespace NetworkFramework.Data
 {
-    public class DataKeys
+    public static class DataKeysConstants
     {
         public const string PlayerName = "PlayerName";
         public const string PlayerReady = "PlayerReady";
