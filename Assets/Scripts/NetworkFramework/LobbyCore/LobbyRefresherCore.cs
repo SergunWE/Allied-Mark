@@ -8,16 +8,10 @@ using UnityEngine;
 
 namespace NetworkFramework.LobbyCore
 {
-    public class LobbyRefresherCore
+    public class LobbyRefresherCore : LobbyCore
     {
-        public event Action OnLobbyDataUpdated;
-        
-        private static Lobby CurrentLobby
-        {
-            get => LobbyData.Current;
-            set => LobbyData.Current = value;
-        }
-        
+        public event Action OnLobbyUpdated;
+
         private Thread _heartbeatLobbyThread;
         private Thread _refreshLobbyThread;
 
@@ -110,7 +104,7 @@ namespace NetworkFramework.LobbyCore
                     if (result.Success)
                     {
                         Debug.Log("UpdateLobby");
-                        OnLobbyDataUpdated?.Invoke();
+                        OnLobbyUpdated?.Invoke();
                     }
                     Thread.Sleep(GlobalConstants.RefreshLobbyDelayMilliseconds);
                 }
@@ -124,6 +118,12 @@ namespace NetworkFramework.LobbyCore
                     return;
                 }
             }
+        }
+        
+        public override void Dispose()
+        {
+            _heartbeatLobbyThread?.Abort();
+            _refreshLobbyThread?.Abort();
         }
     }
 }

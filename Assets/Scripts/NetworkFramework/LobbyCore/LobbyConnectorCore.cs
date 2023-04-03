@@ -9,14 +9,8 @@ using UnityEngine;
 
 namespace NetworkFramework.LobbyCore
 {
-    public class LobbyConnectorCore
+    public class LobbyConnectorCore : LobbyCore
     {
-        private static Lobby CurrentLobby
-        {
-            get => LobbyData.Current;
-            set => LobbyData.Current = value;
-        }
-        
         public async Task<TaskStatus> CreateLobbyAsync(string lobbyName, int maxPlayers, bool isPrivate,
             Dictionary<string, DataObject> lobbyData = null, Dictionary<string, PlayerDataObject> playerData = null)
         {
@@ -79,6 +73,11 @@ namespace NetworkFramework.LobbyCore
                 Console.WriteLine(e);
                 return new TaskStatus(false, e);
             }
+        }
+
+        public override void Dispose()
+        {
+            
         }
     }
 }

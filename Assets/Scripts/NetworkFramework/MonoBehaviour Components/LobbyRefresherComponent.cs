@@ -26,14 +26,14 @@ namespace NetworkFramework.MonoBehaviour_Components
 
         private void OnEnable()
         {
-            _core.OnLobbyDataUpdated += OnLobbyUpdated;
+            _core.OnLobbyUpdated += OnLobbyUpdated;
             _core.StartHeartbeat();
             _core.StartRefresh();
         }
 
         private void OnDisable()
         {
-            _core.OnLobbyDataUpdated -= OnLobbyUpdated;
+            _core.OnLobbyUpdated -= OnLobbyUpdated;
             _core.StopUpdatingLobby();
         }
         
