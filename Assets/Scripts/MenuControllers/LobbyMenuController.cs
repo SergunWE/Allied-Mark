@@ -16,7 +16,8 @@ public class LobbyMenuController : MonoBehaviour
 
     private void Start()
     {
-        lobbyCodeText.text = $"Lobby code:{LobbyData.Current.LobbyCode}";
+        if(!LobbyData.Exist) return;
+        lobbyCodeText.text = $"{LobbyData.Current.Name} - code:{LobbyData.Current.LobbyCode}";
     }
 
     public void LeaveLobby()

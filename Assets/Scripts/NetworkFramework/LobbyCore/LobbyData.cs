@@ -2,9 +2,14 @@ using Unity.Services.Lobbies.Models;
 
 namespace NetworkFramework.LobbyCore
 {
-    public class LobbyData
+    public static class LobbyData
     {
+        static LobbyData()
+        {
+            
+        }
+        
         public static Lobby Current { get; set; }
-        public static bool LobbyExist => Current != null;
+        public static bool Exist => Current != null;
     }
 }
