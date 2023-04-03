@@ -36,10 +36,7 @@ namespace NetworkFramework.LobbyCore
             try
             {
                 var newLobby = await LobbyService.Instance.GetLobbyAsync(CurrentLobby.Id);
-                if (CurrentLobby.LastUpdated < newLobby.LastUpdated)
-                {
-                    CurrentLobby = newLobby;
-                }
+                CurrentLobby = newLobby;
                 return new TaskStatus(true);
             }
             catch (Exception e)

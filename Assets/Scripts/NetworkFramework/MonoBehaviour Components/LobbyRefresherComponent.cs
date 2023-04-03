@@ -10,7 +10,7 @@ namespace NetworkFramework.MonoBehaviour_Components
         [SerializeField] private GameEvent lobbyLeaved;
         
         private LobbyRefresherCore _core;
-        private bool _isUpdate;
+        private bool _isUpdate = false;
 
         private void Awake()
         {

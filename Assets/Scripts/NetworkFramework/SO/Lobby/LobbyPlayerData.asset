@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onDataUpdated: {fileID: 11400000, guid: a4a78b494274cbe45b0785c00590f510, type: 2}
   customData: []
-  _playerName: Player8387
+  _playerName: Player3565
   _playerReady: 1

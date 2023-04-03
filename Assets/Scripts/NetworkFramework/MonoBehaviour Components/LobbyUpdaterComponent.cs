@@ -20,7 +20,7 @@ namespace NetworkFramework.MonoBehaviour_Components
         public async void ChangePlayerReady()
         {
             // Variant without automatic checking
-            // if (!_core.CanPlayerDataEdit(DataKeysConstants.PlayerReady.Key, internalPlayerData.PlayerReady)) return;
+            // if (!_core.PlayerDataEqual(DataKeysConstants.PlayerReady.Key, internalPlayerData.PlayerReady)) return;
             // internalPlayerData.PlayerReady = !internalPlayerData.PlayerReady;
             // await _core.UpdatePlayerData(DataKeysConstants.PlayerReady, internalPlayerData.PlayerReady);
 

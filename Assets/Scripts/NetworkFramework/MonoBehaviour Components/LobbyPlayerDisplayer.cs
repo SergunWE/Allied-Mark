@@ -24,7 +24,7 @@ namespace NetworkFramework.MonoBehaviour_Components
         private void SetViews()
         {
             var currentPlayers = LobbyData.Current.Players;
-            Debug.Log(currentPlayers.Count);
+            Debug.Log($"Player count: {currentPlayers.Count}");
             for (int i = 0; i < currentPlayers.Count; i++)
             {
                 var playerData = currentPlayers[i].Data;

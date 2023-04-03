@@ -52,15 +52,11 @@ namespace NetworkFramework.Data
             _playerReady = false;
         }
 
-        private void OnEnable()
+        protected override void UpdateBasicData()
         {
             #if UNITY_EDITOR
             Awake();
             #endif
-        }
-
-        protected override void UpdateBasicData()
-        {
             AddElement(DataKeysConstants.PlayerName.Key,
                 new PlayerDataObject(DataKeysConstants.PlayerName.Visibility, PlayerName));
             AddElement(DataKeysConstants.PlayerReady.Key,

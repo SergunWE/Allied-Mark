@@ -17,9 +17,9 @@ namespace NetworkFramework.LobbyCore
             _checkData = checkData;
         }
 
-        public async Task<TaskStatus> UpdateLobbyData(LobbyDataInfo<DataObject.VisibilityOptions> info, object value)
+        public async Task<TaskStatus> UpdateLobbyData(LobbyDataInfo<DataObject.VisibilityOptions> info, object newValue)
         {
-            if (_checkData && CanLobbyDataEdit(info.Key, value))
+            if (_checkData && LobbyDataEqual(info.Key, newValue))
                 return new TaskStatus(false, new Exception("The data is equal, cannot update"));
             try
             {
@@ -27,7 +27,7 @@ namespace NetworkFramework.LobbyCore
                 {
                     Data = new Dictionary<string, DataObject>()
                     {
-                        {info.Key, new DataObject(info.Visibility, value.ToString())}
+                        {info.Key, new DataObject(info.Visibility, newValue.ToString())}
                     }
                 });
                 return new TaskStatus(true);
@@ -40,9 +40,9 @@ namespace NetworkFramework.LobbyCore
         }
 
         public async Task<TaskStatus> UpdatePlayerData(LobbyDataInfo<PlayerDataObject.VisibilityOptions> info,
-            object value)
+            object newValue)
         {
-            if (_checkData && CanPlayerDataEdit(info.Key, value))
+            if (_checkData && PlayerDataEqual(info.Key, newValue))
                 return new TaskStatus(false, new Exception("The data is equal, cannot update"));
             try
             {
@@ -51,7 +51,7 @@ namespace NetworkFramework.LobbyCore
                     {
                         Data = new Dictionary<string, PlayerDataObject>()
                         {
-                            {info.Key, new PlayerDataObject(info.Visibility, value.ToString())}
+                            {info.Key, new PlayerDataObject(info.Visibility, newValue.ToString())}
                         }
                     });
                 return new TaskStatus(true);
@@ -63,14 +63,14 @@ namespace NetworkFramework.LobbyCore
             }
         }
 
-        public bool CanLobbyDataEdit(string key, object value)
+        public bool LobbyDataEqual(string key, object value)
         {
             var data = CurrentLobby.Data;
             if (data == null) return false;
             return data.ContainsKey(key) && data[key].Value == value.ToString();
         }
 
-        public bool CanPlayerDataEdit(string key, object value)
+        public bool PlayerDataEqual(string key, object value)
         {
             var data = CurrentLobby.Players.Find(player =>
                 player.Id == AuthenticationService.Instance.PlayerId).Data;
