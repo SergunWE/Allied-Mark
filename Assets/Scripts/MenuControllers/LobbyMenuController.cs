@@ -1,6 +1,11 @@
+using System.Collections.Generic;
+using NetworkFramework;
 using NetworkFramework.LobbyCore;
 using NetworkFramework.MonoBehaviour_Components;
 using TMPro;
+using Unity.Services.Authentication;
+using Unity.Services.Lobbies;
+using Unity.Services.Lobbies.Models;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +16,7 @@ public class LobbyMenuController : MonoBehaviour
 
     private void Start()
     {
-        lobbyCodeText.text =  $"Lobby code:{LobbyData.Current.LobbyCode}";
+        lobbyCodeText.text = $"Lobby code:{LobbyData.Current.LobbyCode}";
     }
 
     public void LeaveLobby()
@@ -22,5 +27,20 @@ public class LobbyMenuController : MonoBehaviour
     public void GoToMainMenu()
     {
         SceneManager.LoadSceneAsync(1);
+    }
+
+    public async void DebugChangeName()
+    {
+        var t =await LobbyService.Instance.UpdatePlayerAsync(LobbyData.Current.Id, AuthenticationService.Instance.PlayerId,
+            new UpdatePlayerOptions()
+            {
+                Data = new Dictionary<string, PlayerDataObject>()
+                {
+                    {
+                        DataKeysConstants.PlayerReady.Key,
+                        new PlayerDataObject(DataKeysConstants.PlayerReady.Visibility, "True")
+                    }
+                }
+            });
     }
 }

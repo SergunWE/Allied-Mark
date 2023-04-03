@@ -15,10 +15,10 @@ namespace NetworkFramework.Data
 
         protected override void UpdateBasicData()
         {
-            AddElement(DataKeysConstants.PlayerName, 
-                new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, PlayerName));
-            AddElement(DataKeysConstants.PlayerReady, 
-                new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, playerReady.ToString()));
+            AddElement(DataKeysConstants.PlayerName.Key, 
+                new PlayerDataObject(DataKeysConstants.PlayerName.Visibility, PlayerName));
+            AddElement(DataKeysConstants.PlayerReady.Key, 
+                new PlayerDataObject(DataKeysConstants.PlayerReady.Visibility, playerReady.ToString()));
         }
 
         public override void AddCustomElement(string key, PlayerDictionaryElement element)
@@ -31,8 +31,8 @@ namespace NetworkFramework.Data
         {
             if (string.IsNullOrEmpty(newName) || newName == playerName) return;
             playerName = newName;
-            AddElement(DataKeysConstants.PlayerName, 
-                new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, PlayerName));
+            AddElement(DataKeysConstants.PlayerName.Key, 
+                new PlayerDataObject(DataKeysConstants.PlayerName.Visibility, PlayerName));
             onDataUpdated.Raise();
         }
 
@@ -40,8 +40,8 @@ namespace NetworkFramework.Data
         {
             if(ready == playerReady) return;
             playerReady = ready;
-            AddElement(DataKeysConstants.PlayerReady, 
-                new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, playerReady.ToString()));
+            AddElement(DataKeysConstants.PlayerReady.Key, 
+                new PlayerDataObject(DataKeysConstants.PlayerReady.Visibility, playerReady.ToString()));
             onDataUpdated.Raise();
         }
     }
