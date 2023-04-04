@@ -9,13 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f70bd4f2e3eb48709d0e25d255e695c7, type: 3}
-  m_Name: LobbyInternalData
+  m_Script: {fileID: 11500000, guid: afde042156902ab4b9521d2a74eb2466, type: 3}
+  m_Name: LobbyDataUpdated
   m_EditorClassIdentifier: 
-  onDataUpdated: {fileID: 11400000, guid: 638af6f2314467c40a3ba37f774dcbc8, type: 2}
-  customData:
-  - key: LevelDifficulty
-    value:
-      value: Easy
-      visibility: 1
-  lobbyLevel: 1
