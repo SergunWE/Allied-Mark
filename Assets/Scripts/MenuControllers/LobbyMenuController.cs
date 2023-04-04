@@ -11,19 +11,15 @@ public class LobbyMenuController : MonoBehaviour
 {
     [SerializeField] private TMP_Text lobbyCodeText;
     [SerializeField] private TMP_Text readyButtonText;
-    [SerializeField] private LobbyRefresherComponent refresherComponent;
-    
+
     [SerializeField] private LobbyInternalPlayerData internalPlayerData;
+    [SerializeField] private GameObject hostPanel;
 
     private void Start()
     {
         if (!LobbyData.Exist) return;
         lobbyCodeText.text = $"{LobbyData.Current.Name} - code:{LobbyData.Current.LobbyCode}";
-    }
-
-    public void LeaveLobby()
-    {
-        refresherComponent.LeaveLobby();
+        hostPanel.SetActive(internalPlayerData.PlayerHost);
     }
 
     public void GoToMainMenu()

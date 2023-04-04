@@ -1,4 +1,7 @@
+using NetworkFramework.Data;
+using NetworkFramework.EventSystem.EventParameter;
 using NetworkFramework.LobbyCore;
+using NetworkFramework.SO;
 using UnityEngine;
 
 namespace NetworkFramework.MonoBehaviour_Components
@@ -7,19 +10,26 @@ namespace NetworkFramework.MonoBehaviour_Components
     {
         [SerializeField] private GameEvent lobbyRefreshed;
         [SerializeField] private GameEvent lobbyLeaved;
+
+        [SerializeField] private LobbyInternalPlayerData lobbyInternalPlayerData;
         
         private LobbyRefresherCore _core;
-        private bool _isUpdate = false;
+        private bool _isUpdate;
 
         private void Awake()
         {
             _core ??= new LobbyRefresherCore();
+            lobbyInternalPlayerData.PlayerHost = _core.PlayerIsHost;
         }
 
         private void FixedUpdate()
         {
             if (!_isUpdate) return;
             lobbyRefreshed.Raise();
+            if (LobbyData.Exist)
+            {
+                lobbyInternalPlayerData.PlayerHost = _core.PlayerIsHost;
+            }
             _isUpdate = false;
         }
 

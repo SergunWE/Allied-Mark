@@ -1,4 +1,5 @@
 using System;
+using NetworkFramework.EventSystem.EventParameter;
 using Unity.Services.Lobbies.Models;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -8,6 +9,8 @@ namespace NetworkFramework.SO
     [CreateAssetMenu(menuName = "Lobby/Lobby Player Data")]
     public class LobbyInternalPlayerData : InternalData<PlayerDataObject, PlayerDictionaryElement>
     {
+        [SerializeField] private GameEventBool playerHostChanged;
+        
         // ReSharper disable once InconsistentNaming
         [SerializeField] private string _playerName;
         public string PlayerName
@@ -43,6 +46,19 @@ namespace NetworkFramework.SO
                 AddElement(DataKeysConstants.PlayerReady.Key,
                     new PlayerDataObject(DataKeysConstants.PlayerReady.Visibility, _playerReady.ToString()));
                 onDataUpdated.Raise();
+            }
+        }
+
+        // ReSharper disable once InconsistentNaming
+        [SerializeField] private bool _playerHost;
+        public bool PlayerHost
+        {
+            get => _playerHost;
+            set
+            {
+                if (_playerHost == value) return;
+                _playerHost = value;
+                playerHostChanged.Raise(value);
             }
         }
 

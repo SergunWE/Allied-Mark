@@ -17,7 +17,7 @@ namespace NetworkFramework.LobbyCore
 
         public void StartHeartbeat()
         {
-            if(CurrentLobby.HostId != AuthenticationService.Instance.PlayerId) return;
+            if(!PlayerIsHost) return;
             _heartbeatLobbyThread?.Abort();
             _heartbeatLobbyThread = new Thread(HeartbeatLobbyThread);
             _heartbeatLobbyThread.Start();

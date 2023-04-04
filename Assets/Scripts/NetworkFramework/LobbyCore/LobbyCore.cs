@@ -1,5 +1,6 @@
 using System;
 using NetworkFramework.Data;
+using Unity.Services.Authentication;
 using Unity.Services.Lobbies.Models;
 
 namespace NetworkFramework.LobbyCore
@@ -11,6 +12,8 @@ namespace NetworkFramework.LobbyCore
             get => LobbyData.Current;
             set => LobbyData.Current = value;
         }
+
+        public virtual bool PlayerIsHost => CurrentLobby.HostId == AuthenticationService.Instance.PlayerId;
 
         public abstract void Dispose();
     }
