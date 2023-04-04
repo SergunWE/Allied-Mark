@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 
-
 [Serializable]
 [CreateAssetMenu(menuName = "Level Difficulty/Difficulty")]
 public class LevelDifficulty : ScriptableObject
@@ -10,4 +9,5 @@ public class LevelDifficulty : ScriptableObject
     //Here you can add, for example, the health of certain enemies or their damage
 
     [SerializeField] private string difficultName;
+    public string DifficultName => difficultName;
 }

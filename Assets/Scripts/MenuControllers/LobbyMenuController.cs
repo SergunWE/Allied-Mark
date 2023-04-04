@@ -1,25 +1,34 @@
+using System.Collections.Generic;
 using NetworkFramework.Data;
-using NetworkFramework.MonoBehaviour_Components;
 using NetworkFramework.SO;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class LobbyMenuController : MonoBehaviour
 {
     [SerializeField] private TMP_Text lobbyCodeText;
     [SerializeField] private TMP_Text readyButtonText;
+    [SerializeField] private GameObject hostPanel;
+    [SerializeField] private TMP_Dropdown levelDifficultyDropdown;
 
     [SerializeField] private LobbyInternalPlayerData internalPlayerData;
-    [SerializeField] private GameObject hostPanel;
+    [SerializeField] private LevelDifficultyHandler levelDifficultyHandler;
 
     private void Start()
     {
         if (!LobbyData.Exist) return;
-        lobbyCodeText.text = $"{LobbyData.Current.Name} - code:{LobbyData.Current.LobbyCode}";
+        lobbyCodeText.text = $"{LobbyData.Current.Name} - {LobbyData.Current.LobbyCode}";
         hostPanel.SetActive(internalPlayerData.PlayerHost);
+        int levelsCount = levelDifficultyHandler.DifficultyCount;
+        var options = new List<TMP_Dropdown.OptionData>();
+        for (int i = 0; i < levelsCount; i++)
+        {
+            var difficulty = levelDifficultyHandler.GetDifficult(i);
+            options.Add(new TMP_Dropdown.OptionData(difficulty.DifficultName));
+        }
+
+        levelDifficultyDropdown.options = options;
     }
 
     public void GoToMainMenu()
