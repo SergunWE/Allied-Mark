@@ -16,12 +16,12 @@ namespace NetworkFramework.MonoBehaviour_Components
 
         public async void InitAuthentication()
         {
-            initComplete?.Invoke(await AuthenticationManager.InitializeAsync());
+            initComplete?.Invoke((await AuthenticationManager.InitializeAsync()).Success);
         }
 
         public async void SignInAnonymously()
         {
-            authComplete?.Invoke(await AuthenticationManager.SignInAnonymouslyAsync());
+            authComplete?.Invoke((await AuthenticationManager.SignInAnonymouslyAsync()).Success);
         }
     }
 }

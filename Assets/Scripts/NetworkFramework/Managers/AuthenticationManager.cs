@@ -1,7 +1,8 @@
+using System;
 using System.Threading.Tasks;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
-
+using TaskStatus = NetworkFramework.Data.TaskStatus;
 
 namespace NetworkFramework.Managers
 {
@@ -12,27 +13,28 @@ namespace NetworkFramework.Managers
             UnityServices.InitializeAsync();
         }
 
-        public static async Task<bool> InitializeAsync()
+        public static async Task<TaskStatus> InitializeAsync()
         {
             if (UnityServices.State == ServicesInitializationState.Initialized)
             {
-                return true;
+                return new TaskStatus(true);
             }
 
             await UnityServices.InitializeAsync();
-            return UnityServices.State == ServicesInitializationState.Initialized;
+            return new TaskStatus(UnityServices.State == ServicesInitializationState.Initialized,
+                new Exception("ServicesInitializationState uninitialized"));
         }
 
-        public static async Task<bool> SignInAnonymouslyAsync()
+        public static async Task<TaskStatus> SignInAnonymouslyAsync()
         {
             try
             {
                 await AuthenticationService.Instance.SignInAnonymouslyAsync();
-                return true;
+                return new TaskStatus(true);
             }
-            catch
+            catch (Exception e)
             {
-                return false;
+                return new TaskStatus(false, e);
             }
         }
     }
