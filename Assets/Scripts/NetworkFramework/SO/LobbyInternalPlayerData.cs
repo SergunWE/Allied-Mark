@@ -3,7 +3,7 @@ using Unity.Services.Lobbies.Models;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace NetworkFramework.Data
+namespace NetworkFramework.SO
 {
     [CreateAssetMenu(menuName = "Lobby/Lobby Player Data")]
     public class LobbyInternalPlayerData : InternalData<PlayerDataObject, PlayerDictionaryElement>

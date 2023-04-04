@@ -6,6 +6,7 @@ using Unity.Services.Core;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 using UnityEngine;
+using TaskStatus = NetworkFramework.Data.TaskStatus;
 
 namespace NetworkFramework.LobbyCore
 {

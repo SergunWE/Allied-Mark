@@ -1,6 +1,7 @@
 using System;
 using NetworkFramework.Data;
 using NetworkFramework.LobbyCore;
+using NetworkFramework.SO;
 using UnityEngine;
 
 namespace NetworkFramework.MonoBehaviour_Components

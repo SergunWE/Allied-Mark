@@ -5,6 +5,7 @@ using NetworkFramework.Data;
 using Unity.Services.Authentication;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
+using TaskStatus = NetworkFramework.Data.TaskStatus;
 
 namespace NetworkFramework.LobbyCore
 {

@@ -1,4 +1,5 @@
 using System;
+using NetworkFramework.Data;
 using Unity.Services.Lobbies.Models;
 
 namespace NetworkFramework.LobbyCore

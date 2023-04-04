@@ -2,7 +2,7 @@ using System;
 using Unity.Services.Lobbies.Models;
 using UnityEngine;
 
-namespace NetworkFramework.Data
+namespace NetworkFramework.SO
 {
     [CreateAssetMenu(menuName = "Lobby/Lobby Data")]
     public class LobbyInternalData : InternalData<DataObject, LobbyDictionaryElement>

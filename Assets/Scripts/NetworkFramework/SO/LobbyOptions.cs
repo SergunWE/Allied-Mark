@@ -1,7 +1,6 @@
-using NetworkFramework.EventSystem.Event;
 using UnityEngine;
 
-namespace NetworkFramework.Data
+namespace NetworkFramework.SO
 {
     [CreateAssetMenu(menuName = "Lobby/Lobby Options")]
     public class LobbyOptions : ScriptableObject

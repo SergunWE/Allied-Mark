@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using NetworkFramework.LobbyCore;
+using NetworkFramework.Data;
 using Unity.Services.Lobbies.Models;
 using UnityEngine;
 

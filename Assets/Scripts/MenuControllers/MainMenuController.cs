@@ -1,4 +1,4 @@
-using NetworkFramework.Data;
+using NetworkFramework.SO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;

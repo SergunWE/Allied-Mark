@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace NetworkFramework.Data
+namespace NetworkFramework.SO
 {
     [Serializable]
     public class DictionaryElement<T>

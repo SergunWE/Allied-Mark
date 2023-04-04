@@ -1,6 +1,7 @@
 using NetworkFramework.Data;
 using NetworkFramework.EventSystem.EventParameter;
 using NetworkFramework.LobbyCore;
+using NetworkFramework.SO;
 using TMPro;
 using UnityEngine;
 

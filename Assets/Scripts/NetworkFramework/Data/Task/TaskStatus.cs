@@ -1,6 +1,6 @@
 using System;
 
-namespace NetworkFramework
+namespace NetworkFramework.Data
 {
     public class TaskStatus
     {

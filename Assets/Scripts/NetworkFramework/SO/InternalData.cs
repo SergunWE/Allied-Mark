@@ -1,9 +1,7 @@
 using System.Collections.Generic;
-using NetworkFramework.EventSystem.Event;
-using Unity.Services.Lobbies.Models;
 using UnityEngine;
 
-namespace NetworkFramework.Data
+namespace NetworkFramework.SO
 {
     public abstract class InternalData<TDict, TCs> : ScriptableObject
     {

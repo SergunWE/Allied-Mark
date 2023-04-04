@@ -1,6 +1,6 @@
 using Unity.Services.Lobbies.Models;
 
-namespace NetworkFramework.LobbyCore
+namespace NetworkFramework.Data
 {
     public static class LobbyData
     {
