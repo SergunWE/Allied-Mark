@@ -28,7 +28,8 @@ namespace NetworkFramework.MonoBehaviour_Components
             for (int i = 0; i < currentPlayers.Count; i++)
             {
                 var playerData = currentPlayers[i].Data;
-                playerViews[i].SetData(playerData["PlayerName"].Value, bool.Parse(playerData["PlayerReady"].Value));
+                playerViews[i].SetData(playerData[DataKeysConstants.PlayerName.Key].Value, 
+                    bool.Parse(playerData[DataKeysConstants.PlayerReady.Key].Value));
             }
 
             for (int i = currentPlayers.Count; i < 4; i++)

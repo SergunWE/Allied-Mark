@@ -616,6 +616,7 @@ GameObject:
   - component: {fileID: 578721600}
   - component: {fileID: 578721601}
   - component: {fileID: 578721602}
+  - component: {fileID: 578721603}
   m_Layer: 0
   m_Name: Lobby
   m_TagString: Untagged
@@ -713,6 +714,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   internalPlayerData: {fileID: 11400000, guid: 767638c644d1c3e479735f856213addb, type: 2}
+--- !u!114 &578721603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578721595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8cbbb1c181d4e5d8f3c2eb15d6be6cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allPlayersReady: {fileID: 11400000, guid: 6c69818815798344883fec4c4b073208, type: 2}
 --- !u!1 &729008829
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,6 +740,7 @@ GameObject:
   - component: {fileID: 729008832}
   - component: {fileID: 729008833}
   - component: {fileID: 729008834}
+  - component: {fileID: 729008835}
   m_Layer: 0
   m_Name: LobbyMenuController
   m_TagString: Untagged
@@ -820,6 +835,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 578721603}
+        m_TargetAssemblyTypeName: NetworkFramework.MonoBehaviour_Components.PlayersReadyChecker,
+          Assembly-CSharp
+        m_MethodName: OnLobbyRefreshed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &729008834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -837,6 +865,34 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 49846477}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &729008835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729008829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db08f54a87949d294078ea05ebec889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 6c69818815798344883fec4c4b073208, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1334350888}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 0
@@ -1845,11 +1901,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartButton
       objectReference: {fileID: 0}
+    - target: {fileID: 9070407866447269907, guid: 2e9fa0ab165c7e44b9ab213aa550ac1e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e9fa0ab165c7e44b9ab213aa550ac1e, type: 3}
 --- !u!224 &1334350887 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9070407866447269906, guid: 2e9fa0ab165c7e44b9ab213aa550ac1e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1334350886}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1334350888 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9070407866447269907, guid: 2e9fa0ab165c7e44b9ab213aa550ac1e,
     type: 3}
   m_PrefabInstance: {fileID: 1334350886}
   m_PrefabAsset: {fileID: 0}

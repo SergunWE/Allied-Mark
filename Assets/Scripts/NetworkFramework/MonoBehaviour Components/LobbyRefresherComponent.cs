@@ -25,9 +25,9 @@ namespace NetworkFramework.MonoBehaviour_Components
         private void FixedUpdate()
         {
             if (!_isUpdate) return;
-            lobbyRefreshed.Raise();
             if (LobbyData.Exist)
             {
+                lobbyRefreshed.Raise();
                 lobbyInternalPlayerData.PlayerHost = _core.PlayerIsHost;
             }
             _isUpdate = false;
