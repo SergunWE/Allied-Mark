@@ -16,8 +16,9 @@ public class LobbyMenuController : MonoBehaviour
     private void Start()
     {
         if (!LobbyData.Exist) return;
-        lobbyCodeText.text = $"{LobbyData.Current.Name} - {LobbyData.Current.LobbyCode}";
         hostPanel.SetActive(internalPlayerData.PlayerHost);
+        lobbyCodeText.text = $"{LobbyData.Current.Name} - {LobbyData.Current.LobbyCode}";
+        
     }
 
     public void GoToMainMenu()

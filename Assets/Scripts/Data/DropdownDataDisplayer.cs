@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DropdownDataDisplayer<T> : DataHandler<T> where T : IUIDisplayed
+public abstract class DropdownDataDisplayer<T> : DataHandler<T> where T : IUIDisplayed
 {
     [SerializeField] protected TMP_Dropdown dropdown;
 
@@ -19,5 +20,18 @@ public class DropdownDataDisplayer<T> : DataHandler<T> where T : IUIDisplayed
         }
 
         dropdown.options = options;
+        
     }
+
+    private void OnEnable()
+    {
+        dropdown.onValueChanged.AddListener(OnDropdownValueChanged);
+    }
+
+    private void OnDisable()
+    {
+        dropdown.onValueChanged.RemoveListener(OnDropdownValueChanged);
+    }
+
+    protected abstract void OnDropdownValueChanged(int index);
 }

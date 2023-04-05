@@ -10,5 +10,6 @@ public class LevelDifficulty : ScriptableObject, IUIDisplayed
 
     [SerializeField] private string difficultName;
     public string DifficultName => difficultName;
+
     public string DisplayName => difficultName;
 }

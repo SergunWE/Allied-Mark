@@ -1,7 +1,7 @@
-using System;
 using NetworkFramework.Data;
 using NetworkFramework.LobbyCore;
 using NetworkFramework.SO;
+using Unity.Services.Lobbies.Models;
 using UnityEngine;
 
 namespace NetworkFramework.MonoBehaviour_Components
@@ -11,7 +11,14 @@ namespace NetworkFramework.MonoBehaviour_Components
         [SerializeField] private LobbyInternalPlayerData internalPlayerData;
         
         private LobbyDataUpdaterCore _core;
+
+        //custom lobby data
+        private static readonly LobbyDataInfo<DataObject.VisibilityOptions> LevelDifficulty =
+            new("LevelDifficulty", DataObject.VisibilityOptions.Public);
         
+        //custom player data
+        private static readonly LobbyDataInfo<PlayerDataObject.VisibilityOptions> PlayerClass =
+            new("PlayerClass", PlayerDataObject.VisibilityOptions.Member);
 
         private void Awake()
         {
@@ -29,6 +36,16 @@ namespace NetworkFramework.MonoBehaviour_Components
             {
                 internalPlayerData.PlayerReady = !internalPlayerData.PlayerReady;
             }
+        }
+
+        public async void ChangeLevelDifficulty(LevelDifficulty difficulty)
+        {
+            await _core.UpdateLobbyData(LevelDifficulty, difficulty.DifficultName);
+        }
+
+        public async void ChangePlayerClass(PlayerClass @class)
+        {
+            await _core.UpdatePlayerData(PlayerClass, @class.ClassName);
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using Unity.Services.Lobbies.Models;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace NetworkFramework.SO
 {
@@ -16,7 +17,7 @@ namespace NetworkFramework.SO
 
         public override void AddCustomElement(string key, LobbyDictionaryElement element)
         {
-            Dictionary.Add(key, new DataObject(element.visibility, element.value));
+            Dictionary.Add(key, new DataObject(element.visibility, element.startValue));
             onDataUpdated.Raise();
         }
 
@@ -33,7 +34,7 @@ namespace NetworkFramework.SO
     [Serializable]
     public class LobbyDictionaryElement
     {
-        [SerializeField] public string value;
+        [FormerlySerializedAs("value")] [SerializeField] public string startValue;
         [SerializeField] public DataObject.VisibilityOptions visibility;
     }
 }

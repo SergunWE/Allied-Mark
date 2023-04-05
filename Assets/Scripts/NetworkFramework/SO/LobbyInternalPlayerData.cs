@@ -2,6 +2,7 @@ using System;
 using NetworkFramework.EventSystem.EventParameter;
 using Unity.Services.Lobbies.Models;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace NetworkFramework.SO
@@ -81,7 +82,7 @@ namespace NetworkFramework.SO
 
         public override void AddCustomElement(string key, PlayerDictionaryElement element)
         {
-            Dictionary[key] = new PlayerDataObject(element.visibility, element.value);
+            Dictionary[key] = new PlayerDataObject(element.visibility, element.startValue);
             onDataUpdated.Raise();
         }
     }
@@ -89,7 +90,7 @@ namespace NetworkFramework.SO
     [Serializable]
     public class PlayerDictionaryElement
     {
-        [SerializeField] public string value;
+        [FormerlySerializedAs("value")] [SerializeField] public string startValue;
         [SerializeField] public PlayerDataObject.VisibilityOptions visibility;
     }
 }
