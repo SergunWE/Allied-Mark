@@ -11,7 +11,7 @@ public abstract class DropdownDataDisplayer<T> : DataHandler<T> where T : IUIDis
     {
         if (dropdown == null) return;
         
-        int levelsCount = data.Length;
+        int levelsCount = data.Count;
         var options = new List<TMP_Dropdown.OptionData>();
         for (int i = 0; i < levelsCount; i++)
         {
@@ -34,4 +34,5 @@ public abstract class DropdownDataDisplayer<T> : DataHandler<T> where T : IUIDis
     }
 
     protected abstract void OnDropdownValueChanged(int index);
+    public abstract void OnLobbyUpdated();
 }

@@ -10,16 +10,17 @@ namespace NetworkFramework.MonoBehaviour_Components
     {
         [SerializeField] private GameEvent lobbyRefreshed;
         [SerializeField] private GameEvent lobbyLeaved;
+        [SerializeField] private GameEventBool lobbyHostChanged;
 
         [SerializeField] private LobbyInternalPlayerData lobbyInternalPlayerData;
         
         private LobbyRefresherCore _core;
-        private bool _isUpdate;
+        private bool _isUpdate = true;
 
         private void Awake()
         {
             _core ??= new LobbyRefresherCore();
-            lobbyInternalPlayerData.PlayerHost = _core.PlayerIsHost;
+            lobbyHostChanged.Raise(_core.PlayerIsHost);
         }
 
         private void FixedUpdate()

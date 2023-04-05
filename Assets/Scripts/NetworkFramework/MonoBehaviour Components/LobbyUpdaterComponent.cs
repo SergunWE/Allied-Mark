@@ -9,20 +9,22 @@ namespace NetworkFramework.MonoBehaviour_Components
     public class LobbyUpdaterComponent : MonoBehaviour
     {
         [SerializeField] private LobbyInternalPlayerData internalPlayerData;
-        
+
         private LobbyDataUpdaterCore _core;
 
         //custom lobby data
-        private static readonly LobbyDataInfo<DataObject.VisibilityOptions> LevelDifficulty =
-            new("LevelDifficulty", DataObject.VisibilityOptions.Public);
-        
+        public LobbyDataInfo<DataObject.VisibilityOptions> LevelDifficulty { get; private set; }
+
         //custom player data
-        private static readonly LobbyDataInfo<PlayerDataObject.VisibilityOptions> PlayerClass =
-            new("PlayerClass", PlayerDataObject.VisibilityOptions.Member);
+        public LobbyDataInfo<PlayerDataObject.VisibilityOptions> PlayerClass { get; private set; }
 
         private void Awake()
         {
             _core ??= new LobbyDataUpdaterCore(true);
+            LevelDifficulty = new LobbyDataInfo<DataObject.VisibilityOptions>("LevelDifficulty",
+                DataObject.VisibilityOptions.Public);
+            PlayerClass = new LobbyDataInfo<PlayerDataObject.VisibilityOptions>("PlayerClass", 
+                PlayerDataObject.VisibilityOptions.Member);
         }
 
         public async void ChangePlayerReady()

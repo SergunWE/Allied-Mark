@@ -1,9 +1,10 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
 public abstract class DataHandler<T> : MonoBehaviour
 {
-    [SerializeField] protected T[] data;
-    public T[] Get => data;
+    [SerializeField] protected List<T> data;
+    public List<T> Get => data;
 }
