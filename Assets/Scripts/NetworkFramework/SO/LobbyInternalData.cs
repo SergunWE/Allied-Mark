@@ -11,8 +11,8 @@ namespace NetworkFramework.SO
         [SerializeField] private int lobbyLevel;
         protected override void UpdateBasicData()
         {
-            AddElement(DataKeysConstants.LobbyLevel.Key,
-                new DataObject(DataKeysConstants.LobbyLevel.Visibility, lobbyLevel.ToString()));
+            AddElement(DataKeys.LobbyLevel.Key,
+                new DataObject(DataKeys.LobbyLevel.Visibility, lobbyLevel.ToString()));
         }
 
         public override void AddCustomElement(string key, LobbyDictionaryElement element)
@@ -24,8 +24,8 @@ namespace NetworkFramework.SO
         public void SetLevel(int level)
         {
             if (level == lobbyLevel) return;
-            AddElement(DataKeysConstants.LobbyLevel.Key,
-                new DataObject(DataKeysConstants.LobbyLevel.Visibility, lobbyLevel.ToString()));
+            AddElement(DataKeys.LobbyLevel.Key,
+                new DataObject(DataKeys.LobbyLevel.Visibility, lobbyLevel.ToString()));
             lobbyLevel = level;
             onDataUpdated.Raise();
         }

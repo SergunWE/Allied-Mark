@@ -3,7 +3,7 @@ using Unity.Services.Lobbies.Models;
 
 namespace NetworkFramework
 {
-    public static class DataKeysConstants
+    public static class DataKeys
     {
         public static LobbyDataInfo<PlayerDataObject.VisibilityOptions> PlayerName = new("PlayerName",
             PlayerDataObject.VisibilityOptions.Member);

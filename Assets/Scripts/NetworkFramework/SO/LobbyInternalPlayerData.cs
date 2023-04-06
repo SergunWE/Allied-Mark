@@ -29,8 +29,8 @@ namespace NetworkFramework.SO
             {
                 if (string.IsNullOrEmpty(value) || value == _playerName) return;
                 _playerName = value;
-                AddElement(DataKeysConstants.PlayerName.Key,
-                    new PlayerDataObject(DataKeysConstants.PlayerName.Visibility, PlayerName));
+                AddElement(DataKeys.PlayerName.Key,
+                    new PlayerDataObject(DataKeys.PlayerName.Visibility, PlayerName));
                 onDataUpdated.Raise();
             }
         }
@@ -44,8 +44,8 @@ namespace NetworkFramework.SO
             {
                 if (value == _playerReady) return;
                 _playerReady = value;
-                AddElement(DataKeysConstants.PlayerReady.Key,
-                    new PlayerDataObject(DataKeysConstants.PlayerReady.Visibility, _playerReady.ToString()));
+                AddElement(DataKeys.PlayerReady.Key,
+                    new PlayerDataObject(DataKeys.PlayerReady.Visibility, _playerReady.ToString()));
                 onDataUpdated.Raise();
             }
         }
@@ -74,10 +74,10 @@ namespace NetworkFramework.SO
             #if UNITY_EDITOR
             Awake();
             #endif
-            AddElement(DataKeysConstants.PlayerName.Key,
-                new PlayerDataObject(DataKeysConstants.PlayerName.Visibility, PlayerName));
-            AddElement(DataKeysConstants.PlayerReady.Key,
-                new PlayerDataObject(DataKeysConstants.PlayerReady.Visibility, _playerReady.ToString()));
+            AddElement(DataKeys.PlayerName.Key,
+                new PlayerDataObject(DataKeys.PlayerName.Visibility, PlayerName));
+            AddElement(DataKeys.PlayerReady.Key,
+                new PlayerDataObject(DataKeys.PlayerReady.Visibility, _playerReady.ToString()));
         }
 
         public override void AddCustomElement(string key, PlayerDictionaryElement element)

@@ -14,7 +14,7 @@ public class LevelDifficultyHandler : DropdownDataDisplayer<LevelDifficulty>
     public override void OnLobbyUpdated()
     {
         if (!LobbyData.Exist) return;
-        string diffName = LobbyData.Current.Data[lobbyUpdater.LevelDifficulty.Key].Value;
-        dropdown.value = data.FindIndex((x) => x.DifficultName == diffName);
+        string diffName = LobbyData.Current.Data[CustomDataKeys.LevelDifficulty.Key].Value;
+        dropdown.value = data.FindIndex(x => x.DifficultName == diffName);
     }
 }

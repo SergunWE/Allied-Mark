@@ -1,7 +1,5 @@
-using NetworkFramework.Data;
 using NetworkFramework.LobbyCore;
 using NetworkFramework.SO;
-using Unity.Services.Lobbies.Models;
 using UnityEngine;
 
 namespace NetworkFramework.MonoBehaviour_Components
@@ -12,19 +10,9 @@ namespace NetworkFramework.MonoBehaviour_Components
 
         private LobbyDataUpdaterCore _core;
 
-        //custom lobby data
-        public LobbyDataInfo<DataObject.VisibilityOptions> LevelDifficulty { get; private set; }
-
-        //custom player data
-        public LobbyDataInfo<PlayerDataObject.VisibilityOptions> PlayerClass { get; private set; }
-
         private void Awake()
         {
             _core ??= new LobbyDataUpdaterCore(true);
-            LevelDifficulty = new LobbyDataInfo<DataObject.VisibilityOptions>("LevelDifficulty",
-                DataObject.VisibilityOptions.Public);
-            PlayerClass = new LobbyDataInfo<PlayerDataObject.VisibilityOptions>("PlayerClass", 
-                PlayerDataObject.VisibilityOptions.Member);
         }
 
         public async void ChangePlayerReady()
@@ -34,7 +22,7 @@ namespace NetworkFramework.MonoBehaviour_Components
             // internalPlayerData.PlayerReady = !internalPlayerData.PlayerReady;
             // await _core.UpdatePlayerData(DataKeysConstants.PlayerReady, internalPlayerData.PlayerReady);
 
-            if ((await _core.UpdatePlayerData(DataKeysConstants.PlayerReady, !internalPlayerData.PlayerReady)).Success)
+            if ((await _core.UpdatePlayerData(DataKeys.PlayerReady, !internalPlayerData.PlayerReady)).Success)
             {
                 internalPlayerData.PlayerReady = !internalPlayerData.PlayerReady;
             }
@@ -42,12 +30,12 @@ namespace NetworkFramework.MonoBehaviour_Components
 
         public async void ChangeLevelDifficulty(LevelDifficulty difficulty)
         {
-            await _core.UpdateLobbyData(LevelDifficulty, difficulty.DifficultName);
+            await _core.UpdateLobbyData(CustomDataKeys.LevelDifficulty, difficulty.DifficultName);
         }
 
         public async void ChangePlayerClass(PlayerClass @class)
         {
-            await _core.UpdatePlayerData(PlayerClass, @class.ClassName);
+            await _core.UpdatePlayerData(CustomDataKeys.PlayerClass, @class.ClassName);
         }
     }
 }
