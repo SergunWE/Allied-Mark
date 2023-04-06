@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using NetworkFramework.Data;
-using Unity.Services.Lobbies.Models;
 using UnityEngine;
 
 namespace NetworkFramework.MonoBehaviour_Components
@@ -8,8 +6,7 @@ namespace NetworkFramework.MonoBehaviour_Components
     public class LobbyPlayerDisplayer : MonoBehaviour
     {
         [SerializeField] private PlayerDataDisplayer[] playerViews;
-        
-        private List<Player> _prevLobbyPlayers;
+        [SerializeField] private LobbyUpdaterComponent lobbyUpdater;
 
         private void Start()
         {
@@ -29,6 +26,7 @@ namespace NetworkFramework.MonoBehaviour_Components
             {
                 var playerData = currentPlayers[i].Data;
                 playerViews[i].SetData(playerData[DataKeysConstants.PlayerName.Key].Value, 
+                    playerData[lobbyUpdater.PlayerClass.Key].Value,
                     bool.Parse(playerData[DataKeysConstants.PlayerReady.Key].Value));
             }
 

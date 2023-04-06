@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 
@@ -6,13 +5,15 @@ namespace NetworkFramework.MonoBehaviour_Components
 {
     public class PlayerDataDisplayer : MonoBehaviour
     {
-        [SerializeField] private TMP_Text _nameText;
-        [SerializeField] private Renderer _readyRenderer;
+        [SerializeField] private TMP_Text nameText;
+        [SerializeField] private TMP_Text classText;
+        [SerializeField] private Renderer readyRenderer;
 
-        public void SetData(string playerName, bool ready)
+        public void SetData(string playerName, string className, bool ready)
         {
-            _nameText.text = playerName;
-            _readyRenderer.material.color = ready ? Color.green : Color.red;
+            nameText.text = playerName;
+            classText.text = className;
+            readyRenderer.material.color = ready ? Color.green : Color.red;
             gameObject.SetActive(true);
         }
 
