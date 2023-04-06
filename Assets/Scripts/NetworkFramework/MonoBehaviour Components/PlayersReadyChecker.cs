@@ -13,11 +13,16 @@ namespace NetworkFramework.MonoBehaviour_Components
         
         public void OnLobbyRefreshed()
         {
-            var currentPlayers = LobbyData.Current.Players;
-            bool state = currentPlayers.All(player => bool.Parse(player.Data[DataKeys.PlayerReady.Key].Value));
+            bool state = PlayerReady();
             if (_prevState == state) return;
             allPlayersReady.Raise(state);
             _prevState = state;
+        }
+
+        public bool PlayerReady()
+        {
+            var currentPlayers = LobbyData.Current.Players;
+            return currentPlayers.All(player => bool.Parse(player.Data[DataKeys.PlayerReady.Key].Value));
         }
     }
 }
