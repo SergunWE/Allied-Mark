@@ -10,7 +10,7 @@ namespace NetworkFramework.Managers
     {
         static AuthenticationManager()
         {
-            UnityServices.InitializeAsync();
+            UnityServices.InitializeAsync().Wait();
         }
 
         public static async Task<TaskStatus> InitializeAsync()
