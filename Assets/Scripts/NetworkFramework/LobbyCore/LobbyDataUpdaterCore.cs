@@ -31,7 +31,7 @@ namespace NetworkFramework.LobbyCore
                         {info.Key, new DataObject(info.Visibility, newValue.ToString())}
                     }
                 });
-                return new TaskStatus(true);
+                return TaskStatus.Ok;
             }
             catch (LobbyServiceException e)
             {
@@ -55,7 +55,7 @@ namespace NetworkFramework.LobbyCore
                             {info.Key, new PlayerDataObject(info.Visibility, newValue.ToString())}
                         }
                     });
-                return new TaskStatus(true);
+                return TaskStatus.Ok;
             }
             catch (LobbyServiceException e)
             {

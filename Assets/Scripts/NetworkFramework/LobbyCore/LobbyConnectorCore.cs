@@ -37,7 +37,7 @@ namespace NetworkFramework.LobbyCore
             
             Debug.Log($"Lobby Id: {CurrentLobby.Id}");
             Debug.Log($"Lobby Code: {CurrentLobby.LobbyCode}");
-            return new TaskStatus(true);
+            return TaskStatus.Ok;
         }
 
         public async Task<TaskStatus> JoinLobbyByCodeAsync(string code, Dictionary<string, PlayerDataObject> playerData = null)

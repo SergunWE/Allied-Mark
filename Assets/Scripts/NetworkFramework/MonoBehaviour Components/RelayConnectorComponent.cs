@@ -21,7 +21,7 @@ namespace NetworkFramework.MonoBehaviour_Components
         {
             if ((await _refreshCore.RefreshLobbyDataAsync()).Success && readyChecker.PlayerReady())
             {
-                _core.Start();
+                _core.CreateRelay(1);
             }
         }
     }

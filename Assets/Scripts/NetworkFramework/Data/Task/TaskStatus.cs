@@ -12,5 +12,7 @@ namespace NetworkFramework.Data
             Success = success;
             Exception = exception;
         }
+
+        public static TaskStatus Ok = new TaskStatus(true);
     }
 }

@@ -37,7 +37,7 @@ namespace NetworkFramework.LobbyCore
             {
                 var newLobby = await LobbyService.Instance.GetLobbyAsync(CurrentLobby.Id);
                 CurrentLobby = newLobby;
-                return new TaskStatus(true);
+                return TaskStatus.Ok;
             }
             catch (Exception e)
             {
@@ -52,7 +52,7 @@ namespace NetworkFramework.LobbyCore
             {
                 await LobbyService.Instance.RemovePlayerAsync(CurrentLobby.Id, AuthenticationService.Instance.PlayerId);
                 StopUpdatingLobby();
-                return new TaskStatus(true);
+                return TaskStatus.Ok;
             }
             catch (Exception e)
             {
