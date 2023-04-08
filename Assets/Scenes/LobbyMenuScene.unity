@@ -856,7 +856,6 @@ MonoBehaviour:
   - {fileID: 2132368061}
   - {fileID: 2087072979}
   - {fileID: 336457467}
-  lobbyUpdater: {fileID: 578721602}
 --- !u!114 &578721601
 MonoBehaviour:
   m_ObjectHideFlags: 0
