@@ -1,5 +1,5 @@
-using System;
 using NetworkFramework.Data;
+using NetworkFramework.Data.Scene;
 using NetworkFramework.EventSystem.EventParameter;
 using NetworkFramework.LobbyCore;
 using NetworkFramework.NetcodeCore;
@@ -33,7 +33,7 @@ namespace NetworkFramework.MonoBehaviour_Components
 
         private void Start()
         {
-            _netcodeConnectorCore = new NetcodeConnectorCore();
+            _netcodeConnectorCore ??= new NetcodeConnectorCore();
         }
 
         public async void CreateRelay()
@@ -62,7 +62,7 @@ namespace NetworkFramework.MonoBehaviour_Components
             if (_refreshCore.PlayerIsHost)
             {
                 taskStatus = _netcodeConnectorCore.StartHost(_relayCore.RelayServerData);
-                if (taskStatus.Success) _netcodeConnectorCore.LoadNetworkScene(3);
+                if (taskStatus.Success) _netcodeConnectorCore.LoadNetworkScene(new SceneInfo(3));
             }
             else
             {

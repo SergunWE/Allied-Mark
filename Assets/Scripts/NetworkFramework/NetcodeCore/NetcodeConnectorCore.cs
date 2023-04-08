@@ -1,10 +1,9 @@
 using System;
-using System.Threading.Tasks;
+using NetworkFramework.Data.Scene;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using Unity.Networking.Transport.Relay;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TaskStatus = NetworkFramework.Data.TaskStatus;
 
 namespace NetworkFramework.NetcodeCore
@@ -46,12 +45,12 @@ namespace NetworkFramework.NetcodeCore
             }
         }
 
-        public TaskStatus LoadNetworkScene(int index)
+        public TaskStatus LoadNetworkScene(SceneInfo sceneInfo)
         {
             try
             {
-                NetworkManager.Singleton.SceneManager.LoadScene("LevelScene-0",
-                    LoadSceneMode.Single);
+                NetworkManager.Singleton.SceneManager.LoadScene(sceneInfo.Name,
+                    sceneInfo.LoadMode);
                 return TaskStatus.Ok;
             }
             catch (Exception e)
