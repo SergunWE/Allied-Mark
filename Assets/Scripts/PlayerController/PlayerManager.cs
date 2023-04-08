@@ -1,3 +1,4 @@
+using System;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,17 +10,26 @@ public class PlayerManager : MonoBehaviour
 
     private PlayerCharacterInputs _inputs;
     private Vector2 _viewAxis = Vector2.zero;
+
     private bool _readyHandle;
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-         var ownerObjects = NetworkManager.Singleton.LocalClient.OwnedObjects;
-         for (int i = 0; i < ownerObjects.Count; i++)
-         {
-             characterController = ownerObjects[i].GetComponent<CharacterController>();
-             if (characterController != null) break;
-         }
+        try
+        {
+            var ownerObjects = NetworkManager.Singleton.LocalClient.OwnedObjects;
+            for (int i = 0; i < ownerObjects.Count; i++)
+            {
+                characterController = ownerObjects[i].GetComponent<CharacterController>();
+                if (characterController != null) break;
+            }
+        }
+        catch
+        {
+            // ignored
+        }
+
 
         if (characterController != null && characterCamera != null)
         {
@@ -63,6 +73,11 @@ public class PlayerManager : MonoBehaviour
     public void OnViewChanged(InputAction.CallbackContext context)
     {
         _viewAxis = context.ReadValue<Vector2>();
+    }
+
+    public void OnJumpChanged(InputAction.CallbackContext context)
+    {
+        _inputs.JumpDown = !context.canceled;
     }
 
     private void HandleCharacterInput()

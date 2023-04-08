@@ -109,7 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 4118304459369387135}
   FollowPointFraming: {x: 0, y: 0}
-  FollowingSharpness: 10000
+  FollowingSharpness: 1000000
   DefaultDistance: 0
   MinDistance: 0
   MaxDistance: 0
