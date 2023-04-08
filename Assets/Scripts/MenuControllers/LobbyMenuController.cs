@@ -21,7 +21,7 @@ public class LobbyMenuController : MonoBehaviour
         
     }
 
-    public void GoToMainMenu()
+    public void OnLobbyLeaved()
     {
         SceneManager.LoadSceneAsync(1);
     }
@@ -29,5 +29,10 @@ public class LobbyMenuController : MonoBehaviour
     public void OnLobbyRefreshed()
     {
         readyButtonText.text = internalPlayerData.PlayerReady ? "Not ready" : "Ready";
+    }
+
+    public void OnGameStarted()
+    {
+        SceneManager.LoadScene(3);
     }
 }

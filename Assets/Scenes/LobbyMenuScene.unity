@@ -433,6 +433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   readyChecker: {fileID: 578721603}
   relayStarted: {fileID: 11400000, guid: 659730b9733c5d242bc36f5fca00d835, type: 2}
+  gameStarted: {fileID: 11400000, guid: d6cef969e30fc81459936cac32b46e15, type: 2}
   lobbyOptions: {fileID: 11400000, guid: c4d8894a104f0104e9d7bf9671e34659, type: 2}
 --- !u!4 &425421929
 Transform:
@@ -463,6 +464,7 @@ GameObject:
   - component: {fileID: 445328691}
   - component: {fileID: 445328690}
   - component: {fileID: 445328695}
+  - component: {fileID: 445328696}
   m_Layer: 0
   m_Name: GameEventListener
   m_TagString: Untagged
@@ -556,7 +558,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 729008830}
         m_TargetAssemblyTypeName: LobbyMenuController, Assembly-CSharp
-        m_MethodName: GoToMainMenu
+        m_MethodName: OnLobbyLeaved
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -672,7 +674,48 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Game started
+          m_StringArgument: Game starting
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 425421928}
+        m_TargetAssemblyTypeName: NetworkFramework.MonoBehaviour_Components.RelayConnectorComponent,
+          Assembly-CSharp
+        m_MethodName: OnRelayStarted
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &445328696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445328689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e839e4c12473014b9b3d3faccc0f61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: d6cef969e30fc81459936cac32b46e15, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 729008830}
+        m_TargetAssemblyTypeName: LobbyMenuController, Assembly-CSharp
+        m_MethodName: OnGameStarted
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &503628987
@@ -2849,3 +2892,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &6115668769936733824
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7133071386260078374, guid: 9ebe4a42190535c498d240673129cf37,
+        type: 3}
+      propertyPath: m_Name
+      value: NetcodeManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753236908763434867, guid: 9ebe4a42190535c498d240673129cf37,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753236908763434867, guid: 9ebe4a42190535c498d240673129cf37,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753236908763434867, guid: 9ebe4a42190535c498d240673129cf37,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753236908763434867, guid: 9ebe4a42190535c498d240673129cf37,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753236908763434867, guid: 9ebe4a42190535c498d240673129cf37,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753236908763434867, guid: 9ebe4a42190535c498d240673129cf37,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753236908763434867, guid: 9ebe4a42190535c498d240673129cf37,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753236908763434867, guid: 9ebe4a42190535c498d240673129cf37,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753236908763434867, guid: 9ebe4a42190535c498d240673129cf37,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753236908763434867, guid: 9ebe4a42190535c498d240673129cf37,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753236908763434867, guid: 9ebe4a42190535c498d240673129cf37,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9ebe4a42190535c498d240673129cf37, type: 3}
