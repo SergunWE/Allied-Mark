@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour
 
     private PlayerCharacterInputs _inputs;
     private Vector2 _viewAxis = Vector2.zero;
+    private bool _readyHandle;
     
     private void Start()
     {
@@ -20,12 +21,18 @@ public class PlayerManager : MonoBehaviour
     
     private void Update()
     {
-        HandleCharacterInput();
+        if (_readyHandle)
+        {
+            HandleCharacterInput();
+        }
     }
 
     private void LateUpdate()
     {
-        HandleCameraInput();
+        if (_readyHandle)
+        {
+            HandleCameraInput();
+        }
     }
 
     public void SetPlayerCharacter(CharacterController playerCharacter, CharacterCamera playerCamera)
@@ -35,6 +42,7 @@ public class PlayerManager : MonoBehaviour
         characterCamera.SetFollowTransform(characterController.CameraFollowPoint);
         characterCamera.IgnoredColliders.Clear();
         characterCamera.IgnoredColliders.AddRange(characterController.GetComponentsInChildren<Collider>());
+        _readyHandle = true;
     }
 
     public void OnMovementChanged(InputAction.CallbackContext context)
