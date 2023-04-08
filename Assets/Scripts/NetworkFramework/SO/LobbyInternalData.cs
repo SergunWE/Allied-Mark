@@ -13,6 +13,7 @@ namespace NetworkFramework.SO
         {
             AddElement(DataKeys.LobbyLevel.Key,
                 new DataObject(DataKeys.LobbyLevel.Visibility, lobbyLevel.ToString()));
+            AddElement(DataKeys.RelayCode.Key, new DataObject(DataKeys.RelayCode.Visibility));
         }
 
         public override void AddCustomElement(string key, LobbyDictionaryElement element)
