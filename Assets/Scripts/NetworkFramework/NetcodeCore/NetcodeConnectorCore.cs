@@ -1,9 +1,11 @@
 using System;
-using NetworkFramework.Data;
+using System.Threading.Tasks;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using Unity.Networking.Transport.Relay;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TaskStatus = NetworkFramework.Data.TaskStatus;
 
 namespace NetworkFramework.NetcodeCore
 {
@@ -13,7 +15,7 @@ namespace NetworkFramework.NetcodeCore
         {
             NetworkManager.Singleton.SetSingleton();
         }
-        
+
         public TaskStatus StartHost(RelayServerData relayServerData)
         {
             try
@@ -35,6 +37,21 @@ namespace NetworkFramework.NetcodeCore
             {
                 NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
                 NetworkManager.Singleton.StartClient();
+                return TaskStatus.Ok;
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e);
+                return new TaskStatus(false, e);
+            }
+        }
+
+        public TaskStatus LoadNetworkScene(int index)
+        {
+            try
+            {
+                NetworkManager.Singleton.SceneManager.LoadScene("LevelScene-0",
+                    LoadSceneMode.Single);
                 return TaskStatus.Ok;
             }
             catch (Exception e)
