@@ -11,12 +11,12 @@ namespace KinematicCharacterController.Examples
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                Rigidbody inst = Instantiate(ToLaunch, transform.position, transform.rotation);
-                inst.AddForce(transform.forward * Force, ForceMode.VelocityChange);
-                Destroy(inst.gameObject, 8f);
-            }
+            // if (Input.GetKeyDown(KeyCode.Return))
+            // {
+            //     Rigidbody inst = Instantiate(ToLaunch, transform.position, transform.rotation);
+            //     inst.AddForce(transform.forward * Force, ForceMode.VelocityChange);
+            //     Destroy(inst.gameObject, 8f);
+            // }
         }
     }
 }
