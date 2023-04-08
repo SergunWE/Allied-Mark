@@ -18,26 +18,38 @@ namespace NetworkFramework.MonoBehaviour_Components
         private RelayConnectorCore _relayCore;
         private LobbyDataUpdaterCore _dataUpdaterCore;
 
+        private bool _playerStartedGame;
+
         private void Awake()
         {
             _refreshCore ??= new LobbyRefresherCore();
             _relayCore ??= new RelayConnectorCore();
+            _dataUpdaterCore ??= new LobbyDataUpdaterCore(false);
         }
 
         public async void CreateRelay()
         {
-            if (!(await _refreshCore.RefreshLobbyDataAsync()).Success || !readyChecker.PlayerReady()) return;
-            if ((await _relayCore.CreateRelay(lobbyOptions.MaxPlayer - 1)).Success)
+            if (!readyChecker.PlayerReady() || LobbyData.GetLobbyData(DataKeys.RelayCode.Key) != null) return;
+            if ((await _relayCore.CreateRelay(lobbyOptions.MaxPlayer)).Success)
             {
                 relayStarted.Raise((await _dataUpdaterCore.UpdateLobbyData(DataKeys.RelayCode,
                     _relayCore.JoinCode)).Success);
             }
         }
 
-        public async void JoinRelay()
+        public void OnLobbyRefreshed()
         {
-            relayStarted.Raise((await _relayCore.JoinRelay(
-                LobbyData.GetLobbyData(DataKeys.RelayCode.Key))).Success);
+            if (!_playerStartedGame && LobbyData.GetLobbyData(DataKeys.RelayCode.Key) != null && !_refreshCore.PlayerIsHost)
+            {
+                JoinRelay();
+            }
+        }
+
+        private async void JoinRelay()
+        {
+            _playerStartedGame = (await _relayCore.JoinRelay(
+                LobbyData.GetLobbyData(DataKeys.RelayCode.Key))).Success;
+            relayStarted.Raise(_playerStartedGame);
         }
     }
 }

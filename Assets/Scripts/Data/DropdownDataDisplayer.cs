@@ -34,5 +34,5 @@ public abstract class DropdownDataDisplayer<T> : DataHandler<T> where T : IUIDis
     }
 
     protected abstract void OnDropdownValueChanged(int index);
-    public abstract void OnLobbyUpdated();
+    public abstract void OnLobbyRefreshed();
 }

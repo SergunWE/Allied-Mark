@@ -11,7 +11,7 @@ public class LevelDifficultyHandler : DropdownDataDisplayer<LevelDifficulty>
         lobbyUpdater.ChangeLevelDifficulty(data[index]);
     }
 
-    public override void OnLobbyUpdated()
+    public override void OnLobbyRefreshed()
     {
         if (!LobbyData.Exist) return;
         string diffName = LobbyData.Current.Data[CustomDataKeys.LevelDifficulty.Key].Value;

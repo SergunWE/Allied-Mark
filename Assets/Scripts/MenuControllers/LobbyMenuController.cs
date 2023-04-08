@@ -26,7 +26,7 @@ public class LobbyMenuController : MonoBehaviour
         SceneManager.LoadSceneAsync(1);
     }
 
-    public void OnPlayerDataUpdated()
+    public void OnLobbyRefreshed()
     {
         readyButtonText.text = internalPlayerData.PlayerReady ? "Not ready" : "Ready";
     }

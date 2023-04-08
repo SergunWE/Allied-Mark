@@ -10,7 +10,7 @@ public class PlayerClassHandler : DropdownDataDisplayer<PlayerClass>
         lobbyUpdater.ChangePlayerClass(data[index]);
     }
 
-    public override void OnLobbyUpdated()
+    public override void OnLobbyRefreshed()
     {
         //It is enough to store the class locally and not synchronize it with the server.
         // if (!LobbyData.Exist) return;
