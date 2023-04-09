@@ -118,9 +118,18 @@
             "id": "6eecf1b4-913d-4caf-a417-af4f13f84fb6",
             "actions": [
                 {
-                    "name": "Test",
+                    "name": "MainWeapon",
                     "type": "Button",
                     "id": "b25a058a-b25a-4da4-9c75-f02c06467b95",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AncillaryWeapon",
+                    "type": "Button",
+                    "id": "c11ce364-b120-4877-93d7-b0b3fc9a98db",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -131,11 +140,22 @@
                 {
                     "name": "",
                     "id": "32733b1e-12bc-47d4-b692-b1b66b6f6fb7",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Test",
+                    "action": "MainWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b26b461d-c927-4eac-9e42-b00cf40f74bd",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AncillaryWeapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

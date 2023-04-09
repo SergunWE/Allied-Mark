@@ -88,7 +88,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1973437795976079605}
         m_TargetAssemblyTypeName: WeaponManager, Assembly-CSharp
-        m_MethodName: OnWeaponChanged
+        m_MethodName: OnMainWeaponChanged
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -100,6 +100,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b25a058a-b25a-4da4-9c75-f02c06467b95
     m_ActionName: Weapon/Test[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1973437795976079605}
+        m_TargetAssemblyTypeName: WeaponManager, Assembly-CSharp
+        m_MethodName: OnAncillaryWeaponChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c11ce364-b120-4877-93d7-b0b3fc9a98db
+    m_ActionName: Weapon/AncillaryWeapon[/Keyboard/2]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Weapon

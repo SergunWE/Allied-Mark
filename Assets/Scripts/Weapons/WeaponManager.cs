@@ -23,8 +23,19 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-    public void OnWeaponChanged(InputAction.CallbackContext context)
+    public void OnMainWeaponChanged(InputAction.CallbackContext context)
     {
-        currentWeapon.weaponName.Value = "test";
+        if (context.started)
+        {
+            currentWeapon.currentWeaponIndex.Value = 0;
+        }
+    }
+    
+    public void OnAncillaryWeaponChanged(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            currentWeapon.currentWeaponIndex.Value = 1;
+        }
     }
 }

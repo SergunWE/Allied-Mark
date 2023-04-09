@@ -1,25 +1,24 @@
-using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
 
 public class CurrentWeapon : NetworkBehaviour
 {
-    public NetworkVariable<FixedString64Bytes> weaponName = new("", NetworkVariableReadPermission.Everyone, 
+    public NetworkVariable<uint> currentWeaponIndex = new(0, NetworkVariableReadPermission.Everyone,
         NetworkVariableWritePermission.Owner);
 
     public override void OnNetworkSpawn()
     {
-        weaponName.OnValueChanged += OnCurrentWeaponChanged;
+        currentWeaponIndex.OnValueChanged += OnCurrentWeaponChanged;
     }
 
     public override void OnNetworkDespawn()
     {
-        weaponName.OnValueChanged -= OnCurrentWeaponChanged;
+        currentWeaponIndex.OnValueChanged -= OnCurrentWeaponChanged;
     }
 
-    private void OnCurrentWeaponChanged(FixedString64Bytes oldValue, FixedString64Bytes newValue)
+    private void OnCurrentWeaponChanged(uint oldValue, uint newValue)
     {
         if (oldValue == newValue) return;
-        Debug.Log(OwnerClientId + newValue.ToString());
+        Debug.Log($"Client {OwnerClientId} set weapon index {newValue.ToString()}");
     }
 }
