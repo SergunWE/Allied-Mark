@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8046641238855341294}
-  - component: {fileID: 8046641238855341288}
+  - component: {fileID: 4600460564341679364}
   - component: {fileID: 8046641238855341295}
   m_Layer: 0
-  m_Name: PlayerManager
+  m_Name: PlayerControllerManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8046641238855341288
+--- !u!114 &4600460564341679364
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,8 +75,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8046641238855341288}
-        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
+      - m_Target: {fileID: 4600460564341679364}
+        m_TargetAssemblyTypeName: PlayerControllerManager, Assembly-CSharp
         m_MethodName: OnMovementChanged
         m_Mode: 0
         m_Arguments:
@@ -91,8 +91,8 @@ MonoBehaviour:
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8046641238855341288}
-        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
+      - m_Target: {fileID: 4600460564341679364}
+        m_TargetAssemblyTypeName: PlayerControllerManager, Assembly-CSharp
         m_MethodName: OnViewChanged
         m_Mode: 0
         m_Arguments:
@@ -107,8 +107,8 @@ MonoBehaviour:
     m_ActionName: Player/View[/Mouse/delta]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8046641238855341288}
-        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
+      - m_Target: {fileID: 4600460564341679364}
+        m_TargetAssemblyTypeName: PlayerControllerManager, Assembly-CSharp
         m_MethodName: OnJumpChanged
         m_Mode: 0
         m_Arguments:
@@ -121,6 +121,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: df7b4dc9-49d6-474d-8eed-61c31097c87b
     m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b25a058a-b25a-4da4-9c75-f02c06467b95
+    m_ActionName: Weapon/Test[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

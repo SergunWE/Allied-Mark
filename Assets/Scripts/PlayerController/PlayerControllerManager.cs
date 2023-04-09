@@ -1,9 +1,8 @@
-using System;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerControllerManager : MonoBehaviour
 {
     [SerializeField] private CharacterController characterController;
     [SerializeField] private CharacterCamera characterCamera;

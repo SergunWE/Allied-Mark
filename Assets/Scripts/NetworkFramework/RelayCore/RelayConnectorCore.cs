@@ -16,7 +16,8 @@ namespace NetworkFramework.RelayCore
         {
             try
             {
-                var allocation = await RelayService.Instance.CreateAllocationAsync(maxPlayers);
+                var allocation =
+                    await RelayService.Instance.CreateAllocationAsync(maxPlayers - 1 == 0 ? 1 : maxPlayers - 1);
                 JoinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
                 RelayServerData = new RelayServerData(allocation, "dtls");
                 Debug.Log("RELAY CREATE - " + JoinCode);

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -25,11 +24,13 @@ public abstract class DropdownDataDisplayer<T> : DataHandler<T> where T : IUIDis
 
     private void OnEnable()
     {
+        if(dropdown == null) return;
         dropdown.onValueChanged.AddListener(OnDropdownValueChanged);
     }
 
     private void OnDisable()
     {
+        if(dropdown == null) return;
         dropdown.onValueChanged.RemoveListener(OnDropdownValueChanged);
     }
 

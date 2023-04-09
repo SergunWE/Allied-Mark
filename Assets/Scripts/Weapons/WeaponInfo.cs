@@ -10,4 +10,6 @@ public class WeaponInfo : ScriptableObject
     public bool haveSniperScope;
 
     public int clipSize;
+
+    public GameObject model;
 }
