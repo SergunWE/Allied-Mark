@@ -10,5 +10,8 @@ public class PlayerClass : ScriptableObject, IUIDisplayed
     [SerializeField] private string className;
     public string ClassName => className;
 
+    public WeaponInfo mainWeapon;
+    public WeaponInfo ancillaryWeapon;
+
     public string DisplayName => className;
 }

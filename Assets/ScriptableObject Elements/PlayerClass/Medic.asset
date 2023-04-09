@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Medic
   m_EditorClassIdentifier: 
   className: Medic
+  mainWeapon: {fileID: 11400000, guid: 94e7f1ef6e96f1349b95e767523e1212, type: 2}
+  ancillaryWeapon: {fileID: 11400000, guid: d10bd123f339cab41983cd25a076e5bf, type: 2}

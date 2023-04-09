@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Tech
   m_EditorClassIdentifier: 
   className: Tech
+  mainWeapon: {fileID: 11400000, guid: e322ae204526a86468025de81248d060, type: 2}
+  ancillaryWeapon: {fileID: 11400000, guid: a401f4ce46f1257468ade8455c6d1239, type: 2}
