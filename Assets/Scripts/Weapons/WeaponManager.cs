@@ -27,7 +27,7 @@ public class WeaponManager : MonoBehaviour
     {
         if (context.started)
         {
-            currentWeapon.currentWeaponIndex.Value = 0;
+            currentWeapon.SetCurrentWeapon(0);
         }
     }
     
@@ -35,7 +35,7 @@ public class WeaponManager : MonoBehaviour
     {
         if (context.started)
         {
-            currentWeapon.currentWeaponIndex.Value = 1;
+            currentWeapon.SetCurrentWeapon(1);
         }
     }
 }
