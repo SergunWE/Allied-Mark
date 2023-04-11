@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Tech
   m_EditorClassIdentifier: 
   className: Tech
-  weapons: []
+  weapons:
+  - {fileID: 11400000, guid: e322ae204526a86468025de81248d060, type: 2}
+  - {fileID: 11400000, guid: a401f4ce46f1257468ade8455c6d1239, type: 2}
   playerModel: {fileID: 3459424631462747091, guid: cc91d65250a82ec4e946ca454acce590,
     type: 3}

@@ -17,3 +17,4 @@ MonoBehaviour:
   isShotgun: 0
   haveSniperScope: 0
   clipSize: 17
+  model: {fileID: 205448542220054579, guid: f33c8e32a66ed5c4d8fe217213cd1394, type: 3}

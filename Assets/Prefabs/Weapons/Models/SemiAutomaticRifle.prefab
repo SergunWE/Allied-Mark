@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8865105719499499089}
   - component: {fileID: 7194287198363746486}
   m_Layer: 0
-  m_Name: AssaultRifle
+  m_Name: SemiAutomaticRifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: acbde7c446945c24eb5b40d07c2ed865, type: 2}
+  - {fileID: 2100000, guid: c2b5fa6026535a348955a8b1031f9ddb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

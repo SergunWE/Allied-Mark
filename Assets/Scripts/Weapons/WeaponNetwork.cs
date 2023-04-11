@@ -17,7 +17,7 @@ public class WeaponNetwork : NetworkBehaviour
     {
         _currentWeaponIndex.OnValueChanged -= OnCurrentWeaponChanged;
     }
-    
+
     public void SetCurrentWeapon(int index)
     {
         if (index == _currentWeaponIndex.Value) return;

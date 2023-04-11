@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 992900723247565678}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 1}
+  m_LocalPosition: {x: 0.5, y: 1.5, z: 0.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -94,6 +94,7 @@ MonoBehaviour:
   playerClassHandler: {fileID: 6199815811834458946, guid: 8039c15a9e5ab2a41bf6a2354e24a157,
     type: 3}
   rootPlayerModel: {fileID: 6902330262672331082}
+  weaponViewer: {fileID: 8497760814071342233}
 --- !u!1 &3164671827796627054
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,7 +125,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6902342939117082790}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7895172012314500912
 MonoBehaviour:
@@ -201,7 +202,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6902342939117082790}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4373839200422194522
 MonoBehaviour:
@@ -460,8 +461,8 @@ Transform:
   - {fileID: 6907232114240429312}
   - {fileID: 8332666909182159745}
   - {fileID: 6927713609655308292}
-  - {fileID: 9041894925133702645}
   - {fileID: 3367070170856959620}
+  - {fileID: 9041894925133702645}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -535,7 +536,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &5758721310286107505
 MonoBehaviour:

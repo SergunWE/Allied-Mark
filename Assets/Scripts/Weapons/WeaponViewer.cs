@@ -1,14 +1,23 @@
 using System.Collections.Generic;
-using Unity.Netcode;
 using UnityEngine;
 
-public class WeaponViewer : NetworkBehaviour
+public class WeaponViewer : MonoBehaviour
 {
     [SerializeField] private List<GameObject> weaponModelsRoot;
 
-    private int _localIndex;
+    private int _localIndex = -1;
     private GameObject _prevCurrentWeaponModel;
-    
+
+    private void Awake()
+    {
+        foreach (var model in weaponModelsRoot)
+        {
+            model.SetActive(false);
+        }
+
+        SetCurrentWeapon(0);
+    }
+
     public void SetCurrentWeapon(int index)
     {
         if(_localIndex == index) return;
