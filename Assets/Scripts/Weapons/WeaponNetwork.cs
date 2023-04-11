@@ -1,17 +1,16 @@
 using Unity.Netcode;
 using UnityEngine;
 
-public class CurrentWeapon : NetworkBehaviour
+public class WeaponNetwork : NetworkBehaviour
 {
     [SerializeField] private WeaponViewer weaponViewer;
     
-    private readonly NetworkVariable<uint> _currentWeaponIndex = new(0, NetworkVariableReadPermission.Everyone,
-        NetworkVariableWritePermission.Owner);
-    
+    private readonly NetworkVariable<int> _currentWeaponIndex = new(0,
+        NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+
     public override void OnNetworkSpawn()
     {
         _currentWeaponIndex.OnValueChanged += OnCurrentWeaponChanged;
-        weaponViewer.SetWeaponModel(_currentWeaponIndex.Value);
     }
 
     public override void OnNetworkDespawn()
@@ -19,17 +18,17 @@ public class CurrentWeapon : NetworkBehaviour
         _currentWeaponIndex.OnValueChanged -= OnCurrentWeaponChanged;
     }
     
-    public void SetCurrentWeapon(uint index)
+    public void SetCurrentWeapon(int index)
     {
         if (index == _currentWeaponIndex.Value) return;
-        weaponViewer.SetWeaponModel(_currentWeaponIndex.Value);
+        weaponViewer.SetCurrentWeapon(_currentWeaponIndex.Value);
         _currentWeaponIndex.Value = index;
     }
 
-    private void OnCurrentWeaponChanged(uint oldValue, uint newValue)
+    private void OnCurrentWeaponChanged(int oldValue, int newValue)
     {
         if (oldValue == newValue) return;
         Debug.Log($"Client {OwnerClientId} set weapon index {newValue.ToString()}");
-        weaponViewer.SetWeaponModel(newValue);
+        weaponViewer.SetCurrentWeapon(newValue);
     }
 }

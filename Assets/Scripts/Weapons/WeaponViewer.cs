@@ -1,18 +1,35 @@
+using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
 public class WeaponViewer : NetworkBehaviour
 {
-    [SerializeField] private GameObject mainWeaponModel;
-    [SerializeField] private GameObject ancillaryWeaponModel;
+    [SerializeField] private List<GameObject> weaponModelsRoot;
 
-    private uint _localIndex = uint.MaxValue;
+    private int _localIndex;
+    private GameObject _prevCurrentWeaponModel;
     
-    public void SetWeaponModel(uint index)
+    public void SetCurrentWeapon(int index)
     {
         if(_localIndex == index) return;
-        mainWeaponModel.SetActive(index == 0);
-        ancillaryWeaponModel.SetActive(index != 0);
         _localIndex = index;
+        if (_prevCurrentWeaponModel != null)
+        {
+            _prevCurrentWeaponModel.SetActive(false);
+        }
+
+        var currentModel = weaponModelsRoot[index];
+        currentModel.SetActive(true);
+        _prevCurrentWeaponModel = currentModel;
+    }
+
+    public void SetWeaponModel(int index, GameObject weaponModel)
+    {
+        foreach (Transform children in weaponModelsRoot[index].transform)
+        {
+            Destroy(children.gameObject);
+        }
+
+        Instantiate(weaponModel, weaponModelsRoot[index].transform);
     }
 }

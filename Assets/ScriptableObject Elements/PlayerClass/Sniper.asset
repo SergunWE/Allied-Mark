@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Sniper
   m_EditorClassIdentifier: 
   className: Sniper
-  mainWeapon: {fileID: 11400000, guid: e7f285cbebea6094e8ff75147f4a1c1a, type: 2}
-  ancillaryWeapon: {fileID: 11400000, guid: cffe1b93bbd1029429849782a1e51a55, type: 2}
+  weapons: []
+  playerModel: {fileID: 5924604165263695862, guid: 9390f7e882ffa7f44848a71ad93b8345,
+    type: 3}

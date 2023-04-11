@@ -1,10 +1,8 @@
-using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerControllerManager : MonoBehaviour
+public class PlayerControllerManager : NetworkComponentManager<CharacterController>
 {
-    [SerializeField] private CharacterController characterController;
     [SerializeField] private CharacterCamera characterCamera;
 
     private PlayerCharacterInputs _inputs;
@@ -12,27 +10,12 @@ public class PlayerControllerManager : MonoBehaviour
 
     private bool _readyHandle;
 
-    private void Start()
+    protected override void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        try
+        base.Start();
+        if (networkComponent != null && characterCamera != null)
         {
-            var ownerObjects = NetworkManager.Singleton.LocalClient.OwnedObjects;
-            for (int i = 0; i < ownerObjects.Count; i++)
-            {
-                characterController = ownerObjects[i].GetComponent<CharacterController>();
-                if (characterController != null) break;
-            }
-        }
-        catch
-        {
-            // ignored
-        }
-
-
-        if (characterController != null && characterCamera != null)
-        {
-            SetPlayerCharacter(characterController, characterCamera);
+            SetPlayerCharacter(networkComponent, characterCamera);
         }
     }
 
@@ -54,11 +37,12 @@ public class PlayerControllerManager : MonoBehaviour
 
     public void SetPlayerCharacter(CharacterController playerCharacter, CharacterCamera playerCamera)
     {
-        characterController = playerCharacter;
+        networkComponent = playerCharacter;
         characterCamera = playerCamera;
-        characterCamera.SetFollowTransform(characterController.CameraFollowPoint);
+        characterCamera.SetFollowTransform(networkComponent.CameraFollowPoint);
         characterCamera.IgnoredColliders.Clear();
-        characterCamera.IgnoredColliders.AddRange(characterController.GetComponentsInChildren<Collider>());
+        characterCamera.IgnoredColliders.AddRange(networkComponent.GetComponentsInChildren<Collider>());
+        Cursor.lockState = CursorLockMode.Locked;
         _readyHandle = true;
     }
 
@@ -83,7 +67,7 @@ public class PlayerControllerManager : MonoBehaviour
     {
         //if (!IsOwner) return;
         _inputs.CameraRotation = characterCamera.Transform.rotation;
-        characterController.SetInputs(ref _inputs);
+        networkComponent.SetInputs(ref _inputs);
     }
 
     private void HandleCameraInput()

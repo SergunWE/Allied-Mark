@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3351918289190440718}
-  - component: {fileID: 3351918289190440719}
+  - component: {fileID: 6199815811834458946}
   m_Layer: 0
-  m_Name: PlayerClassHnadler
+  m_Name: PlayerClassHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3351918289190440719
+--- !u!114 &6199815811834458946
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3351918289190440716}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 821ba516c44c41d496aad884b72f1722, type: 3}
+  m_Script: {fileID: 11500000, guid: 69e76efdebe74b0f99dd9052e5598e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   data:
@@ -49,5 +49,3 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d3fc2c205c1d3274d8124891eb8d3811, type: 2}
   - {fileID: 11400000, guid: 4fa0a37c2559cb449aea5a5a0c02790f, type: 2}
   - {fileID: 11400000, guid: 96e91edbb7703364c8c014d350597252, type: 2}
-  dropdown: {fileID: 0}
-  lobbyUpdater: {fileID: 0}

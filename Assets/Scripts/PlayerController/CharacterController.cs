@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using KinematicCharacterController;
 using UnityEngine;
@@ -502,5 +503,10 @@ public class CharacterController : MonoBehaviour, ICharacterController
 
     public void OnDiscreteCollisionDetected(Collider hitCollider)
     {
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(Motor);
     }
 }

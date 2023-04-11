@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Stormtrooper
   m_EditorClassIdentifier: 
   className: Stormtrooper
-  mainWeapon: {fileID: 11400000, guid: 5a224153223cd894ab21bf52d5859467, type: 2}
-  ancillaryWeapon: {fileID: 11400000, guid: bf690115ffdf77f408a250f81376e00e, type: 2}
+  weapons: []
+  playerModel: {fileID: 6255624147758752801, guid: 8c757dc3521446d48926deb616eaaecd,
+    type: 3}

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -10,8 +11,8 @@ public class PlayerClass : ScriptableObject, IUIDisplayed
     [SerializeField] private string className;
     public string ClassName => className;
 
-    public WeaponInfo mainWeapon;
-    public WeaponInfo ancillaryWeapon;
+    public List<WeaponInfo> weapons;
+    public GameObject playerModel;
 
     public string DisplayName => className;
 }

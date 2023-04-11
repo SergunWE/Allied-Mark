@@ -2,24 +2,25 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public abstract class DropdownDataDisplayer<T> : DataHandler<T> where T : IUIDisplayed
+public abstract class DropdownDataDisplayer<T> : MonoBehaviour where T : IUIDisplayed
 {
     [SerializeField] protected TMP_Dropdown dropdown;
+    [SerializeField] protected DataHandler<T> data;
 
     private void Awake()
     {
         if (dropdown == null) return;
-        
-        int levelsCount = data.Count;
+
+        var list = data.Get;
+        int levelsCount = list.Count;
         var options = new List<TMP_Dropdown.OptionData>();
         for (int i = 0; i < levelsCount; i++)
         {
-            var element = data[i];
+            var element = list[i];
             options.Add(new TMP_Dropdown.OptionData(element.DisplayName));
         }
 
         dropdown.options = options;
-        
     }
 
     private void OnEnable()
