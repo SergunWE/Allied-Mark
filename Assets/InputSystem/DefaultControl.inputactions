@@ -160,6 +160,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Mark",
+            "id": "01c619c0-fb01-4c99-be5d-f013b3927a3a",
+            "actions": [
+                {
+                    "name": "Set mark",
+                    "type": "Button",
+                    "id": "98ba7f16-177b-49f0-92e4-4cf9b74251dc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "100498ca-5fcb-4a5f-9d2d-f842605589fc",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Set mark",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

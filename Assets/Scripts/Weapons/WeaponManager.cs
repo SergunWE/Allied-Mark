@@ -6,7 +6,7 @@ public class WeaponManager : NetworkComponentManager<WeaponNetwork>
     {
         if (context.started)
         {
-            networkComponent.SetCurrentWeapon(0);
+            networkComponent.SetCurrentWeaponServerRpc(0);
         }
     }
     
@@ -14,7 +14,7 @@ public class WeaponManager : NetworkComponentManager<WeaponNetwork>
     {
         if (context.started)
         {
-            networkComponent.SetCurrentWeapon(1);
+            networkComponent.SetCurrentWeaponServerRpc(1);
         }
     }
 }

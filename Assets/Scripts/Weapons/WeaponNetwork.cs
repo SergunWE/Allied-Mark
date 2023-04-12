@@ -5,8 +5,7 @@ public class WeaponNetwork : NetworkBehaviour
 {
     [SerializeField] private WeaponViewer weaponViewer;
     
-    private readonly NetworkVariable<int> _currentWeaponIndex = new(0,
-        NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    private readonly NetworkVariable<int> _currentWeaponIndex = new();
 
     public override void OnNetworkSpawn()
     {
@@ -18,7 +17,8 @@ public class WeaponNetwork : NetworkBehaviour
         _currentWeaponIndex.OnValueChanged -= OnCurrentWeaponChanged;
     }
 
-    public void SetCurrentWeapon(int index)
+    [ServerRpc]
+    public void SetCurrentWeaponServerRpc(int index)
     {
         if (index == _currentWeaponIndex.Value) return;
         weaponViewer.SetCurrentWeapon(_currentWeaponIndex.Value);
