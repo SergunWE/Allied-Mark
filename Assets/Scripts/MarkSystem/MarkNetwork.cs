@@ -1,37 +1,35 @@
+using System;
+using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
 public class MarkNetwork : NetworkBehaviour
 {
-    private readonly NetworkVariable<NetworkObjectReference> _markedObjectId = new();
+    private NetworkList<MarkInfoStruct> _objectsThatMarked;
+
+    private void Awake()
+    {
+        _objectsThatMarked = new NetworkList<MarkInfoStruct>(new List<MarkInfoStruct>());
+    }
 
     public override void OnNetworkSpawn()
     {
-        _markedObjectId.OnValueChanged += OnMarkedObjectChanged;
+        _objectsThatMarked.OnListChanged += OnMarkedObjectChanged;
     }
 
     public override void OnNetworkDespawn()
     {
-        _markedObjectId.OnValueChanged -= OnMarkedObjectChanged;
+        _objectsThatMarked.OnListChanged -= OnMarkedObjectChanged;
     }
 
     [ServerRpc]
-    public void SetMarkServerRpc(NetworkObjectReference reference)
+    public void SetMarkServerRpc(MarkInfoStruct reference)
     {
-        _markedObjectId.Value = reference;
+        _objectsThatMarked.Add(reference);
     }
 
-    private void OnMarkedObjectChanged(NetworkObjectReference oldValue, NetworkObjectReference newValue)
+    private void OnMarkedObjectChanged(NetworkListEvent<MarkInfoStruct> value)
     {
-        Debug.Log($"{OwnerClientId} marked " +
-                  $"{newValue}");
-        if (oldValue.TryGet(out var oldMark))
-        {
-            oldMark.GetComponent<MarkViewer>().SetMark(0);
-        }
-        if (newValue.TryGet(out var newMark))
-        {
-            newMark.GetComponent<MarkViewer>().SetMark(1);
-        }
+        Debug.Log("MarkListChanged" + value.Value.MarkName);
     }
 }

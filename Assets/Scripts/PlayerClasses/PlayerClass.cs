@@ -12,6 +12,7 @@ public class PlayerClass : ScriptableObject, IUIDisplayed
     public string ClassName => className;
 
     public List<WeaponInfo> weapons;
+    public MarkInfo markInfo;
     public GameObject playerModel;
 
     public string DisplayName => className;

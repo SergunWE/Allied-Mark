@@ -16,5 +16,6 @@ MonoBehaviour:
   weapons:
   - {fileID: 11400000, guid: e7f285cbebea6094e8ff75147f4a1c1a, type: 2}
   - {fileID: 11400000, guid: cffe1b93bbd1029429849782a1e51a55, type: 2}
+  markInfo: {fileID: 11400000, guid: 2acf88452109b7542bb7b73be8d3407b, type: 2}
   playerModel: {fileID: 5924604165263695862, guid: 9390f7e882ffa7f44848a71ad93b8345,
     type: 3}

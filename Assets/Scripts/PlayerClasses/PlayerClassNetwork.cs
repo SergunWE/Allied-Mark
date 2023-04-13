@@ -13,20 +13,22 @@ public class PlayerClassNetwork : NetworkBehaviour
     {
         _playerClassName.OnValueChanged += OnPlayerClassChanged;
     }
+    
+    public override void OnNetworkDespawn()
+    {
+        _playerClassName.OnValueChanged -= OnPlayerClassChanged;
+    }
 
     private void Start()
     {
-        string playerClassName;
+        string playerClassName = GetPlayerClassName();
         if (IsOwner)
         {
-            playerClassName =
-                LobbyData.GetPlayerData(CustomDataKeys.PlayerClass.Key, AuthenticationService.Instance.PlayerId);
             Debug.Log($"Owner {OwnerClientId} set player class");
             SetPlayerClassServerRpc(playerClassName);
         }
         else
         {
-            playerClassName = _playerClassName.Value.Value;
             if (!string.IsNullOrEmpty(playerClassName))
             {
                 playerClassViewer.SetPlayerModel(playerClassName);
@@ -34,9 +36,10 @@ public class PlayerClassNetwork : NetworkBehaviour
         }
     }
 
-    public override void OnNetworkDespawn()
+    public string GetPlayerClassName()
     {
-        _playerClassName.OnValueChanged -= OnPlayerClassChanged;
+        return IsOwner ? LobbyData.GetPlayerData(CustomDataKeys.PlayerClass.Key, 
+            AuthenticationService.Instance.PlayerId) : _playerClassName.Value.Value;
     }
 
     [ServerRpc]
