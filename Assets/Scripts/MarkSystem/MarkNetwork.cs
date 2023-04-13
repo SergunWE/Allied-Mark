@@ -23,13 +23,13 @@ public class MarkNetwork : NetworkBehaviour
         _objectsThatMarked.OnListChanged -= OnMarkedObjectChanged;
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     public void SetMarkServerRpc(MarkInfoStruct reference)
     {
         _objectsThatMarked.Add(reference);
     }
     
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     public void UnSetMarkServerRpc(MarkInfoStruct reference)
     {
         _objectsThatMarked.Remove(reference);
