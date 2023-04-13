@@ -27,9 +27,15 @@ public class MarkNetwork : NetworkBehaviour
     {
         _objectsThatMarked.Add(reference);
     }
+    
+    [ServerRpc]
+    public void UnSetMarkServerRpc(MarkInfoStruct reference)
+    {
+        _objectsThatMarked.Remove(reference);
+    }
 
     private void OnMarkedObjectChanged(NetworkListEvent<MarkInfoStruct> value)
     {
-        Debug.Log("MarkListChanged" + value.Value.MarkName);
+        Debug.Log("MarkListChanged" + value.Value.MarkName + " " + _objectsThatMarked.Count + " " + gameObject.name);
     }
 }

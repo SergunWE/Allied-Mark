@@ -1,4 +1,4 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,9 +8,12 @@ public class MarkSystemManager : NetworkComponentManager<PlayerMarkNetwork>
 
     private MarkInfo _playerMark;
 
+    private Queue<(MarkNetwork, MarkInfoStruct)> _markedObject;
+
     public void SetPlayerMark(MarkInfo playerMark)
     {
         _playerMark = playerMark;
+        _markedObject = new Queue<(MarkNetwork, MarkInfoStruct)>(_playerMark.maxMarkCount);
     }
 
     public void OnClick(InputAction.CallbackContext context)
@@ -19,10 +22,15 @@ public class MarkSystemManager : NetworkComponentManager<PlayerMarkNetwork>
         var obj = RaycastHelper.GetObject(playerCamera.transform);
         if(obj == null) return;
         var component = obj.GetComponentInParent<MarkNetwork>();
-        if (component != null)
+        if (component == null) return;
+        if (_markedObject.Count >= _playerMark.maxMarkCount &&
+            _markedObject.TryDequeue(out var result))
         {
-            component.SetMarkServerRpc(new MarkInfoStruct(networkComponent.NetworkObject, 
-                _playerMark));
+            result.Item1.UnSetMarkServerRpc(result.Item2);
         }
+
+        var info = new MarkInfoStruct(networkComponent.NetworkObject, _playerMark);
+        component.SetMarkServerRpc(info);
+        _markedObject.Enqueue((component,info));
     }
 }
