@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MarkNetwork : NetworkBehaviour
 {
+    [SerializeField] private MarkViewer markViewer;
     private NetworkList<MarkInfoStruct> _objectsThatMarked;
 
     private void Awake()
@@ -36,6 +37,18 @@ public class MarkNetwork : NetworkBehaviour
 
     private void OnMarkedObjectChanged(NetworkListEvent<MarkInfoStruct> value)
     {
-        Debug.Log("MarkListChanged" + value.Value.MarkName + " " + _objectsThatMarked.Count + " " + gameObject.name);
+        if (markViewer == null) return;
+        switch (value.Type)
+        {
+            case NetworkListEvent<MarkInfoStruct>.EventType.Add:
+                markViewer.SetMark(value.Value.MarkName.Value);
+                break;
+            case NetworkListEvent<MarkInfoStruct>.EventType.RemoveAt:
+                markViewer.UnsetMark(value.Value.MarkName.Value);
+                break;
+            case NetworkListEvent<MarkInfoStruct>.EventType.Remove:
+                markViewer.UnsetMark(value.Value.MarkName.Value);
+                break;
+        }
     }
 }

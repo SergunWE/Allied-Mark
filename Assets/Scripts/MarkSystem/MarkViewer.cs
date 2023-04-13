@@ -3,25 +3,39 @@ using UnityEngine;
 
 public class MarkViewer : MonoBehaviour
 {
+    [SerializeField] private MarkHandler markHandler;
     [SerializeField] private GameObject markModel;
     [SerializeField] private Transform startPositionMarks;
     [SerializeField] private float markPositionOffset;
 
     private readonly List<(MarkInfo, Renderer)> _markRenderers = new();
 
-    public void SetMark(MarkInfo markInfo)
+    public void SetMark(string markName)
+    {
+        SetMark(markHandler.MarkDict[markName]);
+    }
+    
+    public void UnsetMark(string markName)
+    {
+        UnsetMark(markHandler.MarkDict[markName]);
+    }
+    
+    private void SetMark(MarkInfo markInfo)
     {
         var mark = Instantiate(markModel);
-        _markRenderers.Add((markInfo,mark.GetComponent<Renderer>()));
+        var rendererComponent = mark.GetComponent<Renderer>();
+        rendererComponent.material = markInfo.markColor;
+        _markRenderers.Add((markInfo,rendererComponent));
         SetMarksPosition();
     }
 
-    public void UnsetMark(MarkInfo markInfo)
+    private void UnsetMark(MarkInfo markInfo)
     {
         var mark = _markRenderers.Find(
             (x) => x.Item1.markName == markInfo.markName);
         _markRenderers.Remove(mark);
         Destroy(mark.Item2.gameObject);
+        SetMarksPosition();
     }
 
     private void SetMarksPosition()
