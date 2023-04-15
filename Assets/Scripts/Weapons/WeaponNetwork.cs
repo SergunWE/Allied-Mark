@@ -1,34 +1,26 @@
+using PlayerNetwork;
 using Unity.Netcode;
 using UnityEngine;
 
-public class WeaponNetwork : NetworkBehaviour
+public class WeaponNetwork : ObjectNetwork<int>
 {
-    [SerializeField] private WeaponViewer weaponViewer;
-    
-    private readonly NetworkVariable<int> _currentWeaponIndex = new();
-
-    public override void OnNetworkSpawn()
+    private void Start()
     {
-        _currentWeaponIndex.OnValueChanged += OnCurrentWeaponChanged;
-    }
-
-    public override void OnNetworkDespawn()
-    {
-        _currentWeaponIndex.OnValueChanged -= OnCurrentWeaponChanged;
+        TriggerEvent(NetworkVariable.Value);
     }
 
     [ServerRpc]
-    public void SetCurrentWeaponServerRpc(int index)
+    public void SetWeaponIndexServerRpc(int value)
     {
-        if (index == _currentWeaponIndex.Value) return;
-        weaponViewer.SetCurrentWeapon(_currentWeaponIndex.Value);
-        _currentWeaponIndex.Value = index;
+        if (NetworkVariable.Value == value) return;
+        NetworkVariable.Value = value;
+        TriggerEvent(value);
     }
 
-    private void OnCurrentWeaponChanged(int oldValue, int newValue)
+    protected override void OnVariableChanged(int oldValue, int newValue)
     {
         if (oldValue == newValue) return;
         Debug.Log($"Client {OwnerClientId} set weapon index {newValue.ToString()}");
-        weaponViewer.SetCurrentWeapon(newValue);
+        TriggerEvent(newValue);
     }
 }

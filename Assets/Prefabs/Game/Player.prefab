@@ -78,7 +78,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bc2cc54f9514eaba310a007e0f8cf27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerClassViewer: {fileID: 9075943062451474696}
 --- !u!114 &9075943062451474696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,10 +90,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f90ab2cf050461fbbc31f8c0ddb6ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerClassNetwork: {fileID: 7775438788579505633}
   playerClassHandler: {fileID: 6199815811834458946, guid: 8039c15a9e5ab2a41bf6a2354e24a157,
     type: 3}
   rootPlayerModel: {fileID: 6902330262672331082}
-  weaponViewer: {fileID: 8497760814071342233}
 --- !u!1 &3164671827796627054
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +215,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8507471cfefc4eeb9c2f177753dffcb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponViewer: {fileID: 8497760814071342233}
 --- !u!114 &8497760814071342233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,6 +227,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ced317d4f1043eb88e9b5055937ae86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponNetwork: {fileID: 4373839200422194522}
+  playerClassNetwork: {fileID: 7775438788579505633}
+  playerClassHandler: {fileID: 6199815811834458946, guid: 8039c15a9e5ab2a41bf6a2354e24a157,
+    type: 3}
   weaponModelsRoot:
   - {fileID: 4411080254398332065}
   - {fileID: 6724047415128554814}
@@ -668,3 +670,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a6b42353514434cbc28c1bdee70a5d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  markViewer: {fileID: 0}

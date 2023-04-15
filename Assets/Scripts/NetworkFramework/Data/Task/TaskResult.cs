@@ -13,6 +13,6 @@ namespace NetworkFramework.Data
             Exception = exception;
         }
 
-        public static TaskResult Ok = new TaskResult(true);
+        public static readonly TaskResult Ok = new(true);
     }
 }

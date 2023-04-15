@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6340a41c6834b1aa45e9fd7c9f8f1cf, type: 3}
   m_Name: SniperMark
   m_EditorClassIdentifier: 
-  markColor: {fileID: 2100000, guid: 2555e87b46e67c54abae9aff91bb82c6, type: 2}
+  markColor: {fileID: 2100000, guid: 31099d120b01e1e438ee758b071a7b40, type: 2}
   markName: SniperMark
   maxMarkCount: 1

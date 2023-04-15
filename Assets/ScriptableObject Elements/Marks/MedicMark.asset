@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6340a41c6834b1aa45e9fd7c9f8f1cf, type: 3}
   m_Name: MedicMark
   m_EditorClassIdentifier: 
-  markColor: {fileID: 2100000, guid: c2b5fa6026535a348955a8b1031f9ddb, type: 2}
+  markColor: {fileID: 2100000, guid: 2c82c42e9fe7bc44aaca36fc3f2142cf, type: 2}
   markName: MedicMark
   maxMarkCount: 1

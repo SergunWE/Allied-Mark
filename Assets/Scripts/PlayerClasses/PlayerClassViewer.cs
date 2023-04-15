@@ -1,21 +1,27 @@
+using Unity.Collections;
 using UnityEngine;
 
 public class PlayerClassViewer : MonoBehaviour
 {
+    [SerializeField] private PlayerClassNetwork playerClassNetwork;
     [SerializeField] private PlayerClassHandler playerClassHandler;
     [SerializeField] private Transform rootPlayerModel;
-    [SerializeField] private WeaponViewer weaponViewer;
     private GameObject _playerModel;
 
-    public void SetPlayerModel(string playerClassName)
+    private void OnEnable()
     {
-        var playerClass = playerClassHandler.Get.Find(
-            playerClass => playerClass.ClassName == playerClassName);
+        playerClassNetwork.ValueChanged += SetPlayerModel;
+    }
+    
+    private void OnDisable()
+    {
+        playerClassNetwork.ValueChanged -= SetPlayerModel;
+    }
+
+    private void SetPlayerModel(FixedString128Bytes playerClassName)
+    {
+        var playerModel = playerClassHandler.DataDictionary[playerClassName.Value].playerModel;
         if(_playerModel != null) Destroy(_playerModel);
-        _playerModel = Instantiate(playerClass.playerModel, rootPlayerModel);
-        for (int i = 0; i < playerClass.weapons.Count; i++)
-        {
-            weaponViewer.SetWeaponModel(i, playerClass.weapons[i].model);
-        }
+        _playerModel = Instantiate(playerModel, rootPlayerModel);
     }
 }

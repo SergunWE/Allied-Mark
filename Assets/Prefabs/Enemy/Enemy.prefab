@@ -49,12 +49,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a912be3e904b39b7ceee656cb3f9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  markNetwork: {fileID: 7458773355604256725}
   markHandler: {fileID: 9049463751214183406, guid: 806a3c4bbad0acd44ba38d3ba6d4ff69,
     type: 3}
   markModel: {fileID: 4337863461452234204, guid: 7533147597ecd344fa5478e7d4bcd5f6,
     type: 3}
   startPositionMarks: {fileID: 905460997278338043}
-  markPositionOffset: 1
+  markPositionOffset: 0.7
 --- !u!114 &905460996910414039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,7 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce62cf61a88c5546886dbf5623e18ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markViewer: {fileID: 905460996910414032}
 --- !u!1 &905460997278338042
 GameObject:
   m_ObjectHideFlags: 0

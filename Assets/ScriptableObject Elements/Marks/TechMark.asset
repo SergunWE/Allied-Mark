@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6340a41c6834b1aa45e9fd7c9f8f1cf, type: 3}
   m_Name: TechMark
   m_EditorClassIdentifier: 
-  markColor: {fileID: 2100000, guid: 9ca947aa7d0a0e04d81faa7d87bf3aa8, type: 2}
+  markColor: {fileID: 2100000, guid: 0dd8a1e6aa9f7de48885c4a8d9d2a390, type: 2}
   markName: TechMark
   maxMarkCount: 3

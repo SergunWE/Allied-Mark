@@ -1,16 +1,24 @@
 using System;
 using System.Collections.Generic;
 using Unity.Netcode;
-using UnityEngine;
 
 public class MarkNetwork : NetworkBehaviour
 {
-    [SerializeField] private MarkViewer markViewer;
-    private NetworkList<MarkInfoStruct> _objectsThatMarked;
+    public event Action<MarkInfoNetwork> MarkSet;
+    public event Action<MarkInfoNetwork> MarkUnset;
+    private NetworkList<MarkInfoNetwork> _objectsThatMarked;
 
     private void Awake()
     {
-        _objectsThatMarked = new NetworkList<MarkInfoStruct>(new List<MarkInfoStruct>());
+        _objectsThatMarked = new NetworkList<MarkInfoNetwork>(new List<MarkInfoNetwork>());
+    }
+
+    private void Start()
+    {
+        foreach (var mark in _objectsThatMarked)
+        {
+            MarkSet?.Invoke(mark);
+        }
     }
 
     public override void OnNetworkSpawn()
@@ -24,30 +32,29 @@ public class MarkNetwork : NetworkBehaviour
     }
 
     [ServerRpc(RequireOwnership = false)]
-    public void SetMarkServerRpc(MarkInfoStruct reference)
+    public void SetMarkServerRpc(MarkInfoNetwork reference)
     {
         _objectsThatMarked.Add(reference);
     }
     
     [ServerRpc(RequireOwnership = false)]
-    public void UnSetMarkServerRpc(MarkInfoStruct reference)
+    public void UnSetMarkServerRpc(MarkInfoNetwork reference)
     {
         _objectsThatMarked.Remove(reference);
     }
 
-    private void OnMarkedObjectChanged(NetworkListEvent<MarkInfoStruct> value)
+    private void OnMarkedObjectChanged(NetworkListEvent<MarkInfoNetwork> value)
     {
-        if (markViewer == null) return;
         switch (value.Type)
         {
-            case NetworkListEvent<MarkInfoStruct>.EventType.Add:
-                markViewer.SetMark(value.Value.MarkName.Value);
+            case NetworkListEvent<MarkInfoNetwork>.EventType.Add:
+                MarkSet?.Invoke(value.Value);
                 break;
-            case NetworkListEvent<MarkInfoStruct>.EventType.RemoveAt:
-                markViewer.UnsetMark(value.Value.MarkName.Value);
+            case NetworkListEvent<MarkInfoNetwork>.EventType.RemoveAt:
+                MarkUnset?.Invoke(value.Value);
                 break;
-            case NetworkListEvent<MarkInfoStruct>.EventType.Remove:
-                markViewer.UnsetMark(value.Value.MarkName.Value);
+            case NetworkListEvent<MarkInfoNetwork>.EventType.Remove:
+                MarkUnset?.Invoke(value.Value);
                 break;
         }
     }

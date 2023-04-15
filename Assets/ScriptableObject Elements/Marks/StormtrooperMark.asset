@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6340a41c6834b1aa45e9fd7c9f8f1cf, type: 3}
   m_Name: StormtrooperMark
   m_EditorClassIdentifier: 
-  markColor: {fileID: 2100000, guid: acbde7c446945c24eb5b40d07c2ed865, type: 2}
+  markColor: {fileID: 2100000, guid: 10d2594da6074534daa179f03c42c4cd, type: 2}
   markName: StormtrooperMark
   maxMarkCount: 1

@@ -9,12 +9,12 @@ public class MarkSystemManager : NetworkComponentManager<PlayerMarkNetwork>
 
     private MarkInfo _playerMark;
 
-    private Queue<(MarkNetwork, MarkInfoStruct)> _markedObject;
+    private Queue<(MarkNetwork, MarkInfoNetwork)> _markedObject;
 
     public void SetPlayerMark(MarkInfo playerMark)
     {
         _playerMark = playerMark;
-        _markedObject = new Queue<(MarkNetwork, MarkInfoStruct)>(_playerMark.maxMarkCount);
+        _markedObject = new Queue<(MarkNetwork, MarkInfoNetwork)>(_playerMark.maxMarkCount);
     }
 
     public void OnClick(InputAction.CallbackContext context)
@@ -30,7 +30,7 @@ public class MarkSystemManager : NetworkComponentManager<PlayerMarkNetwork>
             result.Item1.UnSetMarkServerRpc(result.Item2);
         }
 
-        var info = new MarkInfoStruct(networkComponent.NetworkObject, _playerMark);
+        var info = new MarkInfoNetwork(networkComponent.NetworkObject, _playerMark);
         component.SetMarkServerRpc(info);
         _markedObject.Enqueue((component,info));
     }

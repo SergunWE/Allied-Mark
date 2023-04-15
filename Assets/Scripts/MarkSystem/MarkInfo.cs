@@ -11,25 +11,25 @@ public class MarkInfo : ScriptableObject
     public int maxMarkCount = 1;
 }
 
-public struct MarkInfoStruct : IEquatable<MarkInfoStruct>, INetworkSerializable
+public struct MarkInfoNetwork : IEquatable<MarkInfoNetwork>, INetworkSerializable
 {
     public NetworkObjectReference Sender;
     public FixedString128Bytes MarkName;
 
-    public MarkInfoStruct(NetworkObjectReference sender, MarkInfo markInfo)
+    public MarkInfoNetwork(NetworkObjectReference sender, MarkInfo markInfo)
     {
         Sender = sender;
         MarkName = markInfo.markName;
     }
 
-    public bool Equals(MarkInfoStruct other)
+    public bool Equals(MarkInfoNetwork other)
     {
         return Sender.Equals(other.Sender) && MarkName.Equals(other.MarkName);
     }
 
     public override bool Equals(object obj)
     {
-        return obj is MarkInfoStruct other && Equals(other);
+        return obj is MarkInfoNetwork other && Equals(other);
     }
 
     public override int GetHashCode()

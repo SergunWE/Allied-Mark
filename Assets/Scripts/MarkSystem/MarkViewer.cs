@@ -3,47 +3,50 @@ using UnityEngine;
 
 public class MarkViewer : MonoBehaviour
 {
+    [SerializeField] private MarkNetwork markNetwork;
     [SerializeField] private MarkHandler markHandler;
     [SerializeField] private GameObject markModel;
     [SerializeField] private Transform startPositionMarks;
     [SerializeField] private float markPositionOffset;
 
-    private readonly List<(MarkInfo, Renderer)> _markRenderers = new();
+    private readonly List<(MarkInfoNetwork, Renderer)> _marks = new();
+    private void OnEnable()
+    {
+        markNetwork.MarkSet += SetMark;
+        markNetwork.MarkUnset += UnsetMark;
+    }
 
-    public void SetMark(string markName)
+    private void OnDisable()
     {
-        SetMark(markHandler.MarkDict[markName]);
+        markNetwork.MarkSet -= SetMark;
+        markNetwork.MarkUnset -= UnsetMark;
     }
-    
-    public void UnsetMark(string markName)
+
+    private void SetMark(MarkInfoNetwork markInfoNetwork)
     {
-        UnsetMark(markHandler.MarkDict[markName]);
-    }
-    
-    private void SetMark(MarkInfo markInfo)
-    {
+        var markInfo = markHandler.DataDictionary[markInfoNetwork.MarkName.Value];
         var mark = Instantiate(markModel);
         var rendererComponent = mark.GetComponent<Renderer>();
         rendererComponent.material = markInfo.markColor;
-        _markRenderers.Add((markInfo,rendererComponent));
+        _marks.Add((markInfoNetwork,rendererComponent));
         SetMarksPosition();
     }
 
-    private void UnsetMark(MarkInfo markInfo)
+    private void UnsetMark(MarkInfoNetwork markInfoNetwork)
     {
-        var mark = _markRenderers.Find(
-            (x) => x.Item1.markName == markInfo.markName);
-        _markRenderers.Remove(mark);
+        int infoNetworkIndex =_marks.FindIndex(x => x.Item1.Equals(markInfoNetwork));
+        var mark = _marks[infoNetworkIndex];
+        _marks.Remove(mark);
         Destroy(mark.Item2.gameObject);
         SetMarksPosition();
     }
 
     private void SetMarksPosition()
     {
-        for (int i = 0; i < _markRenderers.Count; i++)
+        for (int i = 0; i < _marks.Count; i++)
         {
             var startPos = startPositionMarks.transform.position;
-            _markRenderers[i].Item2.transform.position = new Vector3(startPos.x, startPos.y + markPositionOffset * i,
+            _marks[i].Item2.transform.position = new Vector3(startPos.x, startPos.y + markPositionOffset * i,
                 startPos.z);
         }
     }
