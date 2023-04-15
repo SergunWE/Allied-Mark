@@ -1,3 +1,4 @@
+using NetworkFramework.Netcode_Components;
 using UnityEngine;
 
 public class PlayerClassManager : NetworkComponentManager<PlayerClassNetwork>

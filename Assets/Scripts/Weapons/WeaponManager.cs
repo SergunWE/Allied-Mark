@@ -1,3 +1,4 @@
+using NetworkFramework.Netcode_Components;
 using UnityEngine.InputSystem;
 
 public class WeaponManager : NetworkComponentManager<WeaponNetwork>
