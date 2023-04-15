@@ -1,10 +1,10 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using NetworkFramework.Data;
 using Unity.Services.Authentication;
 using Unity.Services.Lobbies;
 using UnityEngine;
-using TaskStatus = NetworkFramework.Data.TaskStatus;
 
 namespace NetworkFramework.LobbyCore
 {
@@ -30,34 +30,34 @@ namespace NetworkFramework.LobbyCore
             _refreshLobbyThread.Start();
         }
 
-        public async Task<TaskStatus> RefreshLobbyDataAsync()
+        public async Task<TaskResult> RefreshLobbyDataAsync()
         {
-            if (CurrentLobby == null) return new TaskStatus(false, new Exception("Lobby not exist"));
+            if (CurrentLobby == null) return new TaskResult(false, new Exception("Lobby not exist"));
             try
             {
                 var newLobby = await LobbyService.Instance.GetLobbyAsync(CurrentLobby.Id);
                 CurrentLobby = newLobby;
-                return TaskStatus.Ok;
+                return TaskResult.Ok;
             }
             catch (Exception e)
             {
                 Debug.Log(e.Message);
-                return new TaskStatus(false, e);
+                return new TaskResult(false, e);
             }
         }
         
-        public async Task<TaskStatus> LeaveLobbyAsync()
+        public async Task<TaskResult> LeaveLobbyAsync()
         {
             try
             {
                 await LobbyService.Instance.RemovePlayerAsync(CurrentLobby.Id, AuthenticationService.Instance.PlayerId);
                 StopUpdatingLobby();
-                return TaskStatus.Ok;
+                return TaskResult.Ok;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return new TaskStatus(false, e);
+                return new TaskResult(false, e);
             }
         }
         

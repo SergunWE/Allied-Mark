@@ -1,21 +1,21 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using NetworkFramework.Data;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 using UnityEngine;
-using TaskStatus = NetworkFramework.Data.TaskStatus;
 
 namespace NetworkFramework.LobbyCore
 {
     public class LobbyConnectorCore : LobbyCore
     {
-        public async Task<TaskStatus> CreateLobbyAsync(string lobbyName, int maxPlayers, bool isPrivate,
+        public async Task<TaskResult> CreateLobbyAsync(string lobbyName, int maxPlayers, bool isPrivate,
             Dictionary<string, DataObject> lobbyData = null, Dictionary<string, PlayerDataObject> playerData = null)
         {
-            if (!AuthenticationService.Instance.IsSignedIn) return new TaskStatus(false,
+            if (!AuthenticationService.Instance.IsSignedIn) return new TaskResult(false,
                 new RequestFailedException(0, "Sign In Failed"));
             Player player = new Player(AuthenticationService.Instance.PlayerId, null, playerData);
             CreateLobbyOptions options = new CreateLobbyOptions
@@ -32,15 +32,15 @@ namespace NetworkFramework.LobbyCore
             }
             catch (Exception e)
             {
-                return new TaskStatus(false, e);
+                return new TaskResult(false, e);
             }
             
             Debug.Log($"Lobby Id: {CurrentLobby.Id}");
             Debug.Log($"Lobby Code: {CurrentLobby.LobbyCode}");
-            return TaskStatus.Ok;
+            return TaskResult.Ok;
         }
 
-        public async Task<TaskStatus> JoinLobbyByCodeAsync(string code, Dictionary<string, PlayerDataObject> playerData = null)
+        public async Task<TaskResult> JoinLobbyByCodeAsync(string code, Dictionary<string, PlayerDataObject> playerData = null)
         {
             try
             {
@@ -48,16 +48,16 @@ namespace NetworkFramework.LobbyCore
                 Player player = new Player(AuthenticationService.Instance.PlayerId, null, playerData);
                 options.Player = player;
                 CurrentLobby = await LobbyService.Instance.JoinLobbyByCodeAsync(code, options);
-                return new TaskStatus(CurrentLobby != null, new Exception("Lobby not created"));
+                return new TaskResult(CurrentLobby != null, new Exception("Lobby not created"));
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return new TaskStatus(false, e);
+                return new TaskResult(false, e);
             }
         }
 
-        public async Task<TaskStatus> JoinLobbyQuickAsync(Dictionary<string, PlayerDataObject> playerData = null)
+        public async Task<TaskResult> JoinLobbyQuickAsync(Dictionary<string, PlayerDataObject> playerData = null)
         {
             try
             {
@@ -67,12 +67,12 @@ namespace NetworkFramework.LobbyCore
                     Player = player
                 };
                 CurrentLobby = await LobbyService.Instance.QuickJoinLobbyAsync(options);
-                return new TaskStatus(CurrentLobby != null, new Exception("Lobby not created"));
+                return new TaskResult(CurrentLobby != null, new Exception("Lobby not created"));
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return new TaskStatus(false, e);
+                return new TaskResult(false, e);
             }
         }
 

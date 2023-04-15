@@ -2,17 +2,17 @@ using System;
 
 namespace NetworkFramework.Data
 {
-    public class TaskStatus
+    public class TaskResult
     {
         public bool Success { get; }
         public Exception Exception { get; }
 
-        public TaskStatus(bool success, Exception exception = null)
+        public TaskResult(bool success, Exception exception = null)
         {
             Success = success;
             Exception = exception;
         }
 
-        public static TaskStatus Ok = new TaskStatus(true);
+        public static TaskResult Ok = new TaskResult(true);
     }
 }

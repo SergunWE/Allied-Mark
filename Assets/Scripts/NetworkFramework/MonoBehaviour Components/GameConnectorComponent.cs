@@ -58,17 +58,17 @@ namespace NetworkFramework.MonoBehaviour_Components
         public void OnRelayStarted(bool localStatus)
         {
             if (!localStatus) return;
-            TaskStatus taskStatus;
+            TaskResult taskResult;
             if (_refreshCore.PlayerIsHost)
             {
-                taskStatus = _netcodeConnectorCore.StartHost(_relayCore.RelayServerData);
-                if (taskStatus.Success) _netcodeConnectorCore.LoadNetworkScene(new SceneInfo(3));
+                taskResult = _netcodeConnectorCore.StartHost(_relayCore.RelayServerData);
+                if (taskResult.Success) _netcodeConnectorCore.LoadNetworkScene(new SceneInfo(3));
             }
             else
             {
-                taskStatus = _netcodeConnectorCore.StartClient(_relayCore.RelayServerData);
+                taskResult = _netcodeConnectorCore.StartClient(_relayCore.RelayServerData);
             }
-            if (taskStatus.Success)
+            if (taskResult.Success)
             {
                 gameStarted.Raise();
             }

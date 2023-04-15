@@ -1,10 +1,10 @@
 using System;
+using NetworkFramework.Data;
 using NetworkFramework.Data.Scene;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using Unity.Networking.Transport.Relay;
 using UnityEngine;
-using TaskStatus = NetworkFramework.Data.TaskStatus;
 
 namespace NetworkFramework.NetcodeCore
 {
@@ -15,48 +15,48 @@ namespace NetworkFramework.NetcodeCore
             NetworkManager.Singleton.SetSingleton();
         }
 
-        public TaskStatus StartHost(RelayServerData relayServerData)
+        public TaskResult StartHost(RelayServerData relayServerData)
         {
             try
             {
                 NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
                 NetworkManager.Singleton.StartHost();
-                return TaskStatus.Ok;
+                return TaskResult.Ok;
             }
             catch (Exception e)
             {
                 Debug.Log(e);
-                return new TaskStatus(false, e);
+                return new TaskResult(false, e);
             }
         }
 
-        public TaskStatus StartClient(RelayServerData relayServerData)
+        public TaskResult StartClient(RelayServerData relayServerData)
         {
             try
             {
                 NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
                 NetworkManager.Singleton.StartClient();
-                return TaskStatus.Ok;
+                return TaskResult.Ok;
             }
             catch (Exception e)
             {
                 Debug.Log(e);
-                return new TaskStatus(false, e);
+                return new TaskResult(false, e);
             }
         }
 
-        public TaskStatus LoadNetworkScene(SceneInfo sceneInfo)
+        public TaskResult LoadNetworkScene(SceneInfo sceneInfo)
         {
             try
             {
                 NetworkManager.Singleton.SceneManager.LoadScene(sceneInfo.Name,
                     sceneInfo.LoadMode);
-                return TaskStatus.Ok;
+                return TaskResult.Ok;
             }
             catch (Exception e)
             {
                 Debug.Log(e);
-                return new TaskStatus(false, e);
+                return new TaskResult(false, e);
             }
         }
     }

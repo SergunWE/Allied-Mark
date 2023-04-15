@@ -5,7 +5,6 @@ using NetworkFramework.Data;
 using Unity.Services.Authentication;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
-using TaskStatus = NetworkFramework.Data.TaskStatus;
 
 namespace NetworkFramework.LobbyCore
 {
@@ -18,10 +17,10 @@ namespace NetworkFramework.LobbyCore
             _checkData = checkData;
         }
 
-        public async Task<TaskStatus> UpdateLobbyData(LobbyDataInfo<DataObject.VisibilityOptions> info, object newValue)
+        public async Task<TaskResult> UpdateLobbyData(LobbyDataInfo<DataObject.VisibilityOptions> info, object newValue)
         {
             if (_checkData && LobbyDataEqual(info.Key, newValue))
-                return new TaskStatus(false, new Exception("The data is equal, cannot update"));
+                return new TaskResult(false, new Exception("The data is equal, cannot update"));
             try
             {
                 await LobbyService.Instance.UpdateLobbyAsync(CurrentLobby.Id, new UpdateLobbyOptions
@@ -31,20 +30,20 @@ namespace NetworkFramework.LobbyCore
                         {info.Key, new DataObject(info.Visibility, newValue.ToString())}
                     }
                 });
-                return TaskStatus.Ok;
+                return TaskResult.Ok;
             }
             catch (LobbyServiceException e)
             {
                 Console.WriteLine(e);
-                return new TaskStatus(false, e);
+                return new TaskResult(false, e);
             }
         }
 
-        public async Task<TaskStatus> UpdatePlayerData(LobbyDataInfo<PlayerDataObject.VisibilityOptions> info,
+        public async Task<TaskResult> UpdatePlayerData(LobbyDataInfo<PlayerDataObject.VisibilityOptions> info,
             object newValue)
         {
             if (_checkData && PlayerDataEqual(info.Key, newValue))
-                return new TaskStatus(false, new Exception("The data is equal, cannot update"));
+                return new TaskResult(false, new Exception("The data is equal, cannot update"));
             try
             {
                 await LobbyService.Instance.UpdatePlayerAsync(CurrentLobby.Id, AuthenticationService.Instance.PlayerId,
@@ -55,12 +54,12 @@ namespace NetworkFramework.LobbyCore
                             {info.Key, new PlayerDataObject(info.Visibility, newValue.ToString())}
                         }
                     });
-                return TaskStatus.Ok;
+                return TaskResult.Ok;
             }
             catch (LobbyServiceException e)
             {
                 Console.WriteLine(e);
-                return new TaskStatus(false, e);
+                return new TaskResult(false, e);
             }
         }
 

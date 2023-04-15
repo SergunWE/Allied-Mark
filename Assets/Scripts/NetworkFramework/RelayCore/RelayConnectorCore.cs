@@ -1,9 +1,9 @@
 using System;
 using System.Threading.Tasks;
+using NetworkFramework.Data;
 using Unity.Networking.Transport.Relay;
 using Unity.Services.Relay;
 using UnityEngine;
-using TaskStatus = NetworkFramework.Data.TaskStatus;
 
 namespace NetworkFramework.RelayCore
 {
@@ -12,7 +12,7 @@ namespace NetworkFramework.RelayCore
         public string JoinCode { get; private set; }
         public RelayServerData RelayServerData { get; private set; }
 
-        public async Task<TaskStatus> CreateRelay(int maxPlayers)
+        public async Task<TaskResult> CreateRelay(int maxPlayers)
         {
             try
             {
@@ -21,28 +21,28 @@ namespace NetworkFramework.RelayCore
                 JoinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
                 RelayServerData = new RelayServerData(allocation, "dtls");
                 Debug.Log("RELAY CREATE - " + JoinCode);
-                return TaskStatus.Ok;
+                return TaskResult.Ok;
             }
             catch (RelayServiceException e)
             {
                 Debug.Log(e);
-                return new TaskStatus(false, e);
+                return new TaskResult(false, e);
             }
         }
 
-        public async Task<TaskStatus> JoinRelay(string joinCode)
+        public async Task<TaskResult> JoinRelay(string joinCode)
         {
             try
             {
                 var allocationJoin = await RelayService.Instance.JoinAllocationAsync(joinCode);
                 RelayServerData = new RelayServerData(allocationJoin, "dtls");
                 Debug.Log("RELAY JOIN - " + JoinCode);
-                return TaskStatus.Ok;
+                return TaskResult.Ok;
             }
             catch (Exception e)
             {
                 Debug.Log(e);
-                return new TaskStatus(false, e);
+                return new TaskResult(false, e);
             }
         }
     }
