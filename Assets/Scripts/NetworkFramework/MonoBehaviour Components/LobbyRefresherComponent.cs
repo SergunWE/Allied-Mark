@@ -23,6 +23,7 @@ namespace NetworkFramework.MonoBehaviour_Components
             lobbyHostChanged.Raise(_core.PlayerIsHost);
         }
 
+		//wait for another thread to change the variable
         private void FixedUpdate()
         {
             if (!_isUpdate) return;
@@ -34,6 +35,7 @@ namespace NetworkFramework.MonoBehaviour_Components
             _isUpdate = false;
         }
 
+		//add a listener
         private void OnEnable()
         {
             _core.OnLobbyUpdated += OnLobbyUpdated;
@@ -41,6 +43,7 @@ namespace NetworkFramework.MonoBehaviour_Components
             _core.StartRefresh();
         }
 
+		//remove the listener
         private void OnDisable()
         {
             _core.OnLobbyUpdated -= OnLobbyUpdated;
@@ -55,6 +58,7 @@ namespace NetworkFramework.MonoBehaviour_Components
             }
         }
 
+		//The core level thread changes the variable when the event is triggered
         private void OnLobbyUpdated()
         {
             _isUpdate = true;
