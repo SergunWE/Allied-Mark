@@ -12,6 +12,7 @@ namespace NetworkFramework.Netcode_Components
             try
             {
                 var ownerObjects = NetworkManager.Singleton.LocalClient.OwnedObjects;
+                //Search among your objects for the right component
                 for (int i = 0; i < ownerObjects.Count; i++)
                 {
                     networkComponent = ownerObjects[i].GetComponentInChildren<T>();
