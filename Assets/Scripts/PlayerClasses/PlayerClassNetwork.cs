@@ -1,6 +1,6 @@
 using NetworkFramework;
 using NetworkFramework.Data;
-using PlayerNetwork;
+using NetworkFramework.Netcode_Components;
 using Unity.Collections;
 using Unity.Netcode;
 using Unity.Services.Authentication;

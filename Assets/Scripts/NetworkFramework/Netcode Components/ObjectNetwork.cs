@@ -1,7 +1,7 @@
 using System;
 using Unity.Netcode;
 
-namespace PlayerNetwork
+namespace NetworkFramework.Netcode_Components
 {
     public abstract class ObjectNetwork<T> : NetworkBehaviour
     {

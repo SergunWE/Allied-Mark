@@ -1,4 +1,4 @@
-using PlayerNetwork;
+using NetworkFramework.Netcode_Components;
 using Unity.Netcode;
 using UnityEngine;
 
