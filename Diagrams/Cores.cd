@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="NetworkFramework.RelayCore.RelayConnectorCore">
+    <Position X="7.75" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAFAAAAAAgA=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\RelayCore\RelayConnectorCore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.NetcodeCore.NetcodeConnectorCore">
+    <Position X="7.75" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\NetcodeCore\NetcodeConnectorCore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.Managers.AuthenticationManager">
+    <Position X="7.75" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\Managers\AuthenticationManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.LobbyCore.LobbyConnectorCore">
+    <Position X="3.75" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAASAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\LobbyCore\LobbyConnectorCore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.LobbyCore.LobbyCore">
+    <Position X="0.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAQ=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\LobbyCore\LobbyCore.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NetworkFramework.LobbyCore.LobbyDataUpdaterCore">
+    <Position X="4.25" Y="2.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAACAAAgAAAAAAAAAgAAAAQAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\LobbyCore\LobbyDataUpdaterCore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.LobbyCore.LobbyRefresherCore">
+    <Position X="0.5" Y="2.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAABCgAAAAAAAEAAAAAAAAAEAAAQJAAAAABAAQ=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\LobbyCore\LobbyRefresherCore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

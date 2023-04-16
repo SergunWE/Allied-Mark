@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="NetworkFramework.Data.LobbyData">
+    <Position X="4.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAACAAAAAAAAABAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\Data\Lobby\LobbyData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.Data.TaskResult">
+    <Position X="7.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAABBAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\Data\Task\TaskResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.CustomDataKeys">
+    <Position X="0.5" Y="2.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgg=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\Constants\CustomDataKeys.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.DataKeys">
+    <Position X="0.5" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAABEAAAAAAACAAAAA=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\Constants\DataKeys.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.GlobalConstants">
+    <Position X="0.5" Y="4.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIQAAAAAAAAAIA=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\Constants\GlobalConstants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="NetworkFramework.Data.LobbyDataInfo&lt;T&gt;">
+    <Position X="7.5" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\Data\Lobby\LobbyDataInfo.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="NetworkFramework.Data.Scene.SceneInfo">
+    <Position X="4.5" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAIAAQAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\Data\Scene\SceneInfo.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
