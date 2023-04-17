@@ -1,23 +1,14 @@
 using NetworkFramework.Data;
+using NetworkFramework.MonoBehaviour_Components.Interfaces;
 using UnityEngine;
 
 namespace NetworkFramework.MonoBehaviour_Components
 {
-    public class LobbyPlayerDisplayer : MonoBehaviour
+    public class LobbyPlayerDisplayer : DisplayerBase
     {
         [SerializeField] private PlayerDataDisplayer[] playerViews;
 
-        private void Start()
-        {
-            SetViews();
-        }
-
-        public void OnLobbyRefreshed()
-        {
-            SetViews();
-        }
-
-        private void SetViews()
+        protected override void SetViews()
         {
             var currentPlayers = LobbyData.Current.Players;
             Debug.Log($"Player count: {currentPlayers.Count}");
@@ -25,9 +16,8 @@ namespace NetworkFramework.MonoBehaviour_Components
             {
                 string playerId = currentPlayers[i].Id;
                 string playerName = LobbyData.GetPlayerData(DataKeys.PlayerName.Key, playerId);
-                string playerClass = LobbyData.GetPlayerData(CustomDataKeys.PlayerClass.Key, playerId);
                 bool playerReady = bool.Parse(LobbyData.GetPlayerData(DataKeys.PlayerReady.Key, playerId));
-                playerViews[i].SetData(playerName, playerClass, playerReady);
+                playerViews[i].SetData(playerName, playerReady);
             }
 
             for (int i = currentPlayers.Count; i < 4; i++)
