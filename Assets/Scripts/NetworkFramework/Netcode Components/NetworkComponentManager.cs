@@ -3,10 +3,20 @@ using UnityEngine;
 
 namespace NetworkFramework.Netcode_Components
 {
+    /// <summary>
+    /// Universal class for components, for managing client-owner network variables
+    /// </summary>
+    /// <typeparam name="T"><see cref="ObjectNetwork{T}"/></typeparam>
     public class NetworkComponentManager<T> : MonoBehaviour
     {
+        /// <summary>
+        /// Network variable
+        /// </summary>
         [SerializeField] protected T networkComponent;
 
+        /// <summary>
+        /// Searching for the right component of the client-owner
+        /// </summary>
         protected virtual void Start()
         {
             try

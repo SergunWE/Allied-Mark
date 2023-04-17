@@ -7,6 +7,9 @@ using Random = UnityEngine.Random;
 
 namespace NetworkFramework.SO
 {
+    /// <summary>
+    /// ScriptableObject lobby player data
+    /// </summary>
     [CreateAssetMenu(menuName = "Lobby/Lobby Player Data")]
     public class LobbyInternalPlayerData : InternalData<PlayerDataObject, PlayerDictionaryElement>
     {

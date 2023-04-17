@@ -4,8 +4,14 @@ using UnityEngine;
 
 namespace NetworkFramework.MonoBehaviour_Components
 {
+    /// <summary>
+    /// Component of sending data to the lobby
+    /// </summary>
     public class LobbyUpdaterComponent : MonoBehaviour
     {
+        /// <summary>
+        /// Lobby player data
+        /// </summary>
         [SerializeField] private LobbyInternalPlayerData internalPlayerData;
 
         private LobbyDataUpdaterCore _core;
@@ -15,6 +21,9 @@ namespace NetworkFramework.MonoBehaviour_Components
             _core ??= new LobbyDataUpdaterCore(true);
         }
 
+        /// <summary>
+        /// Changing player ready
+        /// </summary>
         public async void ChangePlayerReady()
         {
             // Variant without automatic checking
@@ -26,16 +35,6 @@ namespace NetworkFramework.MonoBehaviour_Components
             {
                 internalPlayerData.PlayerReady = !internalPlayerData.PlayerReady;
             }
-        }
-
-        public async void ChangeLevelDifficulty(LevelDifficulty difficulty)
-        {
-            await _core.UpdateLobbyData(CustomDataKeys.LevelDifficulty, difficulty.DifficultName);
-        }
-
-        public async void ChangePlayerClass(PlayerClass @class)
-        {
-            await _core.UpdatePlayerData(CustomDataKeys.PlayerClass, @class.ClassName);
         }
     }
 }

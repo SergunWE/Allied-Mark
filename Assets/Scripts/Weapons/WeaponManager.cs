@@ -7,7 +7,7 @@ public class WeaponManager : NetworkComponentManager<WeaponNetwork>
     {
         if (context.started)
         {
-            networkComponent.CheckLocalChange(1);
+            networkComponent.CheckLocalChange(0);
             networkComponent.SetWeaponIndexServerRpc(0);
             
         }

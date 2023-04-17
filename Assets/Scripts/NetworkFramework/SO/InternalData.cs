@@ -3,6 +3,11 @@ using UnityEngine;
 
 namespace NetworkFramework.SO
 {
+    /// <summary>
+    /// Base class for ScriptableObject data lobby
+    /// </summary>
+    /// <typeparam name="TDict">Structure for storing data in the lobby</typeparam>
+    /// <typeparam name="TCs"><see cref="DictionaryElement{TCs}"/></typeparam>
     public abstract class InternalData<TDict, TCs> : ScriptableObject
     {
         [SerializeField] protected GameEvent onDataUpdated;

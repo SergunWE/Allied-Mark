@@ -6,6 +6,9 @@ using Unity.Services.Core;
 
 namespace NetworkFramework.Managers
 {
+    /// <summary>
+    /// User authentication class
+    /// </summary>
     public static class AuthenticationManager
     {
         static AuthenticationManager()
@@ -13,6 +16,10 @@ namespace NetworkFramework.Managers
             UnityServices.InitializeAsync().Wait();
         }
 
+        /// <summary>
+        /// Initializes UnityServices for authentication
+        /// </summary>
+        /// <returns>Task with its progress status</returns>
         public static async Task<TaskResult> InitializeAsync()
         {
             if (UnityServices.State == ServicesInitializationState.Initialized)
@@ -25,6 +32,10 @@ namespace NetworkFramework.Managers
                 new Exception("ServicesInitializationState uninitialized"));
         }
 
+        /// <summary>
+        /// Anonymous user authentication
+        /// </summary>
+        /// <returns>Task with its progress status</returns>
         public static async Task<TaskResult> SignInAnonymouslyAsync()
         {
             try

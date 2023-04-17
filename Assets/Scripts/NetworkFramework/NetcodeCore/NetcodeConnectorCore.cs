@@ -8,6 +8,9 @@ using UnityEngine;
 
 namespace NetworkFramework.NetcodeCore
 {
+    /// <summary>
+    /// Network connection class
+    /// </summary>
     public class NetcodeConnectorCore
     {
         public NetcodeConnectorCore()
@@ -15,6 +18,11 @@ namespace NetworkFramework.NetcodeCore
             NetworkManager.Singleton.SetSingleton();
         }
 
+        /// <summary>
+        /// Running the host
+        /// </summary>
+        /// <param name="relayServerData">Relay server information</param>
+        /// <returns>Status of the task performed</returns>
         public TaskResult StartHost(RelayServerData relayServerData)
         {
             try
@@ -30,6 +38,11 @@ namespace NetworkFramework.NetcodeCore
             }
         }
 
+        /// <summary>
+        /// Running the client
+        /// </summary>
+        /// <param name="relayServerData">Relay server information</param>
+        /// <returns>Status of the task performed</returns>
         public TaskResult StartClient(RelayServerData relayServerData)
         {
             try
@@ -45,6 +58,11 @@ namespace NetworkFramework.NetcodeCore
             }
         }
 
+        /// <summary>
+        /// Loading a new scene for all clients
+        /// </summary>
+        /// <param name="sceneInfo">Scene information <see cref="SceneInfo"/>></param>
+        /// <returns>Status of the task performed</returns>
         public TaskResult LoadNetworkScene(SceneInfo sceneInfo)
         {
             try

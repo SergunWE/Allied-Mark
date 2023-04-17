@@ -7,11 +7,26 @@ using UnityEngine;
 
 namespace NetworkFramework.RelayCore
 {
+    /// <summary>
+    /// Relay server management class
+    /// </summary>
     public class RelayConnectorCore
     {
+        /// <summary>
+        /// Relay server connection code
+        /// </summary>
         public string JoinCode { get; private set; }
+        
+        /// <summary>
+        /// Relay server information
+        /// </summary>
         public RelayServerData RelayServerData { get; private set; }
 
+        /// <summary>
+        /// Creating a Relay Server. Only the lobby owner can create a server
+        /// </summary>
+        /// <param name="maxPlayers">Maximum number of players</param>
+        /// <returns>The task with her status</returns>
         public async Task<TaskResult> CreateRelay(int maxPlayers)
         {
             try
@@ -30,6 +45,11 @@ namespace NetworkFramework.RelayCore
             }
         }
 
+        /// <summary>
+        /// Connecting to a Relay server
+        /// </summary>
+        /// <param name="joinCode">Connection code</param>
+        /// <returns>The task with her status</returns>
         public async Task<TaskResult> JoinRelay(string joinCode)
         {
             try

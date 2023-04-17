@@ -10,15 +10,30 @@ using UnityEngine;
 
 namespace NetworkFramework.LobbyCore
 {
+    /// <summary>
+    /// Class to connect to the lobby
+    /// </summary>
     public class LobbyConnectorCore : LobbyCore
     {
+        /// <summary>
+        /// Lobby creation function
+        /// </summary>
+        /// <param name="lobbyName">Lobby Name</param>
+        /// <param name="maxPlayers">Maximum number of players in the lobby</param>
+        /// <param name="isPrivate">Is the lobby private</param>
+        /// <param name="lobbyData">Dictionary of initial lobby data</param>
+        /// <param name="playerData">Dictionary of initial data of the host player</param>
+        /// <returns>Task with its progress status</returns>
         public async Task<TaskResult> CreateLobbyAsync(string lobbyName, int maxPlayers, bool isPrivate,
             Dictionary<string, DataObject> lobbyData = null, Dictionary<string, PlayerDataObject> playerData = null)
         {
-            if (!AuthenticationService.Instance.IsSignedIn) return new TaskResult(false,
-                new RequestFailedException(0, "Sign In Failed"));
-            Player player = new Player(AuthenticationService.Instance.PlayerId, null, playerData);
-            CreateLobbyOptions options = new CreateLobbyOptions
+            if (!AuthenticationService.Instance.IsSignedIn)
+            {
+                return new TaskResult(false, new RequestFailedException(0, "Sign In Failed"));
+            }
+            //Forming data for the lobby
+            var player = new Player(AuthenticationService.Instance.PlayerId, null, playerData);
+            var options = new CreateLobbyOptions
             {
                 Player = player,
                 IsPrivate = isPrivate,
@@ -34,13 +49,20 @@ namespace NetworkFramework.LobbyCore
             {
                 return new TaskResult(false, e);
             }
-            
+
             Debug.Log($"Lobby Id: {CurrentLobby.Id}");
             Debug.Log($"Lobby Code: {CurrentLobby.LobbyCode}");
             return TaskResult.Ok;
         }
 
-        public async Task<TaskResult> JoinLobbyByCodeAsync(string code, Dictionary<string, PlayerDataObject> playerData = null)
+        /// <summary>
+        /// Function to join the lobby by code
+        /// </summary>
+        /// <param name="code">Code for joining the lobby</param>
+        /// <param name="playerData">Dictionary with initial user data</param>
+        /// <returns>Task with its progress status</returns>
+        public async Task<TaskResult> JoinLobbyByCodeAsync(string code,
+            Dictionary<string, PlayerDataObject> playerData = null)
         {
             try
             {
@@ -57,6 +79,11 @@ namespace NetworkFramework.LobbyCore
             }
         }
 
+        /// <summary>
+        /// Quick connection function to the lobby
+        /// </summary>
+        /// <param name="playerData">Dictionary with initial user data</param>
+        /// <returns>Task with its progress status</returns>
         public async Task<TaskResult> JoinLobbyQuickAsync(Dictionary<string, PlayerDataObject> playerData = null)
         {
             try
@@ -75,10 +102,9 @@ namespace NetworkFramework.LobbyCore
                 return new TaskResult(false, e);
             }
         }
-
+        
         public override void Dispose()
         {
-            
         }
     }
 }

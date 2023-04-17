@@ -4,10 +4,19 @@ using UnityEngine;
 
 namespace NetworkFramework.MonoBehaviour_Components
 {
+    /// <summary>
+    /// Lobby player data display component
+    /// </summary>
     public class LobbyPlayerDisplayer : DisplayerBase
     {
+        /// <summary>
+        /// Player data display objects
+        /// </summary>
         [SerializeField] private PlayerDataDisplayer[] playerViews;
 
+        /// <summary>
+        /// Setting the lobby player data
+        /// </summary>
         protected override void SetViews()
         {
             var currentPlayers = LobbyData.Current.Players;

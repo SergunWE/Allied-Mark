@@ -5,12 +5,21 @@ using UnityEngine;
 
 namespace NetworkFramework.MonoBehaviour_Components
 {
+    /// <summary>
+    /// The player ready checkup component
+    /// </summary>
     public class PlayersReadyChecker : MonoBehaviour
     {
+        /// <summary>
+        /// Ready event for all players
+        /// </summary>
         [SerializeField] private GameEventBool allPlayersReady;
 
         private bool _prevState;
         
+        /// <summary>
+        /// Actions when a lobby update is triggered
+        /// </summary>
         public void OnLobbyRefreshed()
         {
             bool state = PlayerReady();
@@ -19,6 +28,10 @@ namespace NetworkFramework.MonoBehaviour_Components
             _prevState = state;
         }
 
+        /// <summary>
+        /// Checking player ready
+        /// </summary>
+        /// <returns>True, if all the players are ready</returns>
         public bool PlayerReady()
         {
             var currentPlayers = LobbyData.Current.Players;

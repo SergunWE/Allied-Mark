@@ -1,9 +1,8 @@
-using NetworkFramework.MonoBehaviour_Components;
 using UnityEngine;
 
 public class PlayerClassHandlerDropdown : DropdownDataDisplayer<PlayerClass>
 {
-    [SerializeField] private LobbyUpdaterComponent lobbyUpdater;
+    [SerializeField] private CustomLobbyUpdaterComponent lobbyUpdater;
 
     protected override void OnDropdownValueChanged(int index)
     {

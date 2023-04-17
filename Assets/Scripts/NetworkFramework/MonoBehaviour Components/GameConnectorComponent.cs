@@ -9,12 +9,29 @@ using UnityEngine;
 
 namespace NetworkFramework.MonoBehaviour_Components
 {
+    /// <summary>
+    /// Component of connecting to the game
+    /// </summary>
     public class GameConnectorComponent : MonoBehaviour
     {
+        /// <summary>
+        /// Player readiness check component
+        /// </summary>
         [SerializeField] private PlayersReadyChecker readyChecker;
+
+        /// <summary>
+        /// Relay server start event
+        /// </summary>
         [SerializeField] private GameEventBool relayStarted;
+
+        /// <summary>
+        /// The event of the start of the game
+        /// </summary>
         [SerializeField] private GameEvent gameStarted;
 
+        /// <summary>
+        /// Lobby settings
+        /// </summary>
         [SerializeField] private LobbyOptions lobbyOptions;
 
         private LobbyRefresherCore _refreshCore;
@@ -36,6 +53,12 @@ namespace NetworkFramework.MonoBehaviour_Components
             _netcodeConnectorCore ??= new NetcodeConnectorCore();
         }
 
+        /// <summary>
+        /// Creating a Relay Server
+        /// <remarks>
+        /// Only the lobby owner can create a server
+        /// </remarks>
+        /// </summary>
         public async void CreateRelay()
         {
             if (!readyChecker.PlayerReady() || LobbyData.GetLobbyData(DataKeys.RelayCode.Key) != null) return;
@@ -46,6 +69,9 @@ namespace NetworkFramework.MonoBehaviour_Components
             }
         }
 
+        /// <summary>
+        /// Actions when a lobby update event is triggered
+        /// </summary>
         public void OnLobbyRefreshed()
         {
             if (!_playerStartedGame && LobbyData.GetLobbyData(DataKeys.RelayCode.Key) != null &&
@@ -55,6 +81,10 @@ namespace NetworkFramework.MonoBehaviour_Components
             }
         }
 
+        /// <summary>
+        /// Actions when a Relay server start event is triggered
+        /// </summary>
+        /// <param name="localStatus">Relay server status, whether it is running</param>
         public void OnRelayStarted(bool localStatus)
         {
             if (!localStatus) return;
@@ -68,12 +98,16 @@ namespace NetworkFramework.MonoBehaviour_Components
             {
                 taskResult = _netcodeConnectorCore.StartClient(_relayCore.RelayServerData);
             }
+
             if (taskResult.Success)
             {
                 gameStarted.Raise();
             }
         }
 
+        /// <summary>
+        /// Connecting to a Relay server by clients
+        /// </summary>
         private async void JoinRelay()
         {
             _playerStartedGame = (await _relayCore.JoinRelay(

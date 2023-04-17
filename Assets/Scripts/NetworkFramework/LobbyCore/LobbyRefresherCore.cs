@@ -8,13 +8,29 @@ using UnityEngine;
 
 namespace NetworkFramework.LobbyCore
 {
+    /// <summary>
+    /// A class for updating lobby data
+    /// </summary>
     public class LobbyRefresherCore : LobbyCore
     {
+        /// <summary>
+        /// Data update event
+        /// </summary>
         public event Action OnLobbyUpdated;
 
+        /// <summary>
+        /// Heartbeat Lobby Send Thread
+        /// </summary>
         private Thread _heartbeatLobbyThread;
+        /// <summary>
+        /// Lobby update thread
+        /// </summary>
         private Thread _refreshLobbyThread;
 
+        
+        /// <summary>
+        /// Starting a heartbeat sending thread
+        /// </summary>
         public void StartHeartbeat()
         {
             if(!PlayerIsHost) return;
@@ -23,6 +39,9 @@ namespace NetworkFramework.LobbyCore
             _heartbeatLobbyThread.Start();
         }
 
+        /// <summary>
+        /// Starting the lobby update thread
+        /// </summary>
         public void StartRefresh()
         {
             _refreshLobbyThread?.Abort();
@@ -30,6 +49,11 @@ namespace NetworkFramework.LobbyCore
             _refreshLobbyThread.Start();
         }
 
+        /// <summary>
+        /// Function to update lobby data
+        /// <remarks>The result is in the class <see cref="LobbyData"/></remarks>
+        /// </summary>
+        /// <returns>Task with its progress status</returns>
         public async Task<TaskResult> RefreshLobbyDataAsync()
         {
             if (CurrentLobby == null) return new TaskResult(false, new Exception("Lobby not exist"));
@@ -46,6 +70,10 @@ namespace NetworkFramework.LobbyCore
             }
         }
         
+        /// <summary>
+        /// Player Logout Function in the Lobby
+        /// </summary>
+        /// <returns>Task with its progress status</returns>
         public async Task<TaskResult> LeaveLobbyAsync()
         {
             try
@@ -61,12 +89,18 @@ namespace NetworkFramework.LobbyCore
             }
         }
         
+        /// <summary>
+        /// Stops lobby data updates and sending heartbeat
+        /// </summary>
         public void StopUpdatingLobby()
         {
             _heartbeatLobbyThread?.Abort();
             _refreshLobbyThread?.Abort();
         }
         
+        /// <summary>
+        /// Sends heartbeat to the lobby. Designed to run in a separate thread.
+        /// </summary>
         private void HeartbeatLobbyThread()
         {
             while (true)
@@ -89,6 +123,9 @@ namespace NetworkFramework.LobbyCore
             }
         }
 
+        /// <summary>
+        /// Updates lobby data periodically. The function is designed to run in a separate thread
+        /// </summary>
         private void RefreshLobbyThread()
         {
             while (true)
@@ -117,6 +154,9 @@ namespace NetworkFramework.LobbyCore
             }
         }
         
+        /// <summary>
+        /// Abort running threads
+        /// </summary>
         public override void Dispose()
         {
             _heartbeatLobbyThread?.Abort();

@@ -5,6 +5,9 @@ using UnityEngine.Serialization;
 
 namespace NetworkFramework.SO
 {
+    /// <summary>
+    /// ScriptableObject lobby data
+    /// </summary>
     [CreateAssetMenu(menuName = "Lobby/Lobby Data")]
     public class LobbyInternalData : InternalData<DataObject, LobbyDictionaryElement>
     {

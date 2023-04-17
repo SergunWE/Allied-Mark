@@ -6,10 +6,22 @@ using UnityEngine;
 
 namespace NetworkFramework.MonoBehaviour_Components
 {
+    /// <summary>
+    /// Lobby data update component
+    /// </summary>
     public class LobbyRefresherComponent : MonoBehaviour
     {
+        /// <summary>
+        /// Lobby update event
+        /// </summary>
         [SerializeField] private GameEvent lobbyRefreshed;
+        /// <summary>
+        /// Exit lobby event
+        /// </summary>
         [SerializeField] private GameEvent lobbyLeaved;
+        /// <summary>
+        /// Host change event
+        /// </summary>
         [SerializeField] private GameEventBool lobbyHostChanged;
 
         [SerializeField] private LobbyInternalPlayerData lobbyInternalPlayerData;
@@ -22,8 +34,10 @@ namespace NetworkFramework.MonoBehaviour_Components
             _core ??= new LobbyRefresherCore();
             lobbyHostChanged.Raise(_core.PlayerIsHost);
         }
-
-		//wait for another thread to change the variable
+        
+        /// <summary>
+        /// <remarks>Wait for another thread to change the variable</remarks>
+        /// </summary>
         private void FixedUpdate()
         {
             if (!_isUpdate) return;
@@ -35,21 +49,28 @@ namespace NetworkFramework.MonoBehaviour_Components
             _isUpdate = false;
         }
 
-		//add a listener
+        /// <summary>
+        /// <remarks>Add a listener</remarks>
+        /// </summary>
         private void OnEnable()
         {
             _core.OnLobbyUpdated += OnLobbyUpdated;
             _core.StartHeartbeat();
             _core.StartRefresh();
         }
-
-		//remove the listener
+        
+        /// <summary>
+        /// <remarks>Remove the listener</remarks>
+        /// </summary>
         private void OnDisable()
         {
             _core.OnLobbyUpdated -= OnLobbyUpdated;
             _core.StopUpdatingLobby();
         }
         
+        /// <summary>
+        /// Exiting the lobby
+        /// </summary>
         public async void LeaveLobby()
         {
             if ((await _core.LeaveLobbyAsync()).Success)
@@ -57,8 +78,10 @@ namespace NetworkFramework.MonoBehaviour_Components
                 lobbyLeaved.Raise();
             }
         }
-
-		//The core level thread changes the variable when the event is triggered
+        
+        /// <summary>
+        /// <remarks>The core level thread changes the variable when the event is triggered</remarks>
+        /// </summary>
         private void OnLobbyUpdated()
         {
             _isUpdate = true;

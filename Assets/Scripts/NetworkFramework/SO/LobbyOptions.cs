@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace NetworkFramework.SO
 {
+    /// <summary>
+    /// Lobby settings
+    /// </summary>
     [CreateAssetMenu(menuName = "Lobby/Lobby Options")]
     public class LobbyOptions : ScriptableObject
     {
