@@ -17,6 +17,12 @@ public class WeaponNetwork : ObjectNetwork<int>
         TriggerEvent(value);
     }
 
+    public override void CheckLocalChange(int localValue)
+    {
+        if(localValue == NetworkVariable.Value) return;
+        TriggerEvent(localValue);
+    }
+
     protected override void OnVariableChanged(int oldValue, int newValue)
     {
         if (oldValue == newValue) return;

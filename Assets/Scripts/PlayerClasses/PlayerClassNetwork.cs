@@ -8,8 +8,6 @@ using UnityEngine;
 
 public class PlayerClassNetwork : ObjectNetwork<FixedString128Bytes>
 {
-    //[SerializeField] private PlayerClassViewer playerClassViewer;
-
     private void Start()
     {
         string playerClassName = GetPlayerClassName();
@@ -38,7 +36,11 @@ public class PlayerClassNetwork : ObjectNetwork<FixedString128Bytes>
     {
         if(NetworkVariable.Value == playerClassName) return;
         NetworkVariable.Value = new FixedString128Bytes(playerClassName);
-        TriggerEvent(playerClassName);
+    }
+
+    public override void CheckLocalChange(FixedString128Bytes localValue)
+    {
+        
     }
 
     protected override void OnVariableChanged(FixedString128Bytes oldValue, FixedString128Bytes newValue)

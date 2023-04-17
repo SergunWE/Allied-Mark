@@ -23,6 +23,7 @@ namespace NetworkFramework.Netcode_Components
             ValueChanged?.Invoke(value);
         }
 
+        public abstract void CheckLocalChange(T localValue);
         protected abstract void OnVariableChanged(T oldValue, T newValue);
     }
 }
