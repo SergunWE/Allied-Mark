@@ -23,8 +23,8 @@ namespace NetworkFramework.MonoBehaviour_Components
         /// </remarks>
         /// </summary>
         public UnityEvent<bool> authComplete;
-        
-        private void Start()
+
+		private void Start()
         {
             InitAuthentication();
         }

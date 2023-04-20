@@ -3,10 +3,14 @@ using UnityEngine.Events;
 
 public class GameEventListener : MonoBehaviour
 {
-	//SO event
+    /// <summary>
+    /// SO event
+    /// </summary>
     [SerializeField] private GameEvent gameEvent;
 
-	//list of objects and actions when an event is triggered
+    /// <summary>
+    /// List of objects and actions when an event is triggered
+    /// </summary>
     public UnityEvent response;
 
     private void OnEnable()
