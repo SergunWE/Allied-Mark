@@ -1,14 +1,15 @@
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerComponentController : NetworkBehaviour
 {
-    [SerializeField] private CharacterController characterController;
+    [FormerlySerializedAs("characterController")] [SerializeField] private MovementCharacterController movementCharacterController;
 
     public override void OnNetworkSpawn()
     {
         if (IsOwner) return;
-        Destroy(characterController);
+        Destroy(movementCharacterController);
         Destroy(gameObject);
     }
 }

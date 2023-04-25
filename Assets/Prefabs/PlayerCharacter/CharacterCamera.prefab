@@ -107,28 +107,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af74cfd56ab0d14584e46be7bdbbf56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Camera: {fileID: 4118304459369387135}
-  FollowPointFraming: {x: 0, y: 0}
-  FollowingSharpness: 1000000
-  DefaultDistance: 0
-  MinDistance: 0
-  MaxDistance: 0
-  DistanceMovementSpeed: 5
-  DistanceMovementSharpness: 10
-  InvertX: 0
-  InvertY: 0
-  DefaultVerticalAngle: 20
-  MinVerticalAngle: -90
-  MaxVerticalAngle: 90
-  RotationSpeed: 1
-  RotationSharpness: 10000
-  RotateWithPhysicsMover: 0
-  ObstructionCheckRadius: 0.2
-  ObstructionLayers:
+  cameraComponent: {fileID: 4118304459369387135}
+  followPointFraming: {x: 0, y: 0}
+  followingSharpness: 10000
+  defaultDistance: 0
+  minDistance: 0
+  maxDistance: 0
+  distanceMovementSpeed: 5
+  distanceMovementSharpness: 10
+  invertX: 0
+  invertY: 0
+  defaultVerticalAngle: 20
+  minVerticalAngle: -90
+  maxVerticalAngle: 90
+  rotationSpeed: 1
+  rotationSharpness: 10000
+  rotateWithPhysicsMover: 0
+  obstructionCheckRadius: 0.2
+  obstructionLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  ObstructionSharpness: 10000
-  IgnoredColliders: []
+  obstructionSharpness: 10000
+  ignoredColliders: []
 --- !u!114 &4138770790524070044
 MonoBehaviour:
   m_ObjectHideFlags: 0

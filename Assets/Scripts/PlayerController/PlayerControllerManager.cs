@@ -2,7 +2,7 @@ using NetworkFramework.Netcode_Components;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerControllerManager : NetworkComponentManager<CharacterController>
+public class PlayerControllerManager : NetworkComponentManager<MovementCharacterController>
 {
     [SerializeField] private CharacterCamera characterCamera;
 
@@ -36,13 +36,13 @@ public class PlayerControllerManager : NetworkComponentManager<CharacterControll
         }
     }
 
-    public void SetPlayerCharacter(CharacterController playerCharacter, CharacterCamera playerCamera)
+    public void SetPlayerCharacter(MovementCharacterController playerMovementCharacter, CharacterCamera playerCamera)
     {
-        networkComponent = playerCharacter;
+        networkComponent = playerMovementCharacter;
         characterCamera = playerCamera;
-        characterCamera.SetFollowTransform(networkComponent.CameraFollowPoint);
-        characterCamera.IgnoredColliders.Clear();
-        characterCamera.IgnoredColliders.AddRange(networkComponent.GetComponentsInChildren<Collider>());
+        characterCamera.SetFollowTransform(networkComponent.cameraFollowPoint);
+        characterCamera.ignoredColliders.Clear();
+        characterCamera.ignoredColliders.AddRange(networkComponent.GetComponentsInChildren<Collider>());
         Cursor.lockState = CursorLockMode.Locked;
         _readyHandle = true;
     }

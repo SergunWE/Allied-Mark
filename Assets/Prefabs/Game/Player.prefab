@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 281661e1e9292814bbf8f0263e3becf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterController: {fileID: 7505585667780314553}
+  movementCharacterController: {fileID: 7505585667780314553}
 --- !u!1 &4411080254398332065
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,26 +309,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50f07279e8b5ee409bed680b1c38e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Motor: {fileID: 6792300607253367750}
-  MaxStableMoveSpeed: 10
-  StableMovementSharpness: 15
-  OrientationSharpness: 20
-  OrientationMethod: 0
-  MaxAirMoveSpeed: 10
-  AirAccelerationSpeed: 30
-  Drag: 0
-  AllowJumpingWhenSliding: 1
-  JumpUpSpeed: 10
-  JumpScalableForwardSpeed: 10
-  JumpPreGroundingGraceTime: 0.1
-  JumpPostGroundingGraceTime: 0.1
-  IgnoredColliders: []
-  BonusOrientationMethod: 0
-  BonusOrientationSharpness: 20
-  Gravity: {x: 0, y: -30, z: 0}
-  MeshRoot: {fileID: 6905493694356878798}
-  CameraFollowPoint: {fileID: 6902796497971015322}
-  CrouchedCapsuleHeight: 1
+  motor: {fileID: 6792300607253367750}
+  maxStableMoveSpeed: 10
+  stableMovementSharpness: 15
+  orientationSharpness: 10
+  orientationMethod: 0
+  maxAirMoveSpeed: 5
+  airAccelerationSpeed: 15
+  drag: 0.1
+  allowJumpingWhenSliding: 0
+  jumpUpSpeed: 10
+  jumpScalableForwardSpeed: 10
+  jumpPreGroundingGraceTime: 0
+  jumpPostGroundingGraceTime: 0
+  ignoredColliders: []
+  bonusOrientationMethod: 0
+  bonusOrientationSharpness: 10
+  gravity: {x: 0, y: -30, z: 0}
+  meshRoot: {fileID: 6905493694356878798}
+  cameraFollowPoint: {fileID: 6902796497971015322}
 --- !u!1 &6906452545211666114
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,4 +669,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a6b42353514434cbc28c1bdee70a5d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markViewer: {fileID: 0}

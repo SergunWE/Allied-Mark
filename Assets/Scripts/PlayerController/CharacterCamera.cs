@@ -3,29 +3,30 @@ using UnityEngine;
 
 public class CharacterCamera : MonoBehaviour
 {
-    [Header("Framing")] public Camera Camera;
-    public Vector2 FollowPointFraming = new Vector2(0f, 0f);
-    public float FollowingSharpness = 10000f;
+    [Header("Framing")] [SerializeField] private Camera cameraComponent;
+    [SerializeField] private Vector2 followPointFraming = new(0f, 0f);
+    [SerializeField] private float followingSharpness = 10000f;
+    [Header("Distance")] [SerializeField] private float defaultDistance = 6f;
+    [SerializeField] private float minDistance = 0f;
+    [SerializeField] private float maxDistance = 10f;
+    [SerializeField] private float distanceMovementSpeed = 5f;
+    [SerializeField] private float distanceMovementSharpness = 10f;
+    [Header("Rotation")] [SerializeField] private bool invertX = false;
+    [SerializeField] private bool invertY = false;
+    [Range(-90f, 90f)] [SerializeField] private float defaultVerticalAngle = 20f;
+    [Range(-90f, 90f)] [SerializeField] private float minVerticalAngle = -90f;
+    [Range(-90f, 90f)] [SerializeField] private float maxVerticalAngle = 90f;
+    [SerializeField] private float rotationSpeed = 1f;
+    [SerializeField] private float rotationSharpness = 10000f;
+    [SerializeField] private bool rotateWithPhysicsMover = false;
 
-    [Header("Distance")] public float DefaultDistance = 6f;
-    public float MinDistance = 0f;
-    public float MaxDistance = 10f;
-    public float DistanceMovementSpeed = 5f;
-    public float DistanceMovementSharpness = 10f;
+    [Header("Obstruction")] [SerializeField]
+    private float obstructionCheckRadius = 0.2f;
 
-    [Header("Rotation")] public bool InvertX = false;
-    public bool InvertY = false;
-    [Range(-90f, 90f)] public float DefaultVerticalAngle = 20f;
-    [Range(-90f, 90f)] public float MinVerticalAngle = -90f;
-    [Range(-90f, 90f)] public float MaxVerticalAngle = 90f;
-    public float RotationSpeed = 1f;
-    public float RotationSharpness = 10000f;
-    public bool RotateWithPhysicsMover = false;
+    [SerializeField] private LayerMask obstructionLayers = -1;
+    [SerializeField] private float obstructionSharpness = 10000f;
 
-    [Header("Obstruction")] public float ObstructionCheckRadius = 0.2f;
-    public LayerMask ObstructionLayers = -1;
-    public float ObstructionSharpness = 10000f;
-    public List<Collider> IgnoredColliders = new List<Collider>();
+    public List<Collider> ignoredColliders = new();
 
     public Transform Transform { get; private set; }
     public Transform FollowTransform { get; private set; }
@@ -44,17 +45,17 @@ public class CharacterCamera : MonoBehaviour
 
     private const int MaxObstructions = 32;
 
-    void OnValidate()
+    private void OnValidate()
     {
-        DefaultDistance = Mathf.Clamp(DefaultDistance, MinDistance, MaxDistance);
-        DefaultVerticalAngle = Mathf.Clamp(DefaultVerticalAngle, MinVerticalAngle, MaxVerticalAngle);
+        defaultDistance = Mathf.Clamp(defaultDistance, minDistance, maxDistance);
+        defaultVerticalAngle = Mathf.Clamp(defaultVerticalAngle, minVerticalAngle, maxVerticalAngle);
     }
 
-    void Awake()
+    private void Awake()
     {
         Transform = this.transform;
 
-        _currentDistance = DefaultDistance;
+        _currentDistance = defaultDistance;
         TargetDistance = _currentDistance;
 
         _targetVerticalAngle = 0f;
@@ -72,105 +73,102 @@ public class CharacterCamera : MonoBehaviour
 
     public void UpdateWithInput(float deltaTime, float zoomInput, Vector3 rotationInput)
     {
-        if (FollowTransform)
+        if (!FollowTransform) return;
+        if (invertX)
         {
-            if (InvertX)
-            {
-                rotationInput.x *= -1f;
-            }
-
-            if (InvertY)
-            {
-                rotationInput.y *= -1f;
-            }
-
-            // Process rotation input
-            Quaternion rotationFromInput = Quaternion.Euler(FollowTransform.up * (rotationInput.x * RotationSpeed));
-            PlanarDirection = rotationFromInput * PlanarDirection;
-            PlanarDirection = Vector3.Cross(FollowTransform.up, Vector3.Cross(PlanarDirection, FollowTransform.up));
-            Quaternion planarRot = Quaternion.LookRotation(PlanarDirection, FollowTransform.up);
-
-            _targetVerticalAngle -= (rotationInput.y * RotationSpeed);
-            _targetVerticalAngle = Mathf.Clamp(_targetVerticalAngle, MinVerticalAngle, MaxVerticalAngle);
-            Quaternion verticalRot = Quaternion.Euler(_targetVerticalAngle, 0, 0);
-            Quaternion targetRotation = Quaternion.Slerp(Transform.rotation, planarRot * verticalRot,
-                1f - Mathf.Exp(-RotationSharpness * deltaTime));
-
-            // Apply rotation
-            Transform.rotation = targetRotation;
-
-            // Process distance input
-            if (_distanceIsObstructed && Mathf.Abs(zoomInput) > 0f)
-            {
-                TargetDistance = _currentDistance;
-            }
-
-            TargetDistance += zoomInput * DistanceMovementSpeed;
-            TargetDistance = Mathf.Clamp(TargetDistance, MinDistance, MaxDistance);
-
-            // Find the smoothed follow position
-            _currentFollowPosition = Vector3.Lerp(_currentFollowPosition, FollowTransform.position,
-                1f - Mathf.Exp(-FollowingSharpness * deltaTime));
-
-            // Handle obstructions
-            {
-                RaycastHit closestHit = new RaycastHit();
-                closestHit.distance = Mathf.Infinity;
-                _obstructionCount = Physics.SphereCastNonAlloc(_currentFollowPosition, ObstructionCheckRadius,
-                    -Transform.forward, _obstructions, TargetDistance, ObstructionLayers,
-                    QueryTriggerInteraction.Ignore);
-                for (int i = 0; i < _obstructionCount; i++)
-                {
-                    bool isIgnored = false;
-                    for (int j = 0; j < IgnoredColliders.Count; j++)
-                    {
-                        if (IgnoredColliders[j] == _obstructions[i].collider)
-                        {
-                            isIgnored = true;
-                            break;
-                        }
-                    }
-
-                    for (int j = 0; j < IgnoredColliders.Count; j++)
-                    {
-                        if (IgnoredColliders[j] == _obstructions[i].collider)
-                        {
-                            isIgnored = true;
-                            break;
-                        }
-                    }
-
-                    if (!isIgnored && _obstructions[i].distance < closestHit.distance && _obstructions[i].distance > 0)
-                    {
-                        closestHit = _obstructions[i];
-                    }
-                }
-
-                // If obstructions detecter
-                if (closestHit.distance < Mathf.Infinity)
-                {
-                    _distanceIsObstructed = true;
-                    _currentDistance = Mathf.Lerp(_currentDistance, closestHit.distance,
-                        1 - Mathf.Exp(-ObstructionSharpness * deltaTime));
-                }
-                // If no obstruction
-                else
-                {
-                    _distanceIsObstructed = false;
-                    _currentDistance = Mathf.Lerp(_currentDistance, TargetDistance,
-                        1 - Mathf.Exp(-DistanceMovementSharpness * deltaTime));
-                }
-            }
-
-            // Find the smoothed camera orbit position
-            Vector3 targetPosition = _currentFollowPosition - ((targetRotation * Vector3.forward) * _currentDistance);
-
-            // Handle framing
-            targetPosition += Transform.right * FollowPointFraming.x;
-            targetPosition += Transform.up * FollowPointFraming.y;
-
-            // Apply position
-            Transform.position = targetPosition;
+            rotationInput.x *= -1f;
         }
+
+        if (invertY)
+        {
+            rotationInput.y *= -1f;
+        }
+
+        // Process rotation input
+        var followTransformUp = FollowTransform.up;
+        var rotationFromInput = Quaternion.Euler(followTransformUp * (rotationInput.x * rotationSpeed));
+        PlanarDirection = rotationFromInput * PlanarDirection;
+        PlanarDirection = Vector3.Cross(followTransformUp, Vector3.Cross(PlanarDirection, followTransformUp));
+        var planarRot = Quaternion.LookRotation(PlanarDirection, followTransformUp);
+
+        _targetVerticalAngle -= (rotationInput.y * rotationSpeed);
+        _targetVerticalAngle = Mathf.Clamp(_targetVerticalAngle, minVerticalAngle, maxVerticalAngle);
+        var verticalRot = Quaternion.Euler(_targetVerticalAngle, 0, 0);
+        var targetRotation = Quaternion.Slerp(Transform.rotation, planarRot * verticalRot,
+            1f - Mathf.Exp(-rotationSharpness * deltaTime));
+
+        // Apply rotation
+        Transform.rotation = targetRotation;
+
+        // Process distance input
+        if (_distanceIsObstructed && Mathf.Abs(zoomInput) > 0f)
+        {
+            TargetDistance = _currentDistance;
+        }
+
+        TargetDistance += zoomInput * distanceMovementSpeed;
+        TargetDistance = Mathf.Clamp(TargetDistance, minDistance, maxDistance);
+
+        // Find the smoothed follow position
+        _currentFollowPosition = Vector3.Lerp(_currentFollowPosition, FollowTransform.position,
+            1f - Mathf.Exp(-followingSharpness * deltaTime));
+
+        // Handle obstructions
+        {
+            var closestHit = new RaycastHit
+            {
+                distance = Mathf.Infinity
+            };
+            _obstructionCount = Physics.SphereCastNonAlloc(_currentFollowPosition, obstructionCheckRadius,
+                -Transform.forward, _obstructions, TargetDistance, obstructionLayers,
+                QueryTriggerInteraction.Ignore);
+            for (int i = 0; i < _obstructionCount; i++)
+            {
+                bool isIgnored = false;
+                for (int j = 0; j < ignoredColliders.Count; j++)
+                {
+                    if (ignoredColliders[j] != _obstructions[i].collider) continue;
+                    isIgnored = true;
+                    break;
+                }
+
+                for (int j = 0; j < ignoredColliders.Count; j++)
+                {
+                    if (ignoredColliders[j] != _obstructions[i].collider) continue;
+                    isIgnored = true;
+                    break;
+                }
+
+                if (!isIgnored && _obstructions[i].distance < closestHit.distance && _obstructions[i].distance > 0)
+                {
+                    closestHit = _obstructions[i];
+                }
+            }
+
+            // If obstructions detecter
+            if (closestHit.distance < Mathf.Infinity)
+            {
+                _distanceIsObstructed = true;
+                _currentDistance = Mathf.Lerp(_currentDistance, closestHit.distance,
+                    1 - Mathf.Exp(-obstructionSharpness * deltaTime));
+            }
+            // If no obstruction
+            else
+            {
+                _distanceIsObstructed = false;
+                _currentDistance = Mathf.Lerp(_currentDistance, TargetDistance,
+                    1 - Mathf.Exp(-distanceMovementSharpness * deltaTime));
+            }
+        }
+
+        // Find the smoothed camera orbit position
+        var targetPosition = _currentFollowPosition - ((targetRotation * Vector3.forward) * _currentDistance);
+
+        // Handle framing
+        targetPosition += Transform.right * followPointFraming.x;
+        targetPosition += Transform.up * followPointFraming.y;
+
+        // Apply position
+        Transform.position = targetPosition;
     }
 }
