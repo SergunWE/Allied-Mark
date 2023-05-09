@@ -1,75 +1,79 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1545614254982629074
+--- !u!1001 &1107717302561417077
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 4300602792125836002}
     m_Modifications:
-    - target: {fileID: 199910, guid: 8be86b86610077a47be3a9a99fc8f89e, type: 3}
-      propertyPath: m_Name
-      value: SM_Wep_RifleSwat_01
-      objectReference: {fileID: 0}
-    - target: {fileID: 199910, guid: 8be86b86610077a47be3a9a99fc8f89e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 410062, guid: 8be86b86610077a47be3a9a99fc8f89e, type: 3}
+    - target: {fileID: 210364242573698119, guid: 4cb9bd177df2b144ea4fa4d34b609201,
+        type: 3}
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 410062, guid: 8be86b86610077a47be3a9a99fc8f89e, type: 3}
+    - target: {fileID: 210364242573698119, guid: 4cb9bd177df2b144ea4fa4d34b609201,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.064
       objectReference: {fileID: 0}
-    - target: {fileID: 410062, guid: 8be86b86610077a47be3a9a99fc8f89e, type: 3}
+    - target: {fileID: 210364242573698119, guid: 4cb9bd177df2b144ea4fa4d34b609201,
+        type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.031
       objectReference: {fileID: 0}
-    - target: {fileID: 410062, guid: 8be86b86610077a47be3a9a99fc8f89e, type: 3}
+    - target: {fileID: 210364242573698119, guid: 4cb9bd177df2b144ea4fa4d34b609201,
+        type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.015
       objectReference: {fileID: 0}
-    - target: {fileID: 410062, guid: 8be86b86610077a47be3a9a99fc8f89e, type: 3}
+    - target: {fileID: 210364242573698119, guid: 4cb9bd177df2b144ea4fa4d34b609201,
+        type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.56385505
       objectReference: {fileID: 0}
-    - target: {fileID: 410062, guid: 8be86b86610077a47be3a9a99fc8f89e, type: 3}
+    - target: {fileID: 210364242573698119, guid: 4cb9bd177df2b144ea4fa4d34b609201,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0.47945502
       objectReference: {fileID: 0}
-    - target: {fileID: 410062, guid: 8be86b86610077a47be3a9a99fc8f89e, type: 3}
+    - target: {fileID: 210364242573698119, guid: 4cb9bd177df2b144ea4fa4d34b609201,
+        type: 3}
       propertyPath: m_LocalRotation.y
       value: 0.49624774
       objectReference: {fileID: 0}
-    - target: {fileID: 410062, guid: 8be86b86610077a47be3a9a99fc8f89e, type: 3}
+    - target: {fileID: 210364242573698119, guid: 4cb9bd177df2b144ea4fa4d34b609201,
+        type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.4537936
       objectReference: {fileID: 0}
-    - target: {fileID: 410062, guid: 8be86b86610077a47be3a9a99fc8f89e, type: 3}
+    - target: {fileID: 210364242573698119, guid: 4cb9bd177df2b144ea4fa4d34b609201,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -5.181
       objectReference: {fileID: 0}
-    - target: {fileID: 410062, guid: 8be86b86610077a47be3a9a99fc8f89e, type: 3}
+    - target: {fileID: 210364242573698119, guid: 4cb9bd177df2b144ea4fa4d34b609201,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 87.253
       objectReference: {fileID: 0}
-    - target: {fileID: 410062, guid: 8be86b86610077a47be3a9a99fc8f89e, type: 3}
+    - target: {fileID: 210364242573698119, guid: 4cb9bd177df2b144ea4fa4d34b609201,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -82.593
       objectReference: {fileID: 0}
-    - target: {fileID: 410062, guid: 8be86b86610077a47be3a9a99fc8f89e, type: 3}
+    - target: {fileID: 210364242573698119, guid: 4cb9bd177df2b144ea4fa4d34b609201,
+        type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 64086659526348082, guid: 8be86b86610077a47be3a9a99fc8f89e,
+    - target: {fileID: 6675718462102588866, guid: 4cb9bd177df2b144ea4fa4d34b609201,
         type: 3}
-      propertyPath: m_Enabled
-      value: 0
+      propertyPath: m_Name
+      value: AssaultRifle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8be86b86610077a47be3a9a99fc8f89e, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 4cb9bd177df2b144ea4fa4d34b609201, type: 3}
 --- !u!1001 &6564990027261852840
 PrefabInstance:
   m_ObjectHideFlags: 0
