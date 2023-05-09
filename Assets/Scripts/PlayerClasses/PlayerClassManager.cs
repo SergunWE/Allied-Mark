@@ -12,7 +12,7 @@ public class PlayerClassManager : NetworkComponentManager<PlayerClassNetwork>
     {
         base.Start();
         string networkClassName = networkComponent.GetPlayerClassName();
-        _playerClass = playerClassHandler.Get.Find(x => x.ClassName == networkClassName);
+        _playerClass = playerClassHandler.DataDictionary[networkClassName];
         markManager.SetPlayerMark(GetMarkInfo());
     }
 
