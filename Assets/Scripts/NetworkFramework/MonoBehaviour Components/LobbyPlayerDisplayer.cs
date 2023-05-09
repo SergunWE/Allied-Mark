@@ -29,7 +29,7 @@ namespace NetworkFramework.MonoBehaviour_Components
                 playerViews[i].SetData(playerName, playerReady);
             }
 
-            for (int i = currentPlayers.Count; i < 4; i++)
+            for (int i = currentPlayers.Count; i < GlobalConstants.MaxPlayersLobby; i++)
             {
                 playerViews[i].HidePlayer();
             }

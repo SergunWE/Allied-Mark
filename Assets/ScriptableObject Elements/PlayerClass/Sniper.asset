@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Sniper
   m_EditorClassIdentifier: 
   className: Sniper
+  displayedName: "\u0421\u043D\u0430\u0439\u043F\u0435\u0440"
   weapons:
   - {fileID: 11400000, guid: e7f285cbebea6094e8ff75147f4a1c1a, type: 2}
   - {fileID: 11400000, guid: cffe1b93bbd1029429849782a1e51a55, type: 2}

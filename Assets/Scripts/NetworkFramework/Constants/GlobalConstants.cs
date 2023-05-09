@@ -16,6 +16,6 @@ namespace NetworkFramework
         /// <value>
         /// Maximum number of players in the created lobby
         /// </value>
-        public const int MaxPlayersLobby = 4;
+        public const int MaxPlayersLobby = 2;
     }
 }

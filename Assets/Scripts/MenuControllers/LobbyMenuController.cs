@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using NetworkFramework.Data;
 using NetworkFramework.SO;
 using TMPro;
@@ -28,7 +27,7 @@ public class LobbyMenuController : MonoBehaviour
 
     public void OnLobbyRefreshed()
     {
-        readyButtonText.text = internalPlayerData.PlayerReady ? "Not ready" : "Ready";
+        readyButtonText.text = internalPlayerData.PlayerReady ? "Не готов" : "Готов";
     }
 
     public void OnGameStarted()

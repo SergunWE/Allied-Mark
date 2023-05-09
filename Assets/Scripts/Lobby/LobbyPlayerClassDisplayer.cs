@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class LobbyPlayerClassDisplayer : DisplayerBase
 {
+    [SerializeField] private PlayerClassHandler playerClassHandler;
     [SerializeField] private PlayerClassDisplayer[] views;
     
     protected override void SetViews()
@@ -14,7 +15,7 @@ public class LobbyPlayerClassDisplayer : DisplayerBase
         {
             string playerId = currentPlayers[i].Id;
             string playerClass = LobbyData.GetPlayerData(CustomDataKeys.PlayerClass.Key, playerId);
-            views[i].SetData(playerClass);
+            views[i].SetData(playerClassHandler.DataDictionary[playerClass].DisplayName);
         }
     }
 }
