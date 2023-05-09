@@ -15,7 +15,7 @@ public class LobbyPlayerClassDisplayer : DisplayerBase
         {
             string playerId = currentPlayers[i].Id;
             string playerClass = LobbyData.GetPlayerData(CustomDataKeys.PlayerClass.Key, playerId);
-            views[i].SetData(playerClassHandler.DataDictionary[playerClass].DisplayName);
+            views[i].SetData(playerClass);
         }
     }
 }
