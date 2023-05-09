@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
+    [SerializeField] private GameObject loadScreen;
     [SerializeField] private TMP_Text state;
     [SerializeField] private TMP_InputField lobbyName;
     [SerializeField] private TMP_InputField lobbyMaxPlayer;
@@ -17,6 +18,8 @@ public class MainMenuController : MonoBehaviour
 
     private void Awake()
     {
+        loadScreen.SetActive(false);
+        state.text = "";
         OnLobbyOptionsChanged();
         OnPlayerOptionsChanged();
     }
@@ -35,23 +38,22 @@ public class MainMenuController : MonoBehaviour
 
     public void OnLobbyCreated(bool successful)
     {
-        state.text = successful ? "Lobby created" : "Lobby creation error";
+        state.text = successful ? "" : "Lobby creation error";
 
         GoLobbyScene(successful);
     }
 
     public void OnLobbyJoined(bool successful)
     {
-        state.text = successful ? "Joined to the lobby" : "Error joining the lobby";
+        state.text = successful ? "" : "Error joining the lobby";
 
         GoLobbyScene(successful);
     }
 
-    private void GoLobbyScene(bool state)
+    private void GoLobbyScene(bool joinedState)
     {
-        if (state)
-        {
-            SceneManager.LoadSceneAsync(2);
-        }
+        if (!joinedState) return;
+        loadScreen.SetActive(true);
+        SceneManager.LoadSceneAsync(2);
     }
 }
