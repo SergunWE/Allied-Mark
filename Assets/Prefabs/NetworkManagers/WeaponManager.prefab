@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1973437795976079602}
   - component: {fileID: 1973437795976079605}
   - component: {fileID: 1973437795976079603}
+  - component: {fileID: 7496412868354711671}
   m_Layer: 0
   m_Name: WeaponManager
   m_TagString: Untagged
@@ -45,7 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a81b5eb4c0d6420098aef1b01f86cbcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeapon: {fileID: 0}
+  networkComponent: {fileID: 0}
+  weaponFirstViewer: {fileID: 7496412868354711671}
 --- !u!114 &1973437795976079603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,8 +118,28 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c11ce364-b120-4877-93d7-b0b3fc9a98db
     m_ActionName: Weapon/AncillaryWeapon[/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 98ba7f16-177b-49f0-92e4-4cf9b74251dc
+    m_ActionName: Mark/Set mark[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Weapon
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &7496412868354711671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973437795976079604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff3ee22663a48a4a7d41369aaab219a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  networkComponent: {fileID: 0}
+  playerClassHandler: {fileID: 6199815811834458946, guid: 8039c15a9e5ab2a41bf6a2354e24a157,
+    type: 3}
+  weaponRoot: {fileID: 0}

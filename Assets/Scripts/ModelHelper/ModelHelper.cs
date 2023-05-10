@@ -21,6 +21,21 @@ public static class ModelHelper
             comp.shadowCastingMode = ShadowCastingMode.ShadowsOnly;
         }
     }
+    
+    public static void SetFirstModelSettings(GameObject obj)
+    {
+        var smrComps =  FindComponents<SkinnedMeshRenderer>(obj);
+        foreach (var comp in smrComps)
+        {
+            comp.shadowCastingMode = ShadowCastingMode.ShadowsOnly;
+        }
+       
+        var mrComps =  FindComponents<MeshRenderer>(obj);
+        foreach (var comp in mrComps)
+        {
+            comp.shadowCastingMode = ShadowCastingMode.Off;
+        }
+    }
 
     public static List<T> FindComponents<T>(GameObject gameObject)
     {

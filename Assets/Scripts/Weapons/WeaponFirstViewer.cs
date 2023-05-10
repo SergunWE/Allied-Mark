@@ -1,16 +1,14 @@
 using System.Collections.Generic;
-using Unity.Collections;
+using NetworkFramework.Netcode_Components;
 using UnityEngine;
 
-public class WeaponViewer : MonoBehaviour
+public class WeaponFirstViewer : NetworkComponentManager<PlayerClassNetwork>
 {
-    [SerializeField] private WeaponNetwork weaponNetwork;
-    [SerializeField] private PlayerClassNetwork playerClassNetwork;
     [SerializeField] private PlayerClassHandler playerClassHandler;
     [SerializeField] private Transform weaponRoot;
     
     private readonly List<GameObject> _weaponModelsRoot = new();
-
+    
     private int _localIndex = -1;
     private GameObject _prevCurrentWeaponModel;
 
@@ -24,19 +22,14 @@ public class WeaponViewer : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    protected override void Start()
     {
-        weaponNetwork.ValueChanged += SetCurrentWeapon;
-        playerClassNetwork.ValueChanged += SetWeaponModel;
+        base.Start();
+        SetWeaponModel(networkComponent.GetPlayerClassName());
+        SetCurrentWeapon(0);
     }
-
-    private void OnDisable()
-    {
-        weaponNetwork.ValueChanged -= SetCurrentWeapon;
-        playerClassNetwork.ValueChanged -= SetWeaponModel;
-    }
-
-    private void SetCurrentWeapon(int index)
+    
+    public void SetCurrentWeapon(int index)
     {
         if (_localIndex == index) return;
         _localIndex = index;
@@ -50,9 +43,9 @@ public class WeaponViewer : MonoBehaviour
         _prevCurrentWeaponModel = currentModel;
     }
 
-    private void SetWeaponModel(FixedString128Bytes playerClassName)
+    private void SetWeaponModel(string playerClassName)
     {
-        var weaponInfos = playerClassHandler.DataDictionary[playerClassName.Value].weapons;
+        var weaponInfos = playerClassHandler.DataDictionary[playerClassName].weapons;
         for (int i = 0; i < weaponInfos.Count; i++)
         {
             foreach (Transform children in _weaponModelsRoot[i].transform)
@@ -62,7 +55,7 @@ public class WeaponViewer : MonoBehaviour
 
             var obj = Instantiate(weaponInfos[i].model, _weaponModelsRoot[i].transform);
             
-            ModelHelper.SetOwnerModelSettings(playerClassNetwork, obj);
+            ModelHelper.SetFirstModelSettings(obj);
         }
     }
 }
