@@ -231,9 +231,7 @@ MonoBehaviour:
   playerClassNetwork: {fileID: 7775438788579505633}
   playerClassHandler: {fileID: 6199815811834458946, guid: 8039c15a9e5ab2a41bf6a2354e24a157,
     type: 3}
-  weaponModelsRoot:
-  - {fileID: 4411080254398332065}
-  - {fileID: 6724047415128554814}
+  weaponRoot: {fileID: 6021436685399586573}
 --- !u!1 &6724047415128554814
 GameObject:
   m_ObjectHideFlags: 0

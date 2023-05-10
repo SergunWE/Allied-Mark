@@ -43,6 +43,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Wep_PistolSwat_01
       objectReference: {fileID: 0}
+    - target: {fileID: 184040, guid: 5e41505804200314f8239458ca194166, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 474350, guid: 5e41505804200314f8239458ca194166, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -86,6 +90,10 @@ PrefabInstance:
     - target: {fileID: 474350, guid: 5e41505804200314f8239458ca194166, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2301690, guid: 5e41505804200314f8239458ca194166, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 64383048504177454, guid: 5e41505804200314f8239458ca194166,
         type: 3}

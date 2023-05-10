@@ -24,23 +24,7 @@ public class PlayerClassViewer : MonoBehaviour
         var playerModel = playerClassHandler.DataDictionary[playerClassName.Value].playerModel;
         if (_playerModel != null) Destroy(_playerModel);
         _playerModel = Instantiate(playerModel, rootPlayerModel);
-
-        if (playerClassNetwork.IsOwner)
-        {
-            SetOwnerModelSettings();
-        }
-    }
-
-    private void SetOwnerModelSettings()
-    {
-        if (!_playerModel.TryGetComponent<SkinnedMeshRenderer>(out var comp))
-        {
-            comp = _playerModel.GetComponentInChildren<SkinnedMeshRenderer>();
-        }
-
-        if (comp != null)
-        {
-            comp.shadowCastingMode = ShadowCastingMode.ShadowsOnly;
-        }
+        
+        OwnerView.SetOwnerModelSettings(playerClassNetwork, _playerModel);
     }
 }

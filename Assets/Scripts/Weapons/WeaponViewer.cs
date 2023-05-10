@@ -7,16 +7,21 @@ public class WeaponViewer : MonoBehaviour
     [SerializeField] private WeaponNetwork weaponNetwork;
     [SerializeField] private PlayerClassNetwork playerClassNetwork;
     [SerializeField] private PlayerClassHandler playerClassHandler;
-    [SerializeField] private List<GameObject> weaponModelsRoot;
+    [SerializeField] private Transform weaponRoot;
+    
+    
+    private readonly List<GameObject> _weaponModelsRoot = new();
 
     private int _localIndex = -1;
     private GameObject _prevCurrentWeaponModel;
 
     private void Awake()
     {
-        foreach (var model in weaponModelsRoot)
+        foreach (Transform model in weaponRoot)
         {
-            model.SetActive(false);
+            var obj = model.gameObject;
+            _weaponModelsRoot.Add(obj);
+            obj.SetActive(false);
         }
     }
 
@@ -41,7 +46,7 @@ public class WeaponViewer : MonoBehaviour
             _prevCurrentWeaponModel.SetActive(false);
         }
 
-        var currentModel = weaponModelsRoot[index];
+        var currentModel = _weaponModelsRoot[index];
         currentModel.SetActive(true);
         _prevCurrentWeaponModel = currentModel;
     }
@@ -51,12 +56,14 @@ public class WeaponViewer : MonoBehaviour
         var weaponInfos = playerClassHandler.DataDictionary[playerClassName.Value].weapons;
         for (int i = 0; i < weaponInfos.Count; i++)
         {
-            foreach (Transform children in weaponModelsRoot[i].transform)
+            foreach (Transform children in _weaponModelsRoot[i].transform)
             {
                 Destroy(children.gameObject);
             }
 
-            Instantiate(weaponInfos[i].model, weaponModelsRoot[i].transform);
+            var obj = Instantiate(weaponInfos[i].model, _weaponModelsRoot[i].transform);
+            
+            OwnerView.SetOwnerModelSettings(playerClassNetwork, obj);
         }
     }
 }
