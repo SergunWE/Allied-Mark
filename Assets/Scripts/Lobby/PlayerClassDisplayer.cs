@@ -1,11 +1,10 @@
 using TMPro;
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerClassDisplayer : MonoBehaviour
 {
     [SerializeField] private PlayerClassHandler playerClassHandler;
-    [SerializeField] private AnimatorController lobbyAnimatorController;
+    [SerializeField] private RuntimeAnimatorController lobbyAnimatorController;
     [SerializeField] private TMP_Text classText;
     [SerializeField] private Transform modelRoot;
 
