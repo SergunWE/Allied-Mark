@@ -1718,7 +1718,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2515312457829016983}
   - component: {fileID: 4955365217803149548}
-  - component: {fileID: 905672334747712845}
   m_Layer: 0
   m_Name: Character_Male_Overall_01
   m_TagString: Untagged
@@ -1763,20 +1762,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &905672334747712845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7954726363065783827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad8deae8091111f4eb30a56c1f4e0d3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TransitionStateInfoList: []
-  m_Animator: {fileID: 4955365217803149548}
 --- !u!1 &8139060362927301887
 GameObject:
   m_ObjectHideFlags: 0

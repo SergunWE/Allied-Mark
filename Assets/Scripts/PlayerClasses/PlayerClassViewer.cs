@@ -1,17 +1,11 @@
-using System.Linq;
 using Unity.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class PlayerClassViewer : MonoBehaviour
 {
     [SerializeField] private PlayerClassNetwork playerClassNetwork;
     [SerializeField] private PlayerClassHandler playerClassHandler;
-    [SerializeField] private Transform rootPlayerModel;
-
-    [SerializeField] private PlayerModelAnimationController animationController;
-    
-    private GameObject _playerModel;
+    [SerializeField] private SkinnedMeshRenderer rendererModel;
 
     private void OnEnable()
     {
@@ -25,12 +19,9 @@ public class PlayerClassViewer : MonoBehaviour
 
     private void SetPlayerModel(FixedString128Bytes playerClassName)
     {
-        var playerModel = playerClassHandler.DataDictionary[playerClassName.Value].playerModel;
-        if (_playerModel != null) Destroy(_playerModel);
-        _playerModel = Instantiate(playerModel, rootPlayerModel);
-        
-        ModelHelper.SetOwnerModelSettings(playerClassNetwork, _playerModel);
-
-        animationController.SetAnimator(ModelHelper.FindComponents<Animator>(_playerModel).First());
+        var playerModel = playerClassHandler.DataDictionary[playerClassName.Value].playerModel.
+            GetComponentInChildren<SkinnedMeshRenderer>();
+        rendererModel.sharedMesh = playerModel.sharedMesh;
+        ModelHelper.SetOwnerModelSettings(playerClassNetwork, rendererModel.gameObject);
     }
 }

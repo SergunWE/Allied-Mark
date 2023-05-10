@@ -18,7 +18,6 @@ public class CharacterCamera : MonoBehaviour
     [Range(-90f, 90f)] [SerializeField] private float maxVerticalAngle = 90f;
     [SerializeField] private float rotationSpeed = 1f;
     [SerializeField] private float rotationSharpness = 10000f;
-    [SerializeField] private bool rotateWithPhysicsMover = false;
 
     [Header("Obstruction")] [SerializeField]
     private float obstructionCheckRadius = 0.2f;
