@@ -140,6 +140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4042751087434151330}
   - component: {fileID: 3013894187784494753}
+  - component: {fileID: 4720144543857577226}
   m_Layer: 0
   m_Name: Character_Male_SWAT_01
   m_TagString: Untagged
@@ -184,6 +185,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &4720144543857577226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309802031026779734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad8deae8091111f4eb30a56c1f4e0d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TransitionStateInfoList: []
+  m_Animator: {fileID: 3013894187784494753}
 --- !u!1 &1321346686003579802
 GameObject:
   m_ObjectHideFlags: 0

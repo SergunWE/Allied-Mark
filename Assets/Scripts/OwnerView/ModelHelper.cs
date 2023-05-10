@@ -3,7 +3,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public static class OwnerView
+public static class ModelHelper
 {
     public static void SetOwnerModelSettings(NetworkBehaviour network, GameObject obj)
     {
@@ -22,7 +22,7 @@ public static class OwnerView
         }
     }
 
-    private static List<T> FindComponents<T>(GameObject gameObject)
+    public static List<T> FindComponents<T>(GameObject gameObject)
     {
         var comps = new List<T>();
         comps.AddRange(gameObject.GetComponents<T>());

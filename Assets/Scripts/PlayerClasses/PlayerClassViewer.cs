@@ -1,3 +1,4 @@
+using System.Linq;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -7,6 +8,9 @@ public class PlayerClassViewer : MonoBehaviour
     [SerializeField] private PlayerClassNetwork playerClassNetwork;
     [SerializeField] private PlayerClassHandler playerClassHandler;
     [SerializeField] private Transform rootPlayerModel;
+
+    [SerializeField] private PlayerModelAnimationController animationController;
+    
     private GameObject _playerModel;
 
     private void OnEnable()
@@ -25,6 +29,8 @@ public class PlayerClassViewer : MonoBehaviour
         if (_playerModel != null) Destroy(_playerModel);
         _playerModel = Instantiate(playerModel, rootPlayerModel);
         
-        OwnerView.SetOwnerModelSettings(playerClassNetwork, _playerModel);
+        ModelHelper.SetOwnerModelSettings(playerClassNetwork, _playerModel);
+
+        animationController.SetAnimator(ModelHelper.FindComponents<Animator>(_playerModel).First());
     }
 }

@@ -63,7 +63,7 @@ public class WeaponViewer : MonoBehaviour
 
             var obj = Instantiate(weaponInfos[i].model, _weaponModelsRoot[i].transform);
             
-            OwnerView.SetOwnerModelSettings(playerClassNetwork, obj);
+            ModelHelper.SetOwnerModelSettings(playerClassNetwork, obj);
         }
     }
 }
