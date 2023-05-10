@@ -23,7 +23,7 @@ namespace NetworkFramework.SO
             {
                 if (string.IsNullOrEmpty(_playerName))
                 {
-                    _playerName = $"Player{Random.Range(0, 10000)}";
+                    _playerName = $"Игрок{Random.Range(0, 10000)}";
                 }
 
                 return _playerName;
@@ -68,7 +68,7 @@ namespace NetworkFramework.SO
 
         private void Awake()
         {
-            _playerName = "";
+            //_playerName = "";
             _playerReady = false;
         }
 

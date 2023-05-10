@@ -9,7 +9,6 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private GameObject loadScreen;
     [SerializeField] private TMP_Text state;
     [SerializeField] private TMP_InputField lobbyName;
-    [SerializeField] private TMP_InputField lobbyMaxPlayer;
     [SerializeField] private Toggle lobbyPrivacy;
     [SerializeField] private TMP_InputField playerName;
 
@@ -27,7 +26,6 @@ public class MainMenuController : MonoBehaviour
     public void OnLobbyOptionsChanged()
     {
         lobbyName.text = lobbyOptions.LobbyName;
-        lobbyMaxPlayer.text = lobbyOptions.MaxPlayer.ToString();
         lobbyPrivacy.isOn = lobbyOptions.Privacy;
     }
 

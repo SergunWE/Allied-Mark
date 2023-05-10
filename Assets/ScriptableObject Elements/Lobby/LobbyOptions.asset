@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: LobbyOptions
   m_EditorClassIdentifier: 
   changed: {fileID: 11400000, guid: 5e6a98efb0fd0dd4db5fe5a9e6bef384, type: 2}
-  lobbyName: Lobby name
+  lobbyName: "\u041A\u043E\u043C\u043D\u0430\u0442\u0430228"
   privacy: 1
   maxPlayer: 2

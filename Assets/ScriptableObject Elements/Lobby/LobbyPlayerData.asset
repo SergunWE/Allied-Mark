@@ -19,6 +19,6 @@ MonoBehaviour:
       startValue: Stormtrooper
       visibility: 2
   playerHostChanged: {fileID: 11400000, guid: 72c4c325c1b4fb4459d463762dc4d2b9, type: 2}
-  _playerName: 
+  _playerName: Player9958
   _playerReady: 0
   _playerHost: 0

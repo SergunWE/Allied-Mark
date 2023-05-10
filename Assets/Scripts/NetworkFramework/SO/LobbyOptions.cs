@@ -42,9 +42,18 @@ namespace NetworkFramework.SO
 
         public string LobbyName
         {
-            get => lobbyName;
+            get
+            {
+                if (string.IsNullOrEmpty(lobbyName))
+                {
+                    lobbyName = $"Комната{Random.Range(0, 10000)}";
+                }
+
+                return lobbyName;
+            }
             set
             {
+                if (string.IsNullOrEmpty(value) || value == lobbyName) return;
                 lobbyName = value;
                 CheckOptions();
             } 

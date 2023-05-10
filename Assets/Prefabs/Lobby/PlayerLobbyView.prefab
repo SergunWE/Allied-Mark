@@ -257,6 +257,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerLobbyView
       objectReference: {fileID: 0}
+    - target: {fileID: 4720092684987396174, guid: 68299ecba60f80449bdb7ea8f5b27dbc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720092684987396174, guid: 68299ecba60f80449bdb7ea8f5b27dbc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 4834712382972513180, guid: 68299ecba60f80449bdb7ea8f5b27dbc,
         type: 3}
       propertyPath: m_Enabled
