@@ -25,7 +25,7 @@ public class MarkViewer : MonoBehaviour
     private void SetMark(MarkInfoNetwork markInfoNetwork)
     {
         var markInfo = markHandler.DataDictionary[markInfoNetwork.MarkName.Value];
-        var mark = Instantiate(markModel);
+        var mark = Instantiate(markModel, startPositionMarks);
         var rendererComponent = mark.GetComponent<Renderer>();
         rendererComponent.material = markInfo.markColor;
         _marks.Add((markInfoNetwork,rendererComponent));

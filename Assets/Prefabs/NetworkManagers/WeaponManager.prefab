@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1973437795976079605}
   - component: {fileID: 1973437795976079603}
   - component: {fileID: 7496412868354711671}
+  - component: {fileID: 3985096739176817971}
   m_Layer: 0
   m_Name: WeaponManager
   m_TagString: Untagged
@@ -48,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   networkComponent: {fileID: 0}
   weaponFirstViewer: {fileID: 7496412868354711671}
+  Index: 0
 --- !u!114 &1973437795976079603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,7 +103,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: b25a058a-b25a-4da4-9c75-f02c06467b95
-    m_ActionName: Weapon/Test[/Mouse/leftButton]
+    m_ActionName: Weapon/MainWeapon[/Keyboard/1]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1973437795976079605}
@@ -118,6 +120,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c11ce364-b120-4877-93d7-b0b3fc9a98db
     m_ActionName: Weapon/AncillaryWeapon[/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3985096739176817971}
+        m_TargetAssemblyTypeName: WeaponShotManager, Assembly-CSharp
+        m_MethodName: OnShot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d91f87d6-b0d6-454c-a1db-b6fdd9d1c175
+    m_ActionName: Weapon/Shot[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 98ba7f16-177b-49f0-92e4-4cf9b74251dc
@@ -143,3 +161,19 @@ MonoBehaviour:
   playerClassHandler: {fileID: 6199815811834458946, guid: 8039c15a9e5ab2a41bf6a2354e24a157,
     type: 3}
   weaponRoot: {fileID: 0}
+--- !u!114 &3985096739176817971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973437795976079604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f12f1bfc85604b66a22dae37d55e42ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  networkComponent: {fileID: 0}
+  playerClassHandler: {fileID: 6199815811834458946, guid: 8039c15a9e5ab2a41bf6a2354e24a157,
+    type: 3}
+  weaponManager: {fileID: 1973437795976079605}

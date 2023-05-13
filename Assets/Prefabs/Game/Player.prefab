@@ -1605,7 +1605,7 @@ MonoBehaviour:
   drag: 0.1
   allowJumpingWhenSliding: 0
   jumpUpSpeed: 10
-  jumpScalableForwardSpeed: 10
+  jumpScalableForwardSpeed: 1
   jumpPreGroundingGraceTime: 0
   jumpPostGroundingGraceTime: 0
   ignoredColliders: []

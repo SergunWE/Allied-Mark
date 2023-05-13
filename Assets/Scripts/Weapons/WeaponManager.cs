@@ -5,7 +5,9 @@ using UnityEngine.InputSystem;
 public class WeaponManager : NetworkComponentManager<WeaponNetwork>
 {
     [SerializeField] private WeaponFirstViewer weaponFirstViewer;
-    
+
+    public int Index;
+
     public void OnMainWeaponChanged(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -13,9 +15,10 @@ public class WeaponManager : NetworkComponentManager<WeaponNetwork>
             networkComponent.CheckLocalChange(0);
             networkComponent.SetWeaponIndexServerRpc(0);
             weaponFirstViewer.SetCurrentWeapon(0);
+            Index = 0;
         }
     }
-    
+
     public void OnAncillaryWeaponChanged(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -23,6 +26,7 @@ public class WeaponManager : NetworkComponentManager<WeaponNetwork>
             networkComponent.CheckLocalChange(1);
             networkComponent.SetWeaponIndexServerRpc(1);
             weaponFirstViewer.SetCurrentWeapon(1);
+            Index = 1;
         }
     }
 }

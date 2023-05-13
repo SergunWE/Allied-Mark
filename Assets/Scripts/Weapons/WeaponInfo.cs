@@ -5,9 +5,7 @@ public class WeaponInfo : ScriptableObject
 {
     public string weaponName;
     
-    public bool isAuto;
-    public bool isShotgun;
-    public bool haveSniperScope;
+    public WeaponBehaviorBase weaponBehaviorBase = new SingleShotWeapon();
 
     public int clipSize;
 

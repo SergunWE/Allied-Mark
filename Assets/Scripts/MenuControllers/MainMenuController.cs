@@ -11,9 +11,11 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private TMP_InputField lobbyName;
     [SerializeField] private Toggle lobbyPrivacy;
     [SerializeField] private TMP_InputField playerName;
+    [SerializeField] private TMP_Dropdown levelDropdown;
 
     [SerializeField] private LobbyOptions lobbyOptions;
     [SerializeField] private LobbyInternalPlayerData internalPlayerData;
+    [SerializeField] private LobbyInternalData internalData;
 
     private void Awake()
     {
@@ -27,6 +29,7 @@ public class MainMenuController : MonoBehaviour
     {
         lobbyName.text = lobbyOptions.LobbyName;
         lobbyPrivacy.isOn = lobbyOptions.Privacy;
+        levelDropdown.value = internalData.Level;
     }
 
     public void OnPlayerOptionsChanged()

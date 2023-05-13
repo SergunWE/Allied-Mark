@@ -13,8 +13,5 @@ MonoBehaviour:
   m_Name: AssaultRifle
   m_EditorClassIdentifier: 
   weaponName: Assault Rifle
-  isAuto: 1
-  isShotgun: 0
-  haveSniperScope: 0
   clipSize: 30
   model: {fileID: 6675718462102588866, guid: 4cb9bd177df2b144ea4fa4d34b609201, type: 3}

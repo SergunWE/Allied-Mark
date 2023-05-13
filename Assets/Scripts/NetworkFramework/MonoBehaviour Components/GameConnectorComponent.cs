@@ -34,6 +34,8 @@ namespace NetworkFramework.MonoBehaviour_Components
         /// </summary>
         [SerializeField] private LobbyOptions lobbyOptions;
 
+        [SerializeField] private LobbyInternalData lobbyInternalData;
+
         private LobbyRefresherCore _refreshCore;
         private RelayConnectorCore _relayCore;
         private LobbyDataUpdaterCore _dataUpdaterCore;
@@ -92,7 +94,7 @@ namespace NetworkFramework.MonoBehaviour_Components
             if (_refreshCore.PlayerIsHost)
             {
                 taskResult = _netcodeConnectorCore.StartHost(_relayCore.RelayServerData);
-                if (taskResult.Success) _netcodeConnectorCore.LoadNetworkScene(new SceneInfo(3));
+                if (taskResult.Success) _netcodeConnectorCore.LoadNetworkScene(new SceneInfo( 3 + lobbyInternalData.Level));
             }
             else
             {

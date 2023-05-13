@@ -33,6 +33,8 @@ namespace NetworkFramework.SO
             lobbyLevel = level;
             onDataUpdated.Raise();
         }
+
+        public int Level => lobbyLevel;
     }
 
     [Serializable]

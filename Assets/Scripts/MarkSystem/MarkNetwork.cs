@@ -43,6 +43,12 @@ public class MarkNetwork : NetworkBehaviour
         _objectsThatMarked.Remove(reference);
     }
 
+    [ServerRpc(RequireOwnership = false)]
+    public void DestroyServerRpc()
+    {
+        NetworkObject.Despawn();
+    }
+
     private void OnMarkedObjectChanged(NetworkListEvent<MarkInfoNetwork> value)
     {
         switch (value.Type)
