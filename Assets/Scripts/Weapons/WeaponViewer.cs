@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
@@ -10,8 +11,7 @@ public class WeaponViewer : MonoBehaviour
     [SerializeField] private Transform weaponRoot;
     
     private readonly List<GameObject> _weaponModelsRoot = new();
-
-    private int _localIndex = -1;
+    
     private GameObject _prevCurrentWeaponModel;
 
     private void Awake()
@@ -22,6 +22,11 @@ public class WeaponViewer : MonoBehaviour
             _weaponModelsRoot.Add(obj);
             obj.SetActive(false);
         }
+    }
+
+    private void Start()
+    {
+        SetCurrentWeapon(weaponNetwork.LocalValue);
     }
 
     private void OnEnable()
@@ -38,8 +43,6 @@ public class WeaponViewer : MonoBehaviour
 
     private void SetCurrentWeapon(int index)
     {
-        if (_localIndex == index) return;
-        _localIndex = index;
         if (_prevCurrentWeaponModel != null)
         {
             _prevCurrentWeaponModel.SetActive(false);
@@ -60,8 +63,7 @@ public class WeaponViewer : MonoBehaviour
                 Destroy(children.gameObject);
             }
 
-            var obj = Instantiate(weaponInfos[i].model, _weaponModelsRoot[i].transform);
-            
+            var obj = Instantiate(weaponInfos[i].ThirdPersonModel, _weaponModelsRoot[i].transform);
             ModelHelper.SetOwnerModelSettings(playerClassNetwork, obj);
         }
     }

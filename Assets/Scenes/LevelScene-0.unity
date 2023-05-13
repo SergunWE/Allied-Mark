@@ -2480,6 +2480,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 905460996910414038, guid: efc05be765ea9f64bb260675f07f635a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 905460996910414039, guid: efc05be765ea9f64bb260675f07f635a,
         type: 3}
       propertyPath: GlobalObjectIdHash
@@ -3290,6 +3295,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 905460996910414038, guid: efc05be765ea9f64bb260675f07f635a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 905460996910414039, guid: efc05be765ea9f64bb260675f07f635a,
         type: 3}

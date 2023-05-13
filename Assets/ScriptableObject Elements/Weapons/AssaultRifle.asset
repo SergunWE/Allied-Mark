@@ -12,6 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8302f84f786d454abaab0ee465999a1, type: 3}
   m_Name: AssaultRifle
   m_EditorClassIdentifier: 
-  weaponName: Assault Rifle
-  clipSize: 30
-  model: {fileID: 6675718462102588866, guid: 4cb9bd177df2b144ea4fa4d34b609201, type: 3}
+  <WeaponName>k__BackingField: AssaultRifle
+  <ThirdPersonModel>k__BackingField: {fileID: 6675718462102588866, guid: 4cb9bd177df2b144ea4fa4d34b609201,
+    type: 3}
+  <FirstPersonModel>k__BackingField: {fileID: 6675718462102588866, guid: 4cb9bd177df2b144ea4fa4d34b609201,
+    type: 3}
+  <Damage>k__BackingField: 0
+  <BulletsPerShot>k__BackingField: 0
+  <ClipSize>k__BackingField: 0
+  <Recoil>k__BackingField: 0
+  <Spread>k__BackingField: 0
+  <ScopeZoom>k__BackingField: 0
+  <PullTime>k__BackingField: 0
+  <ShootTime>k__BackingField: 0
+  <ReloadTime>k__BackingField: 0

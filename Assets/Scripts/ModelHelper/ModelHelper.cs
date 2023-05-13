@@ -9,7 +9,7 @@ public static class ModelHelper
     {
         if (!network.IsOwner) return;
 
-        var smrComps =  FindComponents<SkinnedMeshRenderer>(obj);
+        var smrComps = FindComponents<SkinnedMeshRenderer>(obj);
         foreach (var comp in smrComps)
         {
             comp.shadowCastingMode = ShadowCastingMode.ShadowsOnly;
@@ -37,7 +37,7 @@ public static class ModelHelper
         }
     }
 
-    public static List<T> FindComponents<T>(GameObject gameObject)
+    private static List<T> FindComponents<T>(GameObject gameObject)
     {
         var comps = new List<T>();
         comps.AddRange(gameObject.GetComponents<T>());

@@ -53,9 +53,9 @@ public class WeaponFirstViewer : NetworkComponentManager<PlayerClassNetwork>
                 Destroy(children.gameObject);
             }
 
-            var obj = Instantiate(weaponInfos[i].model, _weaponModelsRoot[i].transform);
+            //var obj = Instantiate(weaponInfos[i].model, _weaponModelsRoot[i].transform);
             
-            ModelHelper.SetFirstModelSettings(obj);
+            //.SetFirstModelSettings(obj);
         }
     }
 }

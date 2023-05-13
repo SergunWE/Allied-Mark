@@ -10,19 +10,23 @@ public class PlayerClassNetwork : ObjectNetwork<FixedString128Bytes>
 {
     private void Start()
     {
-        string playerClassName = GetPlayerClassName();
+        LocalValue = GetPlayerClassName();
         if (IsOwner)
         {
-            Debug.Log($"Owner {OwnerClientId} set player class");
-            SetPlayerClassServerRpc(playerClassName);
+            SetPlayerClassServerRpc(LocalValue);
         }
-        else
-        {
-            if (!string.IsNullOrEmpty(playerClassName))
-            {
-                TriggerEvent(playerClassName);
-            }
-        }
+        // string playerClassName = GetPlayerClassName();
+        // if (IsOwner)
+        // {
+        //     SetPlayerClassServerRpc(playerClassName);
+        // }
+        // else
+        // {
+        //     if (!string.IsNullOrEmpty(playerClassName))
+        //     {
+        //         LocalValue = playerClassName;
+        //     }
+        // }
     }
 
     public string GetPlayerClassName()
@@ -32,21 +36,13 @@ public class PlayerClassNetwork : ObjectNetwork<FixedString128Bytes>
     }
 
     [ServerRpc]
-    private void SetPlayerClassServerRpc(string playerClassName)
+    private void SetPlayerClassServerRpc(FixedString128Bytes playerClassName)
     {
-        if(NetworkVariable.Value == playerClassName) return;
-        NetworkVariable.Value = new FixedString128Bytes(playerClassName);
+        NetworkVariable.Value = playerClassName;
     }
 
-    public override void CheckLocalChange(FixedString128Bytes localValue)
+    protected override void VariableChangedMessage()
     {
-        
-    }
-
-    protected override void OnVariableChanged(FixedString128Bytes oldValue, FixedString128Bytes newValue)
-    {
-        if (oldValue == newValue) return;
-        Debug.Log($"{OwnerClientId} set class {newValue}");
-        TriggerEvent(newValue);
+        Debug.Log($"{OwnerClientId} set class {LocalValue}");
     }
 }

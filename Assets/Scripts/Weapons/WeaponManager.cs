@@ -6,27 +6,17 @@ public class WeaponManager : NetworkComponentManager<WeaponNetwork>
 {
     [SerializeField] private WeaponFirstViewer weaponFirstViewer;
 
-    public int Index;
-
     public void OnMainWeaponChanged(InputAction.CallbackContext context)
     {
-        if (context.started)
-        {
-            networkComponent.CheckLocalChange(0);
-            networkComponent.SetWeaponIndexServerRpc(0);
-            weaponFirstViewer.SetCurrentWeapon(0);
-            Index = 0;
-        }
+        if (!context.started) return;
+        networkComponent.SetWeaponIndex(0);
+        weaponFirstViewer.SetCurrentWeapon(0);
     }
 
     public void OnAncillaryWeaponChanged(InputAction.CallbackContext context)
     {
-        if (context.started)
-        {
-            networkComponent.CheckLocalChange(1);
-            networkComponent.SetWeaponIndexServerRpc(1);
-            weaponFirstViewer.SetCurrentWeapon(1);
-            Index = 1;
-        }
+        if (!context.started) return;
+        networkComponent.SetWeaponIndex(1);
+        weaponFirstViewer.SetCurrentWeapon(1);
     }
 }

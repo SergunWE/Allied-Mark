@@ -16,6 +16,6 @@ MonoBehaviour:
   customData:
   - key: LevelDifficulty
     value:
-      value: Easy
+      startValue: Easy
       visibility: 1
-  lobbyLevel: 1
+  lobbyLevel: 0

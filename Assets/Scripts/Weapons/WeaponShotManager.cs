@@ -23,30 +23,30 @@ public class WeaponShotManager : NetworkComponentManager<PlayerClassNetwork>
         {
             _weaponAmmunitions.Add(new CurrentWeaponAmmunition()
             {
-                CurrentAmmo = info.clipSize,
-                AmmoSize = info.clipSize
+               // CurrentAmmo = info.clipSize,
+                //AmmoSize = info.clipSize
             });
         }
     }
 
     public void OnShot(InputAction.CallbackContext context)
     {
-        if (context.started)
-        {
-            if (_weaponAmmunitions[weaponManager.Index].CurrentAmmo > 0)
-            {
-                _weaponInfos[weaponManager.Index].weaponBehaviorBase.OnShotBehavior(true, playerCamera.transform);
-            }
-        }
-        else
-        {
-            if (context.canceled)
-            {
-                if (_weaponAmmunitions[weaponManager.Index].CurrentAmmo > 0)
-                {
-                    _weaponInfos[weaponManager.Index].weaponBehaviorBase.OnShotBehavior(false, playerCamera.transform);
-                }
-            }
-        }
+        // if (context.started)
+        // {
+        //     if (_weaponAmmunitions[weaponManager.Index].CurrentAmmo > 0)
+        //     {
+        //         //_weaponInfos[weaponManager.Index].weaponBehaviorBase.OnShotBehavior(true, playerCamera.transform);
+        //     }
+        // }
+        // else
+        // {
+        //     if (context.canceled)
+        //     {
+        //         if (_weaponAmmunitions[weaponManager.Index].CurrentAmmo > 0)
+        //         {
+        //             //_weaponInfos[weaponManager.Index].weaponBehaviorBase.OnShotBehavior(false, playerCamera.transform);
+        //         }
+        //     }
+        // }
     }
 }
