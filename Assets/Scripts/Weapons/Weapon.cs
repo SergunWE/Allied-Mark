@@ -1,4 +1,4 @@
-public struct Weapon
+public class Weapon
 {
     public WeaponInfo WeaponInfo { get; }
     public int CurrentBullets { get; set; }

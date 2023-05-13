@@ -19,7 +19,7 @@ MonoBehaviour:
     type: 3}
   <Damage>k__BackingField: 0
   <BulletsPerShot>k__BackingField: 0
-  <ClipSize>k__BackingField: 0
+  <ClipSize>k__BackingField: 30
   <Recoil>k__BackingField: 0
   <Spread>k__BackingField: 0
   <ScopeZoom>k__BackingField: 0
