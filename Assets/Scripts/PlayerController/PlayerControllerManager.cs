@@ -66,14 +66,12 @@ public class PlayerControllerManager : NetworkComponentManager<MovementCharacter
 
     private void HandleCharacterInput()
     {
-        //if (!IsOwner) return;
         _inputs.CameraRotation = characterCamera.Transform.rotation;
         networkComponent.SetInputs(ref _inputs);
     }
 
     private void HandleCameraInput()
     {
-        //if (!IsOwner) return;
         float mouseLookAxisUp = _viewAxis.y;
         float mouseLookAxisRight = _viewAxis.x;
         var lookInputVector = new Vector3(mouseLookAxisRight, mouseLookAxisUp, 0f);

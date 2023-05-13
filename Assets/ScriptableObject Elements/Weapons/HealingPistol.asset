@@ -15,7 +15,7 @@ MonoBehaviour:
   <WeaponName>k__BackingField: HealingPistol
   <ThirdPersonModel>k__BackingField: {fileID: 205448542220054579, guid: 24ffc27e832624043b779f689529c143,
     type: 3}
-  <FirstPersonModel>k__BackingField: {fileID: 205448542220054579, guid: 24ffc27e832624043b779f689529c143,
+  <FirstPersonModel>k__BackingField: {fileID: 205448542220054579, guid: 7e3c095dac2a0444ba5053948e367e17,
     type: 3}
   <Damage>k__BackingField: 0
   <BulletsPerShot>k__BackingField: 0

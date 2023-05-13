@@ -14,7 +14,7 @@ namespace NetworkFramework.Netcode_Components
         public T LocalValue
         {
             get => _localValue;
-            set
+            protected set
             {
                 if(value.CompareTo(_localValue) == 0) return;
                 _localValue = value;

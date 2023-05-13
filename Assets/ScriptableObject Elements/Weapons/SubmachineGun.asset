@@ -15,7 +15,7 @@ MonoBehaviour:
   <WeaponName>k__BackingField: SubmachineGun
   <ThirdPersonModel>k__BackingField: {fileID: 6675718462102588866, guid: 4eeb63dec808b154a939da0372c77f91,
     type: 3}
-  <FirstPersonModel>k__BackingField: {fileID: 6675718462102588866, guid: 4eeb63dec808b154a939da0372c77f91,
+  <FirstPersonModel>k__BackingField: {fileID: 6675718462102588866, guid: 4de751d548949b34ab6e3cc0afb59ae3,
     type: 3}
   <Damage>k__BackingField: 0
   <BulletsPerShot>k__BackingField: 0

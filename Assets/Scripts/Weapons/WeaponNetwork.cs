@@ -6,7 +6,6 @@ public class WeaponNetwork : ObjectNetwork<int>
 {
     public void SetWeaponIndex(int value)
     {
-        if(value == NetworkVariable.Value) return;
         LocalValue = value;
         SetWeaponIndexServerRpc(value);
     }

@@ -2,21 +2,21 @@ using System.Collections.Generic;
 using NetworkFramework.Netcode_Components;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using WeaponSystem;
 
 public class WeaponShotManager : NetworkComponentManager<PlayerClassNetwork>
 {
     [SerializeField] private PlayerClassHandler playerClassHandler;
-    [SerializeField] private WeaponManager weaponManager;
+    [FormerlySerializedAs("weaponChangeManager")] [FormerlySerializedAs("weaponManager")] [SerializeField] private WeaponChange weaponChange;
     
     [SerializeField] private Camera playerCamera;
 
     private List<WeaponInfo> _weaponInfos;
     private List<CurrentWeaponAmmunition> _weaponAmmunitions = new();
 
-    protected override void Start()
+    protected void Start()
     {
-        base.Start();
         string networkClassName = networkComponent.GetPlayerClassName();
         _weaponInfos = playerClassHandler.DataDictionary[networkClassName].weapons;
         foreach (var info in _weaponInfos)

@@ -15,7 +15,7 @@ MonoBehaviour:
   <WeaponName>k__BackingField: AssaultRifle
   <ThirdPersonModel>k__BackingField: {fileID: 6675718462102588866, guid: 4cb9bd177df2b144ea4fa4d34b609201,
     type: 3}
-  <FirstPersonModel>k__BackingField: {fileID: 6675718462102588866, guid: 4cb9bd177df2b144ea4fa4d34b609201,
+  <FirstPersonModel>k__BackingField: {fileID: 6675718462102588866, guid: 948c0c048b4b89b44aea0cf52816b223,
     type: 3}
   <Damage>k__BackingField: 0
   <BulletsPerShot>k__BackingField: 0

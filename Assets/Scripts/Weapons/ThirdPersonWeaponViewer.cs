@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
 
-public class WeaponViewer : MonoBehaviour
+public class ThirdPersonWeaponViewer : MonoBehaviour
 {
     [SerializeField] private WeaponNetwork weaponNetwork;
     [SerializeField] private PlayerClassNetwork playerClassNetwork;
@@ -11,7 +10,6 @@ public class WeaponViewer : MonoBehaviour
     [SerializeField] private Transform weaponRoot;
     
     private readonly List<GameObject> _weaponModelsRoot = new();
-    
     private GameObject _prevCurrentWeaponModel;
 
     private void Awake()
@@ -55,6 +53,7 @@ public class WeaponViewer : MonoBehaviour
 
     private void SetWeaponModel(FixedString128Bytes playerClassName)
     {
+        if(string.IsNullOrEmpty(playerClassName.Value)) return;
         var weaponInfos = playerClassHandler.DataDictionary[playerClassName.Value].weapons;
         for (int i = 0; i < weaponInfos.Count; i++)
         {

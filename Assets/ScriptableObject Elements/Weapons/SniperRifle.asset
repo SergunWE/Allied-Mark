@@ -15,7 +15,7 @@ MonoBehaviour:
   <WeaponName>k__BackingField: SniperRifle
   <ThirdPersonModel>k__BackingField: {fileID: 6675718462102588866, guid: e9ca8c2ac28913d43825b49a0cca7af0,
     type: 3}
-  <FirstPersonModel>k__BackingField: {fileID: 6675718462102588866, guid: e9ca8c2ac28913d43825b49a0cca7af0,
+  <FirstPersonModel>k__BackingField: {fileID: 6675718462102588866, guid: dd40027c579289644b1fabd1f153638c,
     type: 3}
   <Damage>k__BackingField: 0
   <BulletsPerShot>k__BackingField: 0

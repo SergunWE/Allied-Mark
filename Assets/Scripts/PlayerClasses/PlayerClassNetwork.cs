@@ -15,24 +15,13 @@ public class PlayerClassNetwork : ObjectNetwork<FixedString128Bytes>
         {
             SetPlayerClassServerRpc(LocalValue);
         }
-        // string playerClassName = GetPlayerClassName();
-        // if (IsOwner)
-        // {
-        //     SetPlayerClassServerRpc(playerClassName);
-        // }
-        // else
-        // {
-        //     if (!string.IsNullOrEmpty(playerClassName))
-        //     {
-        //         LocalValue = playerClassName;
-        //     }
-        // }
     }
 
     public string GetPlayerClassName()
     {
-        return IsOwner ? LobbyData.GetPlayerData(CustomDataKeys.PlayerClass.Key, 
-            AuthenticationService.Instance.PlayerId) : NetworkVariable.Value.Value;
+        return IsOwner
+            ? LobbyData.GetPlayerData(CustomDataKeys.PlayerClass.Key, AuthenticationService.Instance.PlayerId)
+            : NetworkVariable.Value.Value;
     }
 
     [ServerRpc]

@@ -15,7 +15,7 @@ MonoBehaviour:
   <WeaponName>k__BackingField: ImprovedPistol
   <ThirdPersonModel>k__BackingField: {fileID: 205448542220054579, guid: f33c8e32a66ed5c4d8fe217213cd1394,
     type: 3}
-  <FirstPersonModel>k__BackingField: {fileID: 205448542220054579, guid: f33c8e32a66ed5c4d8fe217213cd1394,
+  <FirstPersonModel>k__BackingField: {fileID: 205448542220054579, guid: 7d6d1dd88df0a8c408277c4424910d51,
     type: 3}
   <Damage>k__BackingField: 0
   <BulletsPerShot>k__BackingField: 0

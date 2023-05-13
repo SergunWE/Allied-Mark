@@ -15,7 +15,7 @@ MonoBehaviour:
   <WeaponName>k__BackingField: SemiAutomaticRifle
   <ThirdPersonModel>k__BackingField: {fileID: 6675718462102588866, guid: 9cec7f0714bf2544aad837f59c0529b7,
     type: 3}
-  <FirstPersonModel>k__BackingField: {fileID: 6675718462102588866, guid: 9cec7f0714bf2544aad837f59c0529b7,
+  <FirstPersonModel>k__BackingField: {fileID: 6675718462102588866, guid: b1b17a05c5e204b4b951d77cd15545c7,
     type: 3}
   <Damage>k__BackingField: 0
   <BulletsPerShot>k__BackingField: 0
