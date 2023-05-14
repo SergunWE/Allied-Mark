@@ -26,4 +26,4 @@ MonoBehaviour:
   <PullTime>k__BackingField: 1
   <ShootTime>k__BackingField: 0.1
   <ReloadTime>k__BackingField: 2
-  <WeaponType>k__BackingField: 0
+  <WeaponType>k__BackingField: 1
