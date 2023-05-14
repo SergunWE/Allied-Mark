@@ -18,12 +18,12 @@ MonoBehaviour:
   <FirstPersonModel>k__BackingField: {fileID: 205448542220054579, guid: a51a252106c04074f9f883e20f6fa971,
     type: 3}
   <Damage>k__BackingField: 0
-  <BulletsPerShot>k__BackingField: 0
+  <BulletsPerShot>k__BackingField: 10
   <ClipSize>k__BackingField: 5
   <Recoil>k__BackingField: 0
   <Spread>k__BackingField: 0
   <ScopeZoom>k__BackingField: 0
   <PullTime>k__BackingField: 1
-  <ShootTime>k__BackingField: 0.6
-  <ReloadTime>k__BackingField: 2
-  <WeaponType>k__BackingField: 0
+  <ShootTime>k__BackingField: 0.8
+  <ReloadTime>k__BackingField: 0.2
+  <WeaponType>k__BackingField: 2

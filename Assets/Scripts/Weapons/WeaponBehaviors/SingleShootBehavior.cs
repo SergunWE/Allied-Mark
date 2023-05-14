@@ -37,7 +37,7 @@ public class SingleShootBehavior : WeaponBehavior
         ReloadEvent.Raise(true);
     }
 
-    private void ReloadDelayThread()
+    protected virtual void ReloadDelayThread()
     {
         while (true)
         {
@@ -45,6 +45,10 @@ public class SingleShootBehavior : WeaponBehavior
             {
                 ReloadAutoResetEvent.WaitOne();
                 Task.Delay(ReloadDelay - PullDelay, CancellationToken).Wait(CancellationToken);
+                if (CancellationToken.IsCancellationRequested)
+                {
+                    continue;
+                }
                 Weapon.CurrentBullets = Weapon.WeaponInfo.ClipSize;
                 ReloadEvent.Raise(false);
                 Task.Delay(PullDelay, CancellationToken).Wait(CancellationToken);

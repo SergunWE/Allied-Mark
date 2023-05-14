@@ -61,6 +61,7 @@ public class CurrentPlayerWeapon : NetworkComponentManager<WeaponNetwork>
         {
             WeaponType.Single => new SingleShootBehavior(weapon, weaponShooting, weaponReloading),
             WeaponType.Auto => new AutoShootBehavior(weapon, weaponShooting, weaponReloading),
+            WeaponType.Shotgun => new ShotgunBehavior(weapon, weaponShooting, weaponReloading),
             _ => throw new ArgumentOutOfRangeException()
         };
     }
