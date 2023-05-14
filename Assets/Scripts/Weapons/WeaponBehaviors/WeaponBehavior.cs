@@ -1,17 +1,35 @@
 using System;
+using System.Diagnostics;
+using NetworkFramework.EventSystem.EventParameter;
 
-[Serializable]
 public class WeaponBehavior : ICloneable
 {
-    protected Weapon Weapon;
-    protected GameEvent ShootEvent;
-    protected GameEvent ReloadEvent;
+    protected readonly Weapon Weapon;
+    protected readonly GameEvent ShootEvent;
+    protected readonly GameEventBool ReloadEvent;
 
-    public WeaponBehavior(Weapon weapon, GameEvent shootEvent, GameEvent reloadEvent)
+    protected readonly Stopwatch ShootStopwatch = new();
+
+    protected TimeSpan ShootDelay;
+    protected TimeSpan ReloadDelay;
+    protected TimeSpan PullDelay;
+
+    protected WeaponBehavior(Weapon weapon, GameEvent shootEvent, GameEventBool reloadEvent)
     {
         Weapon = weapon;
         ShootEvent = shootEvent;
         ReloadEvent = reloadEvent;
+
+        ShootDelay = TimeSpan.FromSeconds(weapon.WeaponInfo.ShootTime);
+        ReloadDelay = TimeSpan.FromSeconds(weapon.WeaponInfo.ReloadTime);
+        PullDelay = TimeSpan.FromSeconds(weapon.WeaponInfo.PullTime);
+        
+        ShootStopwatch.Start();
+    }
+
+    public virtual void PullBehavior()
+    {
+        
     }
 
     public virtual void ShootBehavior(bool buttonState)

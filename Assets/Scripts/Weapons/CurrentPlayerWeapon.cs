@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using NetworkFramework.EventSystem.EventParameter;
 using NetworkFramework.Netcode_Components;
 using Unity.Netcode;
 using UnityEngine;
@@ -10,7 +11,7 @@ public class CurrentPlayerWeapon : NetworkComponentManager<WeaponNetwork>
     
     [SerializeField] private GameEvent weaponChanged;
     [SerializeField] private GameEvent weaponShooting;
-    [SerializeField] private GameEvent weaponReloading;
+    [SerializeField] private GameEventBool weaponReloading;
 
     public WeaponBehavior CurrentWeapon { get; private set; }
 
@@ -56,8 +57,6 @@ public class CurrentPlayerWeapon : NetworkComponentManager<WeaponNetwork>
     {
         var weapon = new Weapon(weaponInfo);
 
-        weapon.State = WeaponState.Ready;
-        
         return weaponInfo.WeaponType switch
         {
             WeaponType.Single => new SingleShootBehavior(weapon, weaponShooting, weaponReloading),
@@ -70,6 +69,7 @@ public class CurrentPlayerWeapon : NetworkComponentManager<WeaponNetwork>
     {
         CurrentWeapon?.StopAllBehaviors();
         CurrentWeapon = _weapons[index];
+        CurrentWeapon.PullBehavior();
         weaponChanged.Raise();
     }
 }

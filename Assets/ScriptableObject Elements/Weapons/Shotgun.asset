@@ -23,6 +23,7 @@ MonoBehaviour:
   <Recoil>k__BackingField: 0
   <Spread>k__BackingField: 0
   <ScopeZoom>k__BackingField: 0
-  <PullTime>k__BackingField: 0
-  <ShootTime>k__BackingField: 0
-  <ReloadTime>k__BackingField: 0
+  <PullTime>k__BackingField: 1
+  <ShootTime>k__BackingField: 0.6
+  <ReloadTime>k__BackingField: 2
+  <WeaponType>k__BackingField: 0

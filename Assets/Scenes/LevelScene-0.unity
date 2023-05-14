@@ -3370,6 +3370,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1455077460053449244, guid: 7f40695d5223ff34481deafe64b8898d,
+        type: 3}
+      propertyPath: weaponReloading
+      value: 
+      objectReference: {fileID: 11400000, guid: f99dd6967c14fe549b2e8058a01122b3,
+        type: 2}
     - target: {fileID: 1973437795976079602, guid: 7f40695d5223ff34481deafe64b8898d,
         type: 3}
       propertyPath: m_RootOrder
