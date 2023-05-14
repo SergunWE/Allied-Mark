@@ -19,5 +19,5 @@ public class WeaponInfo : ScriptableObject
     [field: SerializeField] public float ShootTime { get; private set; }
     [field: SerializeField] public float ReloadTime { get; private set; }
 
-    [field: SerializeField] public WeaponType WeaponType;
+    [field: SerializeField] public WeaponType WeaponType { get; private set; }
 }
