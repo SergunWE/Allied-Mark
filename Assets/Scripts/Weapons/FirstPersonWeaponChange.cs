@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class FirstPersonWeaponChange : NetworkComponentManager<WeaponNetwork>
 {
-    [SerializeField] private Transform weaponRoot;
-
     private readonly List<GameObject> _weaponModelsRoot = new();
     private GameObject _prevCurrentWeaponModel;
 
+    private Transform _weaponRoot;
+    
     private void Awake()
     {
-        if (weaponRoot == null)
+        if (_weaponRoot == null)
         {
             if (Camera.main != null)
             {
-                weaponRoot = Camera.main.transform.GetChild(0);
+                _weaponRoot = Camera.main.transform.GetComponentInChildren<WeaponFirstPersonRoot>().transform;
             }
         }
-        foreach (Transform model in weaponRoot)
+        foreach (Transform model in _weaponRoot)
         {
             var obj = model.gameObject;
             _weaponModelsRoot.Add(obj);

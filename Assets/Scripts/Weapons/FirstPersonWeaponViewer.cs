@@ -16,7 +16,7 @@ public class FirstPersonWeaponViewer : NetworkComponentManager<PlayerClassNetwor
         {
             if (Camera.main != null)
             {
-                weaponRoot = Camera.main.transform.GetChild(0);
+                weaponRoot = Camera.main.transform.GetComponentInChildren<WeaponFirstPersonRoot>().transform;
             }
         }
         foreach (Transform model in weaponRoot)
