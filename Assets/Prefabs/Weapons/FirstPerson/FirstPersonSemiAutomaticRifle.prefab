@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 210364242573698119}
   - component: {fileID: 8865105719499499089}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstPersonSemiAutomaticRifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,9 +48,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 210364242573698119}
     m_Modifications:
+    - target: {fileID: 101422, guid: 2c4f4c967cbf830459d53c4a848651ca, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 174950, guid: 2c4f4c967cbf830459d53c4a848651ca, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 179046, guid: 2c4f4c967cbf830459d53c4a848651ca, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 192002, guid: 2c4f4c967cbf830459d53c4a848651ca, type: 3}
       propertyPath: m_Name
       value: SM_Wep_RifleBandit_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 192002, guid: 2c4f4c967cbf830459d53c4a848651ca, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 422406, guid: 2c4f4c967cbf830459d53c4a848651ca, type: 3}
       propertyPath: m_RootOrder

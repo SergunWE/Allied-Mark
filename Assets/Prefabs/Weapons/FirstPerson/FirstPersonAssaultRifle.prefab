@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 210364242573698119}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstPersonAssaultRifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,9 +39,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 210364242573698119}
     m_Modifications:
+    - target: {fileID: 105196, guid: 8be86b86610077a47be3a9a99fc8f89e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 158232, guid: 8be86b86610077a47be3a9a99fc8f89e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 164316, guid: 8be86b86610077a47be3a9a99fc8f89e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 191730, guid: 8be86b86610077a47be3a9a99fc8f89e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 198860, guid: 8be86b86610077a47be3a9a99fc8f89e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 199910, guid: 8be86b86610077a47be3a9a99fc8f89e, type: 3}
       propertyPath: m_Name
       value: SM_Wep_RifleSwat_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 199910, guid: 8be86b86610077a47be3a9a99fc8f89e, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 410062, guid: 8be86b86610077a47be3a9a99fc8f89e, type: 3}
       propertyPath: m_RootOrder

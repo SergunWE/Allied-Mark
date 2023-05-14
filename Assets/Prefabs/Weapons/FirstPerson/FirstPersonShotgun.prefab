@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7218481607350168512}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstPersonShotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,9 +39,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7218481607350168512}
     m_Modifications:
+    - target: {fileID: 148652, guid: 8a11974b142a1e5449a7fd3fe3584857, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 159068, guid: 8a11974b142a1e5449a7fd3fe3584857, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 160320, guid: 8a11974b142a1e5449a7fd3fe3584857, type: 3}
       propertyPath: m_Name
       value: SM_Wep_Shotgun_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 160320, guid: 8a11974b142a1e5449a7fd3fe3584857, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 173896, guid: 8a11974b142a1e5449a7fd3fe3584857, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 424080, guid: 8a11974b142a1e5449a7fd3fe3584857, type: 3}
       propertyPath: m_RootOrder

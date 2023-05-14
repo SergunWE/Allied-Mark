@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 210364242573698119}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstPersonSubmachineGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,9 +39,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 210364242573698119}
     m_Modifications:
+    - target: {fileID: 107834, guid: cafa32a2c685de9479351ae1dfed94df, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 123254, guid: cafa32a2c685de9479351ae1dfed94df, type: 3}
       propertyPath: m_Name
       value: SM_Wep_SMG_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 123254, guid: cafa32a2c685de9479351ae1dfed94df, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 128004, guid: cafa32a2c685de9479351ae1dfed94df, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 140896, guid: cafa32a2c685de9479351ae1dfed94df, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 454484, guid: cafa32a2c685de9479351ae1dfed94df, type: 3}
       propertyPath: m_RootOrder

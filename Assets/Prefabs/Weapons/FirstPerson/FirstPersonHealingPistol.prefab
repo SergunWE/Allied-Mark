@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7218481607350168512}
   - component: {fileID: 1903576114156241781}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstPersonHealingPistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,13 +48,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7218481607350168512}
     m_Modifications:
+    - target: {fileID: 112434, guid: 5e41505804200314f8239458ca194166, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 115448, guid: 5e41505804200314f8239458ca194166, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 184040, guid: 5e41505804200314f8239458ca194166, type: 3}
       propertyPath: m_Name
       value: SM_Wep_PistolSwat_01
       objectReference: {fileID: 0}
     - target: {fileID: 184040, guid: 5e41505804200314f8239458ca194166, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 184040, guid: 5e41505804200314f8239458ca194166, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 188506, guid: 5e41505804200314f8239458ca194166, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 474350, guid: 5e41505804200314f8239458ca194166, type: 3}
       propertyPath: m_RootOrder
