@@ -112,6 +112,7 @@ namespace NetworkFramework.MonoBehaviour_Components
         /// </summary>
         private async void JoinRelay()
         {
+            if (!readyChecker.PlayerReady()) return;
             _playerStartedGame = (await _relayCore.JoinRelay(
                 LobbyData.GetLobbyData(DataKeys.RelayCode.Key))).Success;
             relayStarted.Raise(_playerStartedGame);
