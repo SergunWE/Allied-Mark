@@ -1,18 +1,16 @@
+using System.Collections;
 using System.Diagnostics;
-using System.Threading;
-using System.Threading.Tasks;
 using NetworkFramework.EventSystem.EventParameter;
+using UnityEngine;
 using Debug = UnityEngine.Debug;
 
 public class SingleShootBehavior : WeaponBehavior
 {
     protected readonly Stopwatch ShootStopwatch = new();
-    
-    public SingleShootBehavior(Weapon weapon, GameEvent shootEvent, GameEventBool reloadEvent) : base(weapon,
-        shootEvent, reloadEvent)
+
+    public SingleShootBehavior(Weapon weapon, GameEvent shootEvent, GameEventBool reloadEvent,
+        MonoBehaviour coroutineCreateObject) : base(weapon, shootEvent, reloadEvent, coroutineCreateObject)
     {
-        ReloadThread = new Thread(ReloadDelayThread);
-        ReloadThread.Start();
         ShootStopwatch.Start();
     }
 
@@ -20,7 +18,7 @@ public class SingleShootBehavior : WeaponBehavior
     {
         if (!buttonState) return;
         if (Weapon.State != WeaponState.Ready || Weapon.CurrentBullets <= 0) return;
-        var elapsed = ShootStopwatch.Elapsed;
+        var elapsed = ShootStopwatch.Elapsed.TotalSeconds;
         if (elapsed <= ShootDelay) return;
         Weapon.CurrentBullets--;
         Debug.Log($@"Shoot - {Weapon.CurrentBullets}");
@@ -33,41 +31,19 @@ public class SingleShootBehavior : WeaponBehavior
         if (!buttonState) return;
         if (Weapon.State != WeaponState.Ready || Weapon.CurrentBullets >= Weapon.WeaponInfo.ClipSize) return;
         Weapon.State = WeaponState.NotReady;
-        ReloadAutoResetEvent.Set();
+        ReloadCoroutine = CoroutineCreateObject.StartCoroutine(ReloadDelayCoroutine());
         ReloadEvent.Raise(true);
     }
 
-    protected virtual void ReloadDelayThread()
+    protected virtual IEnumerator ReloadDelayCoroutine()
     {
-        while (true)
-        {
-            try
-            {
-                ReloadAutoResetEvent.WaitOne();
-                Task.Delay(ReloadDelay - PullDelay, CancellationToken).Wait(CancellationToken);
-                if (CancellationToken.IsCancellationRequested)
-                {
-                    continue;
-                }
-                Weapon.CurrentBullets = Weapon.WeaponInfo.ClipSize;
-                ReloadEvent.Raise(false);
-                Task.Delay(PullDelay, CancellationToken).Wait(CancellationToken);
-                if (CancellationToken.IsCancellationRequested)
-                {
-                    continue;
-                }
-                Weapon.State = WeaponState.Ready;
-                ReloadEvent.Raise(false);
-                Debug.Log($@"Reload - {Weapon.CurrentBullets}");
-            }
-            catch (TaskCanceledException)
-            {
-            }
-            catch (ThreadAbortException)
-            {
-                return;
-            }
-        }
-        // ReSharper disable once FunctionNeverReturns
+        yield return new WaitForSeconds(ReloadDelay - PullDelay);
+        Weapon.CurrentBullets = Weapon.WeaponInfo.ClipSize;
+        ReloadEvent.Raise(false);
+        yield return new WaitForSeconds(PullDelay);
+        Weapon.State = WeaponState.Ready;
+        ReloadEvent.Raise(false);
     }
+    // ReSharper disable once FunctionNeverReturns
+
 }

@@ -59,9 +59,9 @@ public class CurrentPlayerWeapon : NetworkComponentManager<WeaponNetwork>
 
         return weaponInfo.WeaponType switch
         {
-            WeaponType.Single => new SingleShootBehavior(weapon, weaponShooting, weaponReloading),
-            WeaponType.Auto => new AutoShootBehavior(weapon, weaponShooting, weaponReloading),
-            WeaponType.Shotgun => new ShotgunBehavior(weapon, weaponShooting, weaponReloading),
+            WeaponType.Single => new SingleShootBehavior(weapon, weaponShooting, weaponReloading, this),
+            WeaponType.Auto => new AutoShootBehavior(weapon, weaponShooting, weaponReloading, this),
+            WeaponType.Shotgun => new ShotgunBehavior(weapon, weaponShooting, weaponReloading, this),
             _ => throw new ArgumentOutOfRangeException()
         };
     }

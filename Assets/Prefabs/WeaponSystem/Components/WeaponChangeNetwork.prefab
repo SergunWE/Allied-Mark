@@ -11,12 +11,8 @@ GameObject:
   - component: {fileID: 1973437795976079602}
   - component: {fileID: 1973437795976079603}
   - component: {fileID: 1973437795976079605}
-  - component: {fileID: 7496412868354711671}
-  - component: {fileID: 726658145583278210}
-  - component: {fileID: 5534706986941194048}
-  - component: {fileID: 1455077460053449244}
   m_Layer: 0
-  m_Name: WeaponManager
+  m_Name: WeaponChangeNetwork
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,35 +104,11 @@ MonoBehaviour:
     m_ActionId: c11ce364-b120-4877-93d7-b0b3fc9a98db
     m_ActionName: Weapon/AncillaryWeapon[/Keyboard/2]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5534706986941194048}
-        m_TargetAssemblyTypeName: WeaponManager, Assembly-CSharp
-        m_MethodName: OnShotButtonClicked
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: d91f87d6-b0d6-454c-a1db-b6fdd9d1c175
     m_ActionName: Weapon/Shot[/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5534706986941194048}
-        m_TargetAssemblyTypeName: WeaponManager, Assembly-CSharp
-        m_MethodName: OnReloadButtonClicked
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 5387f5d4-5b81-448d-9aa3-ce6545818d10
     m_ActionName: Weapon/Reload[/Keyboard/r]
   - m_PersistentCalls:
@@ -161,63 +133,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   networkComponent: {fileID: 0}
---- !u!114 &7496412868354711671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1973437795976079604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ff3ee22663a48a4a7d41369aaab219a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  networkComponent: {fileID: 0}
-  weaponRoot: {fileID: 0}
-  playerClassHandler: {fileID: 6199815811834458946, guid: 8039c15a9e5ab2a41bf6a2354e24a157,
-    type: 3}
---- !u!114 &726658145583278210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1973437795976079604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dbdb31065d64283a884c8fa1107d1be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  networkComponent: {fileID: 0}
-  weaponRoot: {fileID: 0}
---- !u!114 &5534706986941194048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1973437795976079604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bf13e74c6dc4253a57e1230690ce704, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1455077460053449244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1973437795976079604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74ec5543ced546a895fd3d34e37018e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  networkComponent: {fileID: 0}
-  playerClassHandler: {fileID: 6199815811834458946, guid: 8039c15a9e5ab2a41bf6a2354e24a157,
-    type: 3}
-  weaponChanged: {fileID: 11400000, guid: f5a37670b99b6a74a82091fa2881782f, type: 2}
-  weaponShooting: {fileID: 11400000, guid: f540bf853d3163e4b837e7c3be0551b9, type: 2}
-  weaponReloading: {fileID: 11400000, guid: f99dd6967c14fe549b2e8058a01122b3, type: 2}

@@ -1,70 +1,46 @@
-using System.Threading;
-using System.Threading.Tasks;
+using System.Collections;
 using NetworkFramework.EventSystem.EventParameter;
 using UnityEngine;
 
 
 public class AutoShootBehavior : SingleShootBehavior
 {
-    private readonly Thread _shootThread;
-    private readonly AutoResetEvent _shootAutoResetEvent = new(false);
-    private bool _shootButtonPressed;
-    
-    public AutoShootBehavior(Weapon weapon, GameEvent shootEvent, GameEventBool reloadEvent) : base(weapon, shootEvent,
-        reloadEvent)
+    private Coroutine _shootCoroutine;
+
+    public AutoShootBehavior(Weapon weapon, GameEvent shootEvent, GameEventBool reloadEvent, 
+        MonoBehaviour coroutineCreateObject) : base(weapon, shootEvent, reloadEvent, coroutineCreateObject)
     {
-        _shootThread = new Thread(ShootThread);
-        _shootThread.Start();
     }
 
     public override void ShootBehavior(bool buttonState)
     {
-        _shootButtonPressed = buttonState;
         if (buttonState)
         {
-            _shootAutoResetEvent.Set();
+            _shootCoroutine = CoroutineCreateObject.StartCoroutine(ShootLoopCoroutine());
+        }
+        else
+        {
+            if (_shootCoroutine != null)
+            {
+                CoroutineCreateObject.StopCoroutine(_shootCoroutine);
+            }
         }
     }
 
-    public override void StopAllBehaviors()
-    {
-        base.StopAllBehaviors();
-        _shootButtonPressed = false;
-        _shootAutoResetEvent.Reset();
-    }
-
-    private void ShootThread()
+    private IEnumerator ShootLoopCoroutine()
     {
         while (true)
         {
-            try
-            {
-                _shootAutoResetEvent.WaitOne();
-                while (_shootButtonPressed)
-                {
-                    if (Weapon.State != WeaponState.Ready || Weapon.CurrentBullets <= 0) break;
-                    var elapsed = ShootStopwatch.Elapsed;
-                    if (elapsed <= ShootDelay) continue;
-                    Weapon.CurrentBullets--;
-                    Debug.Log($@"Shoot - {Weapon.CurrentBullets}");
-                    ShootEvent.Raise();
-                    ShootStopwatch.Restart();
-                    Task.Delay(ShootDelay).Wait();
-                }
-            }
-            catch (TaskCanceledException)
-            {
-            }
-            catch (ThreadAbortException)
-            {
-                return;
-            }
+            if (Weapon.State != WeaponState.Ready || Weapon.CurrentBullets <= 0) break;
+            var elapsed = ShootStopwatch.Elapsed.TotalSeconds;
+            if (elapsed <= ShootDelay) continue;
+            Weapon.CurrentBullets--;
+            ShootEvent.Raise();
+            ShootStopwatch.Restart();
+            yield return new WaitForSeconds(ShootDelay);
         }
-        // ReSharper disable once FunctionNeverReturns
+        yield return null;
     }
 
-    ~AutoShootBehavior()
-    {
-        _shootThread.Abort();
-    }
+   
 }

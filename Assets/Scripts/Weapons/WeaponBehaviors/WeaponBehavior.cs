@@ -1,52 +1,38 @@
 using System;
-using System.Diagnostics;
-using System.Threading;
-using System.Threading.Tasks;
+using System.Collections;
 using NetworkFramework.EventSystem.EventParameter;
-using Debug = UnityEngine.Debug;
+using UnityEngine;
 
 public class WeaponBehavior : ICloneable
 {
-    protected readonly Weapon Weapon;
+    public Weapon Weapon { get; }
     protected readonly GameEvent ShootEvent;
     protected readonly GameEventBool ReloadEvent;
+    protected readonly MonoBehaviour CoroutineCreateObject;
 
-    protected TimeSpan ShootDelay;
-    protected TimeSpan ReloadDelay;
-    protected TimeSpan PullDelay;
-    
-    protected Thread ReloadThread;
-    protected readonly AutoResetEvent ReloadAutoResetEvent = new(false);
-    private CancellationTokenSource _cancellationTokenSource = new();
-    protected CancellationToken CancellationToken => _cancellationTokenSource.Token;
+    protected float ShootDelay;
+    protected float ReloadDelay;
+    protected float PullDelay;
 
-    protected WeaponBehavior(Weapon weapon, GameEvent shootEvent, GameEventBool reloadEvent)
+    protected Coroutine ReloadCoroutine;
+    private Coroutine _pullingCoroutine;
+
+    protected WeaponBehavior(Weapon weapon, GameEvent shootEvent, GameEventBool reloadEvent,
+        MonoBehaviour coroutineCreateObject)
     {
         Weapon = weapon;
         ShootEvent = shootEvent;
         ReloadEvent = reloadEvent;
+        CoroutineCreateObject = coroutineCreateObject;
 
-        ShootDelay = TimeSpan.FromSeconds(weapon.WeaponInfo.ShootTime);
-        ReloadDelay = TimeSpan.FromSeconds(weapon.WeaponInfo.ReloadTime);
-        PullDelay = TimeSpan.FromSeconds(weapon.WeaponInfo.PullTime);
-        
-       
+        ShootDelay = weapon.WeaponInfo.ShootTime;
+        ReloadDelay = weapon.WeaponInfo.ReloadTime;
+        PullDelay = weapon.WeaponInfo.PullTime;
     }
 
-    public virtual async void PullBehavior()
+    public virtual void PullBehavior()
     {
-        _cancellationTokenSource = new CancellationTokenSource();
-        Debug.Log("Weapon pulling");
-        Weapon.State = WeaponState.NotReady;
-        try
-        {
-            await Task.Delay(PullDelay, CancellationToken);
-            Weapon.State = WeaponState.Ready;
-            Debug.Log("Weapon pulling done");
-        }
-        catch (TaskCanceledException)
-        {
-        }
+        _pullingCoroutine = CoroutineCreateObject.StartCoroutine(PullingDelayCoroutine());
     }
 
     public virtual void ShootBehavior(bool buttonState)
@@ -59,9 +45,8 @@ public class WeaponBehavior : ICloneable
 
     public virtual void StopAllBehaviors()
     {
-        ReloadAutoResetEvent.Reset();
-        _cancellationTokenSource.Cancel();
         Weapon.State = WeaponState.NotReady;
+        CoroutineCreateObject.StopAllCoroutines();
     }
 
     public object Clone()
@@ -69,8 +54,15 @@ public class WeaponBehavior : ICloneable
         return MemberwiseClone();
     }
 
+    private IEnumerator PullingDelayCoroutine()
+    {
+        Weapon.State = WeaponState.NotReady;
+        yield return new WaitForSeconds(PullDelay);
+        Weapon.State = WeaponState.Ready;
+    }
+
     ~WeaponBehavior()
     {
-        ReloadThread.Abort();
+        CoroutineCreateObject.StopAllCoroutines();
     }
 }
