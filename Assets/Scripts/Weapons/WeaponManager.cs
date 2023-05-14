@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class WeaponManager : MonoBehaviour
 {
     private CurrentPlayerWeapon _currentPlayerWeapon;
+    private WeaponBehavior CurrentWeapon => _currentPlayerWeapon.CurrentWeapon;
 
     private void Awake()
     {
@@ -13,16 +14,29 @@ public class WeaponManager : MonoBehaviour
 
     public void OnShotButtonClicked(InputAction.CallbackContext context)
     {
-        if(!context.started) return;
-        if (_currentPlayerWeapon.CurrentWeapon.CurrentBullets <= 0) return;
-        _currentPlayerWeapon.CurrentWeapon.CurrentBullets--;
-        Debug.Log($@"Shoot - { _currentPlayerWeapon.CurrentWeapon.CurrentBullets}");
+        // ReSharper disable once SwitchStatementMissingSomeEnumCasesNoDefault
+        switch (context.phase)
+        {
+            case InputActionPhase.Started:
+                CurrentWeapon.ShootBehavior(true);
+                break;
+            case InputActionPhase.Canceled:
+                CurrentWeapon.ShootBehavior(false);
+                break;
+        }
     }
     
     public void OnReloadButtonClicked(InputAction.CallbackContext context)
     {
-        if(!context.started) return;
-        _currentPlayerWeapon.CurrentWeapon.CurrentBullets = _currentPlayerWeapon.CurrentWeapon.WeaponInfo.ClipSize;
-        Debug.Log($@"Reload - { _currentPlayerWeapon.CurrentWeapon.CurrentBullets}");
+        // ReSharper disable once SwitchStatementMissingSomeEnumCasesNoDefault
+        switch (context.phase)
+        {
+            case InputActionPhase.Started:
+                CurrentWeapon.ReloadBehavior(true);
+                break;
+            case InputActionPhase.Canceled:
+                CurrentWeapon.ReloadBehavior(false);
+                break;
+        }
     }
 }

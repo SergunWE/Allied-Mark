@@ -219,3 +219,5 @@ MonoBehaviour:
   playerClassHandler: {fileID: 6199815811834458946, guid: 8039c15a9e5ab2a41bf6a2354e24a157,
     type: 3}
   weaponChanged: {fileID: 11400000, guid: f5a37670b99b6a74a82091fa2881782f, type: 2}
+  weaponShooting: {fileID: 11400000, guid: f540bf853d3163e4b837e7c3be0551b9, type: 2}
+  weaponReloading: {fileID: 11400000, guid: f99dd6967c14fe549b2e8058a01122b3, type: 2}
