@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace NetworkFramework.MonoBehaviour_Components
+namespace NetworkFramework.MonoBehaviourComponents
 {
     /// <summary>
     /// Player data display component

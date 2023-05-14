@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using NetworkFramework.Netcode_Components;
+using NetworkFramework.NetcodeComponents;
 using Unity.Collections;
 using UnityEngine;
 

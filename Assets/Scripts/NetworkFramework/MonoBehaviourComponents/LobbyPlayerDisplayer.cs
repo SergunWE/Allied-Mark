@@ -1,8 +1,8 @@
 using NetworkFramework.Data;
-using NetworkFramework.MonoBehaviour_Components.Interfaces;
+using NetworkFramework.MonoBehaviourComponents.Interfaces;
 using UnityEngine;
 
-namespace NetworkFramework.MonoBehaviour_Components
+namespace NetworkFramework.MonoBehaviourComponents
 {
     /// <summary>
     /// Lobby player data display component

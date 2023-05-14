@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace NetworkFramework.MonoBehaviour_Components.Interfaces
+namespace NetworkFramework.MonoBehaviourComponents.Interfaces
 {
     /// <summary>
     /// Basic class for components displaying lobby data

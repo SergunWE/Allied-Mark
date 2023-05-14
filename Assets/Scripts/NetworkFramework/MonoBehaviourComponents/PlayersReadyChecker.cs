@@ -3,7 +3,7 @@ using NetworkFramework.Data;
 using NetworkFramework.EventSystem.EventParameter;
 using UnityEngine;
 
-namespace NetworkFramework.MonoBehaviour_Components
+namespace NetworkFramework.MonoBehaviourComponents
 {
     /// <summary>
     /// The player ready checkup component

@@ -7,7 +7,7 @@ using NetworkFramework.RelayCore;
 using NetworkFramework.SO;
 using UnityEngine;
 
-namespace NetworkFramework.MonoBehaviour_Components
+namespace NetworkFramework.MonoBehaviourComponents
 {
     /// <summary>
     /// Component of connecting to the game

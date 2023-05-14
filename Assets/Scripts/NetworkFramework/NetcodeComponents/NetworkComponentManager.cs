@@ -1,7 +1,7 @@
 using Unity.Netcode;
 using UnityEngine;
 
-namespace NetworkFramework.Netcode_Components
+namespace NetworkFramework.NetcodeComponents
 {
     /// <summary>
     /// Universal class for components, for managing client-owner network variables

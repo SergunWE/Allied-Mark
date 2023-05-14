@@ -1,4 +1,4 @@
-using NetworkFramework.Netcode_Components;
+using NetworkFramework.NetcodeComponents;
 using Unity.Netcode;
 using UnityEngine;
 

@@ -1,7 +1,7 @@
 using System;
 using Unity.Netcode;
 
-namespace NetworkFramework.Netcode_Components
+namespace NetworkFramework.NetcodeComponents
 {
     /// <summary>
     /// A base class for network variables

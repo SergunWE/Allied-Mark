@@ -4,7 +4,7 @@ using NetworkFramework.LobbyCore;
 using NetworkFramework.SO;
 using UnityEngine;
 
-namespace NetworkFramework.MonoBehaviour_Components
+namespace NetworkFramework.MonoBehaviourComponents
 {
     /// <summary>
     /// Lobby data update component

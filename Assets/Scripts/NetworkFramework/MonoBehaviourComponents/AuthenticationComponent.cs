@@ -2,7 +2,7 @@ using NetworkFramework.Managers;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace NetworkFramework.MonoBehaviour_Components
+namespace NetworkFramework.MonoBehaviourComponents
 {
     /// <summary>
     /// User authentication component

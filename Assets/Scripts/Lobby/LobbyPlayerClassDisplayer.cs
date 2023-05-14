@@ -1,6 +1,6 @@
 using NetworkFramework;
 using NetworkFramework.Data;
-using NetworkFramework.MonoBehaviour_Components.Interfaces;
+using NetworkFramework.MonoBehaviourComponents.Interfaces;
 using UnityEngine;
 
 public class LobbyPlayerClassDisplayer : DisplayerBase
