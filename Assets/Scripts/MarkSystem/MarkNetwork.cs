@@ -1,52 +1,51 @@
 using System;
 using System.Collections.Generic;
 using Unity.Netcode;
+using UnityEngine;
 
 public class MarkNetwork : NetworkBehaviour
 {
-    public event Action<MarkInfoNetwork> MarkSet;
-    public event Action<MarkInfoNetwork> MarkUnset;
-    private NetworkList<MarkInfoNetwork> _objectsThatMarked;
+    [SerializeField] private MarkHandler markHandler;
+    public event Action MarkChanged;
+    
+    public readonly List<(NetworkObject, MarkInfo)> LocalMarks = new(10);
+    private NetworkList<MarkInfoNetwork> _markList;
 
     private void Awake()
     {
-        _objectsThatMarked = new NetworkList<MarkInfoNetwork>(new List<MarkInfoNetwork>());
+        _markList = new NetworkList<MarkInfoNetwork>(new List<MarkInfoNetwork>());
     }
 
     private void Start()
     {
-        foreach (var mark in _objectsThatMarked)
+        foreach (var t in _markList)
         {
-            MarkSet?.Invoke(mark);
+            AddMarkLocal(t);
         }
+
+        MarkChanged?.Invoke();
     }
 
     public override void OnNetworkSpawn()
     {
-        _objectsThatMarked.OnListChanged += OnMarkedObjectChanged;
+        _markList.OnListChanged += OnMarkedObjectChanged;
     }
 
     public override void OnNetworkDespawn()
     {
-        _objectsThatMarked.OnListChanged -= OnMarkedObjectChanged;
+        _markList.OnListChanged -= OnMarkedObjectChanged;
     }
 
     [ServerRpc(RequireOwnership = false)]
     public void SetMarkServerRpc(MarkInfoNetwork reference)
     {
-        _objectsThatMarked.Add(reference);
+        _markList.Add(reference);
     }
     
     [ServerRpc(RequireOwnership = false)]
     public void UnSetMarkServerRpc(MarkInfoNetwork reference)
     {
-        _objectsThatMarked.Remove(reference);
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    public void DestroyServerRpc()
-    {
-        NetworkObject.Despawn();
+        _markList.Remove(reference);
     }
 
     private void OnMarkedObjectChanged(NetworkListEvent<MarkInfoNetwork> value)
@@ -54,14 +53,31 @@ public class MarkNetwork : NetworkBehaviour
         switch (value.Type)
         {
             case NetworkListEvent<MarkInfoNetwork>.EventType.Add:
-                MarkSet?.Invoke(value.Value);
+                AddMarkLocal(value.Value);
+                MarkChanged?.Invoke();
                 break;
             case NetworkListEvent<MarkInfoNetwork>.EventType.RemoveAt:
-                MarkUnset?.Invoke(value.Value);
+                RemoveMarkLocal(value.Value);
+                MarkChanged?.Invoke();
                 break;
             case NetworkListEvent<MarkInfoNetwork>.EventType.Remove:
-                MarkUnset?.Invoke(value.Value);
+                RemoveMarkLocal(value.Value);
+                MarkChanged?.Invoke();
                 break;
         }
+    }
+
+    private void AddMarkLocal(MarkInfoNetwork info)
+    {
+        if (!info.Sender.TryGet(out var sender)) return;
+        var markInfo = markHandler.DataDictionary[info.MarkName.Value];
+        LocalMarks.Add((sender, markInfo));
+    }
+
+    private void RemoveMarkLocal(MarkInfoNetwork info)
+    {
+        if (!info.Sender.TryGet(out var sender)) return;
+        var markInfo = markHandler.DataDictionary[info.MarkName.Value];
+        LocalMarks.Remove((sender, markInfo));
     }
 }
