@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   className: Tech
   displayedName: "\u0422\u0435\u0445\u043D\u0438\u043A"
+  <Health>k__BackingField: 120
   weapons:
   - {fileID: 11400000, guid: e322ae204526a86468025de81248d060, type: 2}
   - {fileID: 11400000, guid: a401f4ce46f1257468ade8455c6d1239, type: 2}

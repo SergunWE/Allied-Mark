@@ -5,21 +5,13 @@ using UnityEngine;
 
 public class FirstPersonWeaponViewer : NetworkComponentManager<PlayerClassNetwork>
 {
-    [SerializeField] private Transform weaponRoot;
-    [SerializeField] private PlayerClassHandler playerClassHandler;
-
+    private Transform _weaponRoot;
     private readonly List<GameObject> _weaponModelsRoot = new();
 
     protected void Awake()
     {
-        if (weaponRoot == null)
-        {
-            if (Camera.main != null)
-            {
-                weaponRoot = Camera.main.transform.GetComponentInChildren<WeaponFirstPersonRoot>().transform;
-            }
-        }
-        foreach (Transform model in weaponRoot)
+        _weaponRoot = CameraHelper.GetPlayerCamera.GetComponentInChildren<WeaponFirstPersonRoot>().transform;
+        foreach (Transform model in _weaponRoot)
         {
             var obj = model.gameObject;
             _weaponModelsRoot.Add(obj);
@@ -41,8 +33,8 @@ public class FirstPersonWeaponViewer : NetworkComponentManager<PlayerClassNetwor
 
     private void SetWeaponModel(FixedString128Bytes playerClassName)
     {
-        if(string.IsNullOrEmpty(playerClassName.Value)) return;
-        var weaponInfos = playerClassHandler.DataDictionary[playerClassName.Value].weapons;
+        if(playerClassName.IsEmpty) return;
+        var weaponInfos = networkComponent.PlayerClassInfo.weapons;
         for (int i = 0; i < weaponInfos.Count; i++)
         {
             foreach (Transform children in _weaponModelsRoot[i].transform)

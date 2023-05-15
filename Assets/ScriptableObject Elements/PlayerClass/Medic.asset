@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   className: Medic
   displayedName: "\u041C\u0435\u0434\u0438\u043A"
+  <Health>k__BackingField: 100
   weapons:
   - {fileID: 11400000, guid: 94e7f1ef6e96f1349b95e767523e1212, type: 2}
   - {fileID: 11400000, guid: d10bd123f339cab41983cd25a076e5bf, type: 2}

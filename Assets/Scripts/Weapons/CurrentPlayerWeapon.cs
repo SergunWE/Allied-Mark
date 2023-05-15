@@ -7,8 +7,6 @@ using UnityEngine;
 
 public class CurrentPlayerWeapon : NetworkComponentManager<WeaponNetwork>
 {
-    [SerializeField] private PlayerClassHandler playerClassHandler;
-    
     [SerializeField] private GameEvent weaponChanged;
     [SerializeField] private GameEvent weaponShooting;
     [SerializeField] private GameEventBool weaponReloading;
@@ -36,9 +34,8 @@ public class CurrentPlayerWeapon : NetworkComponentManager<WeaponNetwork>
         {
             // ignored
         }
-
-        string networkClassName = _playerClassNetwork.GetPlayerClassName();
-        var playerClass = playerClassHandler.DataDictionary[networkClassName];
+        
+        var playerClass = _playerClassNetwork.PlayerClassInfo;
         
         foreach (var weaponInfo in playerClass.weapons)
         {

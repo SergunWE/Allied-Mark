@@ -6,7 +6,6 @@ public class ThirdPersonWeaponViewer : MonoBehaviour
 {
     [SerializeField] private WeaponNetwork weaponNetwork;
     [SerializeField] private PlayerClassNetwork playerClassNetwork;
-    [SerializeField] private PlayerClassHandler playerClassHandler;
     [SerializeField] private Transform weaponRoot;
     
     private readonly List<GameObject> _weaponModelsRoot = new();
@@ -53,8 +52,8 @@ public class ThirdPersonWeaponViewer : MonoBehaviour
 
     private void SetWeaponModel(FixedString128Bytes playerClassName)
     {
-        if(string.IsNullOrEmpty(playerClassName.Value)) return;
-        var weaponInfos = playerClassHandler.DataDictionary[playerClassName.Value].weapons;
+        if(playerClassName.IsEmpty) return;
+        var weaponInfos = playerClassNetwork.PlayerClassInfo.weapons;
         for (int i = 0; i < weaponInfos.Count; i++)
         {
             foreach (Transform children in _weaponModelsRoot[i].transform)

@@ -8,21 +8,25 @@ using UnityEngine;
 
 public class PlayerClassNetwork : ObjectNetwork<FixedString128Bytes>
 {
+    [SerializeField] private PlayerClassHandler playerClassHandler;
+
     private void Start()
     {
-        LocalValue = GetPlayerClassName();
+        LocalValue = PlayerClassName;
         if (IsOwner)
         {
             SetPlayerClassServerRpc(LocalValue);
         }
     }
 
-    public string GetPlayerClassName()
-    {
-        return IsOwner
-            ? LobbyData.GetPlayerData(CustomDataKeys.PlayerClass.Key, AuthenticationService.Instance.PlayerId)
-            : NetworkVariable.Value.Value;
-    }
+    private string PlayerClassName => IsOwner
+        ? LobbyData.GetPlayerData(CustomDataKeys.PlayerClass.Key, AuthenticationService.Instance.PlayerId)
+        : NetworkVariable.Value.Value;
+
+
+    public PlayerClass PlayerClassInfo => LocalValue.IsEmpty
+        ? null
+        : playerClassHandler.DataDictionary[LocalValue.Value];
 
     [ServerRpc]
     private void SetPlayerClassServerRpc(FixedString128Bytes playerClassName)

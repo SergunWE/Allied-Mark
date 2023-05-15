@@ -4,7 +4,6 @@ using UnityEngine;
 public class PlayerClassViewer : MonoBehaviour
 {
     [SerializeField] private PlayerClassNetwork playerClassNetwork;
-    [SerializeField] private PlayerClassHandler playerClassHandler;
     [SerializeField] private SkinnedMeshRenderer rendererModel;
 
     private void Start()
@@ -24,8 +23,8 @@ public class PlayerClassViewer : MonoBehaviour
 
     private void SetPlayerModel(FixedString128Bytes playerClassName)
     {
-        if(string.IsNullOrEmpty(playerClassName.Value)) return;
-        var playerModel = playerClassHandler.DataDictionary[playerClassName.Value].playerModel.
+        if(playerClassName.IsEmpty) return;
+        var playerModel =  playerClassNetwork.PlayerClassInfo.playerModel.
             GetComponentInChildren<SkinnedMeshRenderer>();
         rendererModel.sharedMesh = playerModel.sharedMesh;
         ModelHelper.SetOwnerModelSettings(playerClassNetwork, rendererModel.gameObject);

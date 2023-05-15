@@ -11,13 +11,7 @@ public class FirstPersonWeaponChange : NetworkComponentManager<WeaponNetwork>
     
     private void Awake()
     {
-        if (_weaponRoot == null)
-        {
-            if (Camera.main != null)
-            {
-                _weaponRoot = Camera.main.transform.GetComponentInChildren<WeaponFirstPersonRoot>().transform;
-            }
-        }
+        _weaponRoot = CameraHelper.GetPlayerCamera.GetComponentInChildren<WeaponFirstPersonRoot>().transform;
         foreach (Transform model in _weaponRoot)
         {
             var obj = model.gameObject;

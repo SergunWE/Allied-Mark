@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -9,39 +8,31 @@ public static class ModelHelper
     {
         if (!network.IsOwner) return;
 
-        var smrComps = FindComponents<SkinnedMeshRenderer>(obj);
+        var smrComps = ComponentHelper.FindComponents<SkinnedMeshRenderer>(obj);
         foreach (var comp in smrComps)
         {
             comp.shadowCastingMode = ShadowCastingMode.ShadowsOnly;
         }
-       
-        var mrComps =  FindComponents<MeshRenderer>(obj);
+
+        var mrComps = ComponentHelper.FindComponents<MeshRenderer>(obj);
         foreach (var comp in mrComps)
         {
             comp.shadowCastingMode = ShadowCastingMode.ShadowsOnly;
         }
     }
-    
+
     public static void SetFirstModelSettings(GameObject obj)
     {
-        var smrComps =  FindComponents<SkinnedMeshRenderer>(obj);
+        var smrComps = ComponentHelper.FindComponents<SkinnedMeshRenderer>(obj);
         foreach (var comp in smrComps)
         {
             comp.shadowCastingMode = ShadowCastingMode.ShadowsOnly;
         }
-       
-        var mrComps =  FindComponents<MeshRenderer>(obj);
+
+        var mrComps = ComponentHelper.FindComponents<MeshRenderer>(obj);
         foreach (var comp in mrComps)
         {
             comp.shadowCastingMode = ShadowCastingMode.Off;
         }
-    }
-
-    private static List<T> FindComponents<T>(GameObject gameObject)
-    {
-        var comps = new List<T>();
-        comps.AddRange(gameObject.GetComponents<T>());
-        comps.AddRange(gameObject.GetComponentsInChildren<T>());
-        return comps;
     }
 }

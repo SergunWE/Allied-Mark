@@ -30,7 +30,7 @@ public class WeaponAnimationController : MonoBehaviour
 
     public void OnWeaponChanged()
     {
-        _animator.StopPlayback();
+        _animator.Play("FirstPersonWeaponHide");
         _animator.Play("FirstPersonWeaponPulling");
     }
 
