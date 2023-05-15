@@ -15,3 +15,4 @@ MonoBehaviour:
   <EnemyName>k__BackingField: UnarmedBandit
   <DisplayedEnemyName>k__BackingField: Hand-to-hand bandit
   <Health>k__BackingField: 150
+  <Damage>k__BackingField: 30

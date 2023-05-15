@@ -17,8 +17,6 @@ public struct PlayerCharacterInputs
     public float MoveAxisRight;
     public Quaternion CameraRotation;
     public bool JumpDown;
-    public bool CrouchDown;
-    public bool CrouchUp;
 }
 
 public struct AICharacterInputs

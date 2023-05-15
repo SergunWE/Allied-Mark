@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class EnemyHealthNetwork : HealthNetwork
 {
-    [SerializeField] private EnemyInfo enemyInfo;
+    [field: SerializeField] public EnemyInfo EnemyInfo { get; private set; }
 
     private void Start()
     {
         if (IsHost || IsServer)
         {
-            NetworkVariable.Value = enemyInfo.Health;
+            NetworkVariable.Value = EnemyInfo.Health;
         }
 
         LocalValue = NetworkVariable.Value;
@@ -22,7 +22,7 @@ public class EnemyHealthNetwork : HealthNetwork
             TakeDamageServerRpc(damage);
         }
     }
-    
+
     [ServerRpc(RequireOwnership = false)]
     private void TakeDamageServerRpc(int damage)
     {
@@ -33,14 +33,14 @@ public class EnemyHealthNetwork : HealthNetwork
             return;
         }
 
-        if (result > enemyInfo.Health)
+        if (result > EnemyInfo.Health)
         {
-            result = enemyInfo.Health;
+            result = EnemyInfo.Health;
         }
 
         NetworkVariable.Value = result;
     }
-    
+
     protected override void VariableChangedMessage()
     {
         Debug.Log($"Enemy {OwnerClientId} have {LocalValue} HP");
