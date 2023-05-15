@@ -6,18 +6,6 @@ public abstract class HealthNetwork : ObjectNetwork<int>, IDamaged
 {
     public event Action ObjectDeath;
 
-    protected void SetHealth(int health)
-    {
-        LocalValue = health;
-        SetHealthServerRpc(health);
-    }
-    
-    [ServerRpc]
-    private void SetHealthServerRpc(int health)
-    {
-        NetworkVariable.Value = health;
-    }
-    
     protected void Death()
     {
         ObjectDeath?.Invoke();

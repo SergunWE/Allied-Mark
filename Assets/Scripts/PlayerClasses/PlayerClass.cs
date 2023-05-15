@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
 [CreateAssetMenu(menuName = "Player Class")]
 public class PlayerClass : ScriptableObject, IUIDisplayed
 {

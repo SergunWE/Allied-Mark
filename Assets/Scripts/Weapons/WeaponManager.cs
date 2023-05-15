@@ -1,15 +1,15 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
-[RequireComponent(typeof(CurrentPlayerWeapon))]
 public class WeaponManager : MonoBehaviour
 {
-    private CurrentPlayerWeapon _currentPlayerWeapon;
-    private WeaponBehavior CurrentWeapon => _currentPlayerWeapon.CurrentWeapon;
-
-    private void Awake()
+    [SerializeField] private CurrentPlayerWeapon currentPlayerWeapon;
+    private WeaponBehavior _currentWeapon;
+    
+    public void OnWeaponChanged()
     {
-        _currentPlayerWeapon = GetComponent<CurrentPlayerWeapon>();
+        _currentWeapon = currentPlayerWeapon.CurrentWeapon;
     }
 
     public void OnShotButtonClicked(InputAction.CallbackContext context)
@@ -18,10 +18,10 @@ public class WeaponManager : MonoBehaviour
         switch (context.phase)
         {
             case InputActionPhase.Started:
-                CurrentWeapon.ShootBehavior(true);
+                _currentWeapon.ShootBehavior(true);
                 break;
             case InputActionPhase.Canceled:
-                CurrentWeapon.ShootBehavior(false);
+                _currentWeapon.ShootBehavior(false);
                 break;
         }
     }
@@ -32,10 +32,10 @@ public class WeaponManager : MonoBehaviour
         switch (context.phase)
         {
             case InputActionPhase.Started:
-                CurrentWeapon.ReloadBehavior(true);
+                _currentWeapon.ReloadBehavior(true);
                 break;
             case InputActionPhase.Canceled:
-                CurrentWeapon.ReloadBehavior(false);
+                _currentWeapon.ReloadBehavior(false);
                 break;
         }
     }

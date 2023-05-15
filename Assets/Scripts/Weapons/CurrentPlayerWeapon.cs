@@ -19,8 +19,6 @@ public class CurrentPlayerWeapon : NetworkComponentManager<WeaponNetwork>
     protected override void Start()
     {
         base.Start();
-        networkComponent.ValueChanged += OnWeaponChanged;
-
         try
         {
             var ownerObjects = NetworkManager.Singleton.LocalClient.OwnedObjects;
@@ -34,15 +32,16 @@ public class CurrentPlayerWeapon : NetworkComponentManager<WeaponNetwork>
         {
             // ignored
         }
-        
+
         var playerClass = _playerClassNetwork.PlayerClassInfo;
-        
+
         foreach (var weaponInfo in playerClass.weapons)
         {
             _weapons.Add(GetWeapon(weaponInfo));
         }
 
         OnWeaponChanged(networkComponent.LocalValue);
+        networkComponent.ValueChanged += OnWeaponChanged;
     }
 
     private void OnDestroy()

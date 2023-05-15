@@ -1,50 +1,56 @@
-using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace HealthSystem
+
+[RequireComponent(typeof(PlayerClassNetwork))]
+public class PlayerHealthNetwork : HealthNetwork
 {
-    public class PlayerHealthNetwork : HealthNetwork
+    private PlayerClassNetwork _playerClassNetwork;
+
+    private void Awake()
     {
-        [SerializeField] private PlayerClassNetwork playerClassNetwork;
+        _playerClassNetwork = GetComponent<PlayerClassNetwork>();
+    }
 
-        private void OnEnable()
+    private void Start()
+    {
+        if (!IsOwner) return;
+        LocalValue = _playerClassNetwork.PlayerClassInfo.Health;
+        SetHealthServerRpc(LocalValue);
+    }
+
+    [ServerRpc]
+    private void SetHealthServerRpc(int health)
+    {
+        NetworkVariable.Value = health;
+    }
+
+    public override void TakeDamage(int damage, NetworkObject sender)
+    {
+        float damageCoef = sender.IsPlayerObject ? 0.2f : 1f;
+        TakeDamageServerRpc((int) (damage * damageCoef));
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void TakeDamageServerRpc(int damage)
+    {
+        int result = NetworkVariable.Value - damage;
+        if (result <= 0)
         {
-            playerClassNetwork.ValueChanged += SetHealth;
+            Death();
+            return;
         }
 
-        private void OnDisable()
+        if (result > _playerClassNetwork.PlayerClassInfo.Health)
         {
-            playerClassNetwork.ValueChanged -= SetHealth;
+            result = _playerClassNetwork.PlayerClassInfo.Health;
         }
 
-        private void SetHealth(FixedString128Bytes playerClassName)
-        {
-            if (playerClassName.IsEmpty) return;
-            SetHealth(playerClassNetwork.PlayerClassInfo.Health);
-        }
+        NetworkVariable.Value = result;
+    }
 
-        public override void TakeDamage(int damage, NetworkObject sender)
-        {
-            float damageCoef = sender.IsPlayerObject ? 0.5f : 1f;
-            TakeDamageServerRpc((int) (damage * damageCoef));
-        }
-
-        [ServerRpc]
-        private void TakeDamageServerRpc(int damage)
-        {
-            if (NetworkVariable.Value <= damage)
-            {
-                Death();
-                return;
-            }
-
-            NetworkVariable.Value -= damage;
-        }
-
-        protected override void VariableChangedMessage()
-        {
-            Debug.Log($"Client {OwnerClientId} have {LocalValue} HP");
-        }
+    protected override void VariableChangedMessage()
+    {
+        Debug.Log($"Client {OwnerClientId} have {LocalValue} HP");
     }
 }

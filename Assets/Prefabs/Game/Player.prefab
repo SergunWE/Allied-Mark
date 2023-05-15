@@ -462,8 +462,9 @@ GameObject:
   - component: {fileID: 8332666909182159745}
   - component: {fileID: 7775438788579505633}
   - component: {fileID: 9075943062451474696}
+  - component: {fileID: 5711444622102642266}
   m_Layer: 9
-  m_Name: PlayerClass
+  m_Name: PlayerClassAndHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -512,51 +513,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerClassNetwork: {fileID: 7775438788579505633}
   rendererModel: {fileID: 2418023516808431250}
---- !u!1 &2026428277391678923
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7876810833150682140}
-  - component: {fileID: 2974970861944767663}
-  m_Layer: 9
-  m_Name: Health
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7876810833150682140
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2026428277391678923}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6902342939117082790}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2974970861944767663
+--- !u!114 &5711444622102642266
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2026428277391678923}
+  m_GameObject: {fileID: 2015604076275605253}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad988e41298f34e4da34637cbff5e390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerClassNetwork: {fileID: 7775438788579505633}
 --- !u!1 &2243481973606898445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1824,7 +1792,6 @@ Transform:
   - {fileID: 3367070170856959620}
   - {fileID: 9041894925133702645}
   - {fileID: 5207464880593533440}
-  - {fileID: 7876810833150682140}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

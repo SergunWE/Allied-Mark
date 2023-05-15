@@ -24,9 +24,9 @@ public class PlayerClassNetwork : ObjectNetwork<FixedString128Bytes>
         : NetworkVariable.Value.Value;
 
 
-    public PlayerClass PlayerClassInfo => LocalValue.IsEmpty
+    public PlayerClass PlayerClassInfo => string.IsNullOrEmpty(PlayerClassName)
         ? null
-        : playerClassHandler.DataDictionary[LocalValue.Value];
+        : playerClassHandler.DataDictionary[PlayerClassName];
 
     [ServerRpc]
     private void SetPlayerClassServerRpc(FixedString128Bytes playerClassName)

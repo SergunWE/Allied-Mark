@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9069757511930418001}
   - component: {fileID: 8580962439028775434}
-  - component: {fileID: 7188343683936398900}
   - component: {fileID: 3684257465733582859}
+  - component: {fileID: 4762556057141777577}
   m_Layer: 0
   m_Name: WeaponManager
   m_TagString: Untagged
@@ -121,24 +121,6 @@ MonoBehaviour:
   m_DefaultActionMap: Weapon
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &7188343683936398900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5038931803978337358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74ec5543ced546a895fd3d34e37018e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  networkComponent: {fileID: 0}
-  playerClassHandler: {fileID: 6199815811834458946, guid: 8039c15a9e5ab2a41bf6a2354e24a157,
-    type: 3}
-  weaponChanged: {fileID: 11400000, guid: f5a37670b99b6a74a82091fa2881782f, type: 2}
-  weaponShooting: {fileID: 11400000, guid: f540bf853d3163e4b837e7c3be0551b9, type: 2}
-  weaponReloading: {fileID: 11400000, guid: f99dd6967c14fe549b2e8058a01122b3, type: 2}
 --- !u!114 &3684257465733582859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,3 +133,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bf13e74c6dc4253a57e1230690ce704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentPlayerWeapon: {fileID: 0}
+--- !u!114 &4762556057141777577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5038931803978337358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e839e4c12473014b9b3d3faccc0f61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: f5a37670b99b6a74a82091fa2881782f, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3684257465733582859}
+        m_TargetAssemblyTypeName: WeaponManager, Assembly-CSharp
+        m_MethodName: OnWeaponChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

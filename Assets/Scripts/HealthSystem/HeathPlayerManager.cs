@@ -1,6 +1,5 @@
 using NetworkFramework.NetcodeComponents;
 
-public class HeathPlayerManager : NetworkComponentManager<PlayerClassNetwork>
+public class HeathPlayerManager : NetworkComponentManager<PlayerHealthNetwork>
 {
-    
 }

@@ -17,7 +17,7 @@ MonoBehaviour:
     type: 3}
   <FirstPersonModel>k__BackingField: {fileID: 205448542220054579, guid: 7d6d1dd88df0a8c408277c4424910d51,
     type: 3}
-  <Damage>k__BackingField: 0
+  <Damage>k__BackingField: 8
   <BulletsPerShot>k__BackingField: 0
   <ClipSize>k__BackingField: 7
   <Recoil>k__BackingField: 0
