@@ -6,6 +6,7 @@ using UnityEngine;
 public class MovementCharacterController : MonoBehaviour, ICharacterController
 {
     [SerializeField] private KinematicCharacterMotor motor;
+    [SerializeField] private float yMinimumValue;
 
     [Header("Stable Movement")] [SerializeField]
     private float maxStableMoveSpeed = 10f;
@@ -56,6 +57,14 @@ public class MovementCharacterController : MonoBehaviour, ICharacterController
 
         // Assign the characterController to the motor
         motor.CharacterController = this;
+    }
+
+    private void FixedUpdate()
+    {
+        if (motor.transform.position.y < yMinimumValue)
+        {
+            motor.SetPosition(Vector3.zero);
+        }
     }
 
     /// <summary>

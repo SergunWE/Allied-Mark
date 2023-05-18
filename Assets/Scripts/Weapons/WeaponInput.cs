@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
-public class WeaponManager : MonoBehaviour
+public class WeaponInput : MonoBehaviour
 {
     [SerializeField] private CurrentPlayerWeapon currentPlayerWeapon;
     private WeaponBehavior _currentWeapon;
