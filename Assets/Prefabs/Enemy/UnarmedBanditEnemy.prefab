@@ -140,8 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1eb3ad01e6438c8b10e05921fe8e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <EnemyInfo>k__BackingField: {fileID: 11400000, guid: 3d95c33db3d647a4295ee548072d886c,
-    type: 2}
+  markNetwork: {fileID: 7458773355604256725}
+  enemyInfo: {fileID: 11400000, guid: 3d95c33db3d647a4295ee548072d886c, type: 2}
 --- !u!114 &210856553721555174
 MonoBehaviour:
   m_ObjectHideFlags: 0

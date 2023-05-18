@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class EnemyHealthNetwork : HealthNetwork
 {
-    [field: SerializeField] public EnemyInfo EnemyInfo { get; private set; }
+    [SerializeField] private MarkNetwork markNetwork;
+    [SerializeField] private EnemyInfo enemyInfo;
 
     private void Start()
     {
         if (IsHost || IsServer)
         {
-            NetworkVariable.Value = EnemyInfo.Health;
+            NetworkVariable.Value = enemyInfo.Health;
         }
 
         LocalValue = NetworkVariable.Value;
@@ -17,10 +18,10 @@ public class EnemyHealthNetwork : HealthNetwork
 
     public override void TakeDamage(int damage, NetworkObject sender)
     {
-        if (sender.IsPlayerObject)
-        {
-            TakeDamageServerRpc(damage);
-        }
+        if (!sender.IsPlayerObject) return;
+        if(markNetwork.LocalMarks.Count > 0) Debug.Log("Have mark");
+        int finalDamage = (int)(damage * (markNetwork.LocalMarks.Count > 0 ? 1.5f : 1f));
+        TakeDamageServerRpc(finalDamage);
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -33,9 +34,9 @@ public class EnemyHealthNetwork : HealthNetwork
             return;
         }
 
-        if (result > EnemyInfo.Health)
+        if (result > enemyInfo.Health)
         {
-            result = EnemyInfo.Health;
+            result = enemyInfo.Health;
         }
 
         NetworkVariable.Value = result;
