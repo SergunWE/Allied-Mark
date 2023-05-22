@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GameEvent">
+    <Position X="1.5" Y="1.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgIQAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Assets\Scripts\EventSystem\Event\GameEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEventListener">
+    <Position X="5.75" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAABAAAAAAAAAAgIAAAAAAAACAA=</HashCode>
+      <FileName>Assets\Scripts\EventSystem\Event\GameEventListener.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="gameEvent" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="NetworkFramework.EventSystem.EventParameter.GameEventParameter&lt;T&gt;">
+    <Position X="0.75" Y="4" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgIQAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Assets\Scripts\EventSystem\EventParameter\GameEventParameter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.EventSystem.EventParameter.GameEventListenerParameter&lt;T&gt;">
+    <Position X="5.75" Y="4" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAABAAAAAAAAAAgIAAAAAAAACAA=</HashCode>
+      <FileName>Assets\Scripts\EventSystem\EventParameter\GameEventListenerParameter.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="gameEvent" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="NetworkFramework.EventSystem.EventParameter.GameEventBool" Collapsed="true">
+    <Position X="0.75" Y="6.5" Width="1.5" />
+    <InheritanceLine Type="NetworkFramework.EventSystem.EventParameter.GameEventParameter&lt;T&gt;" FixedToPoint="true">
+      <Path>
+        <Point X="2.625" Y="6.069" />
+        <Point X="2.625" Y="6.875" />
+        <Point X="2.25" Y="6.875" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\EventSystem\EventParameter\Bool\GameEventBool.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.EventSystem.EventParameter.GameEventFloat" Collapsed="true">
+    <Position X="0.75" Y="7.5" Width="1.5" />
+    <InheritanceLine Type="NetworkFramework.EventSystem.EventParameter.GameEventParameter&lt;T&gt;" FixedToPoint="true">
+      <Path>
+        <Point X="2.625" Y="6.069" />
+        <Point X="2.625" Y="7.875" />
+        <Point X="2.25" Y="7.875" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\EventSystem\EventParameter\Float\GameEventFloat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.EventSystem.EventParameter.GameEventString" Collapsed="true">
+    <Position X="0.75" Y="8.5" Width="1.5" />
+    <InheritanceLine Type="NetworkFramework.EventSystem.EventParameter.GameEventParameter&lt;T&gt;" FixedToPoint="true">
+      <Path>
+        <Point X="2.625" Y="6.069" />
+        <Point X="2.625" Y="8.875" />
+        <Point X="2.25" Y="8.875" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\EventSystem\EventParameter\String\GameEventString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.EventSystem.EventParameter.GameEventListenerBool" Collapsed="true">
+    <Position X="5.75" Y="6.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\EventSystem\EventParameter\Bool\GameEventListenerBool.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.EventSystem.EventParameter.GameEventListenerFloat" Collapsed="true">
+    <Position X="5.75" Y="7.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\EventSystem\EventParameter\Float\GameEventListenerFloat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.EventSystem.EventParameter.GameEventListenerString" Collapsed="true">
+    <Position X="5.75" Y="8.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\EventSystem\EventParameter\String\GameEventListenerString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

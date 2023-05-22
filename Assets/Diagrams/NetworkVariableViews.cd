@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PlayerClassViewer">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAABAAAAIAAAAAAAAAAAAIAAAAAAAACIA=</HashCode>
+      <FileName>Assets\Scripts\PlayerClasses\PlayerClassViewer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="playerClassNetwork" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="FirstPersonWeaponViewer">
+    <Position X="3.5" Y="2.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAABAABAACAAAAAAAAAAAEAAgAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Weapons\FirstPersonWeaponViewer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ThirdPersonWeaponViewer">
+    <Position X="7.25" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAgAAAAACAEAAgAAAAAAIAAAAABAADMA=</HashCode>
+      <FileName>Assets\Scripts\Weapons\ThirdPersonWeaponViewer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="playerClassNetwork" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PlayerClassNetwork" Collapsed="true">
+    <Position X="3.5" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAACAAACAAAAAAAAAIAAAAAEEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerClasses\PlayerClassNetwork.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MarkViewer">
+    <Position X="0.5" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AiAAAAAAAAAAAAAAAAQAAAAAACAAIAAIAQAAAEAACQA=</HashCode>
+      <FileName>Assets\Scripts\MarkSystem\MarkViewer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="markNetwork" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MarkNetwork" Collapsed="true">
+    <Position X="3.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAgEEGAAAAAAAAAAAAQBAAAAgAAACAAAgAAAAEI=</HashCode>
+      <FileName>Assets\Scripts\MarkSystem\MarkNetwork.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

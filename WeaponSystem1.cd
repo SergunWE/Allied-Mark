@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="WeaponInfo">
+    <Position X="0.75" Y="4.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AoAAAACAAAIAEAICAAAAAAAAAAgAgIAKAAAAAAIAAAA=</HashCode>
+      <FileName>Assets\Scripts\Weapons\WeaponInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CurrentPlayerWeapon">
+    <Position X="3.75" Y="4.25" Width="3" />
+    <AssociationLine Name="CurrentWeapon" Type="WeaponBehavior" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.25" Y="4.25" />
+        <Point X="5.25" Y="3.5" />
+        <Point X="7" Y="3.5" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AIIBAAAAgiAAAAAAAAAAAAAAAAAAAGAAAAEAAAAQAAA=</HashCode>
+      <FileName>Assets\Scripts\Weapons\CurrentPlayerWeapon.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CurrentWeapon" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PlayerClass">
+    <Position X="0.75" Y="0.75" Width="2.25" />
+    <AssociationLine Name="weapons" Type="WeaponInfo" FixedFromPoint="true">
+      <Path>
+        <Point X="2.375" Y="3.396" />
+        <Point X="2.375" Y="4.25" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.199" Y="0.375" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACGIAAgACAAAAAAAACAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerClasses\PlayerClass.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="weapons" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="WeaponShot">
+    <Position X="5" Y="8.25" Width="3.25" />
+    <AssociationLine Name="shotManager" Type="ShotManager">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.112" Y="0.173" Height="0.182" Width="1.064" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="currentPlayerWeapon" Type="CurrentPlayerWeapon" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.625" Y="8.25" />
+        <Point X="5.625" Y="7.897" />
+        <Point X="4" Y="7.897" />
+        <Point X="4" Y="7.281" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-3.316" Y="0.675" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AIAAAABAAAAgAAAAAAAAACAAAAAAAAAACAgAAQAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Weapons\WeaponShot.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="shotManager" />
+      <Field Name="currentPlayerWeapon" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ShotManager">
+    <Position X="0.75" Y="8.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ShotSystem\ShotManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Weapon">
+    <Position X="3.5" Y="0.75" Width="2.25" />
+    <AssociationLine Name="WeaponInfo" Type="WeaponInfo" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.688" Y="2.497" />
+        <Point X="4.688" Y="3.875" />
+        <Point X="2.594" Y="3.875" />
+        <Point X="2.594" Y="4.25" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.963" Y="1.463" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Weapons\Weapon.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="WeaponInfo" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="WeaponInput">
+    <Position X="7" Y="5.25" Width="3.25" />
+    <AssociationLine Name="currentPlayerWeapon" Type="CurrentPlayerWeapon" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.438" Y="7.319" />
+        <Point X="7.438" Y="7.574" />
+        <Point X="4.812" Y="7.574" />
+        <Point X="4.812" Y="7.281" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-4.509" Y="0.171" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAgACACAEAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Weapons\WeaponInput.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="currentPlayerWeapon" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="WeaponBehavior">
+    <Position X="7" Y="0.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>EAAEEAAAAAAAAEEAgAAAQAgAAMAAAAgAAFAABAAAABA=</HashCode>
+      <FileName>Assets\Scripts\Weapons\WeaponBehaviors\WeaponBehavior.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Weapon" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

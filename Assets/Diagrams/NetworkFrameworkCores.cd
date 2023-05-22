@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+<ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="NetworkFramework.RelayCore.RelayConnectorCore">
     <Position X="7.75" Y="2.5" Width="2.5" />
     <TypeIdentifier>

@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NetworkFramework.MonoBehaviourComponents.AuthenticationComponent">
+    <Position X="7" Y="7.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAACAAAAAAAQAAAAAAAAAABAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\MonoBehaviourComponents\AuthenticationComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.MonoBehaviourComponents.GameConnectorComponent">
+    <Position X="0.5" Y="1.5" Width="2.25" />
+    <AssociationLine Name="_netcodeConnectorCore" Type="NetworkFramework.NetcodeCore.NetcodeConnectorCore">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.036" Y="0.081" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAgAACBAACABAAAAAAAAAgIAABAAQAAAASBAAQAgAkA=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\MonoBehaviourComponents\GameConnectorComponent.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_dataUpdaterCore" />
+      <Field Name="_netcodeConnectorCore" />
+      <Field Name="_refreshCore" />
+      <Field Name="_relayCore" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="NetworkFramework.MonoBehaviourComponents.LobbyConnectorComponent">
+    <Position X="9.5" Y="1.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAgAAAAAAAAIABAAAABAAAAigAAAACEA=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\MonoBehaviourComponents\LobbyConnectorComponent.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_core" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="NetworkFramework.MonoBehaviourComponents.LobbyPlayerDisplayer">
+    <Position X="0.5" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\MonoBehaviourComponents\LobbyPlayerDisplayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.MonoBehaviourComponents.LobbyRefresherComponent">
+    <Position X="7" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAACAAAAAAAAAAAAEAAIAAmAAAAFCEQ=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\MonoBehaviourComponents\LobbyRefresherComponent.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_core" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="NetworkFramework.MonoBehaviourComponents.LobbyUpdaterComponent">
+    <Position X="7" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAQACAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\MonoBehaviourComponents\LobbyUpdaterComponent.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_core" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="NetworkFramework.MonoBehaviourComponents.PlayerDataDisplayer">
+    <Position X="2.75" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AABAAAABEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\MonoBehaviourComponents\PlayerDataDisplayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.MonoBehaviourComponents.PlayersReadyChecker">
+    <Position X="5" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAEAAAAAAAAAAEAAAAAIAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\MonoBehaviourComponents\PlayersReadyChecker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.LobbyCore.LobbyConnectorCore" Collapsed="true">
+    <Position X="4.25" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAASAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\LobbyCore\LobbyConnectorCore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.LobbyCore.LobbyDataUpdaterCore" Collapsed="true">
+    <Position X="4.25" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAACAAAgAAAAAAAAAgAAAAQAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\LobbyCore\LobbyDataUpdaterCore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.NetcodeCore.NetcodeConnectorCore" Collapsed="true">
+    <Position X="4.25" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\NetcodeCore\NetcodeConnectorCore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.LobbyCore.LobbyRefresherCore" Collapsed="true">
+    <Position X="4.25" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAABCgAAAAAAAEAAAAAAAAAEAAAQJAAAAABAAQ=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\LobbyCore\LobbyRefresherCore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.RelayCore.RelayConnectorCore" Collapsed="true">
+    <Position X="4.25" Y="5.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAFAAAAAAgA=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\RelayCore\RelayConnectorCore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.NetcodeComponents.NetworkComponentManager&lt;T&gt;">
+    <Position X="0.5" Y="8.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\NetcodeComponents\NetworkComponentManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.NetcodeComponents.ObjectNetwork&lt;T&gt;">
+    <Position X="9.5" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAACAAAAAAAAAAQCAgAEAAAAAACAAAAAAAAAI=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\NetcodeComponents\ObjectNetwork.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

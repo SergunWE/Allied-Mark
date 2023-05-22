@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DataHandler&lt;T&gt;">
+    <Position X="2.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAIABAAAAAAAQAAAAAAAAAAAAQAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Data\DataHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DropdownDataDisplayer&lt;T&gt;">
+    <Position X="5" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAACAAAAAAAIAAAQAAAACEQ=</HashCode>
+      <FileName>Assets\Scripts\Data\DropdownDataDisplayer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="data" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="LevelDifficultyHandler" Collapsed="true">
+    <Position X="2.5" Y="5" Width="2" />
+    <InheritanceLine Type="DataHandler&lt;T&gt;" FixedToPoint="true">
+      <Path>
+        <Point X="3.25" Y="4.713" />
+        <Point X="3.25" Y="4.846" />
+        <Point X="2.398" Y="4.846" />
+        <Point X="2.398" Y="5.375" />
+        <Point X="2.5" Y="5.375" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Levels\LevelDifficultyHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MarkHandler" Collapsed="true">
+    <Position X="2.5" Y="7" Width="1.75" />
+    <InheritanceLine Type="DataHandler&lt;T&gt;" FixedToPoint="true">
+      <Path>
+        <Point X="3.25" Y="4.713" />
+        <Point X="3.25" Y="4.846" />
+        <Point X="2.398" Y="4.846" />
+        <Point X="2.398" Y="7.375" />
+        <Point X="2.5" Y="7.375" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\MarkSystem\MarkHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LevelDifficultyHandlerDropdown" Collapsed="true">
+    <Position X="8" Y="2" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Assets\Scripts\Levels\LevelDifficultyHandlerDropdown.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerClassHandlerDropdown" Collapsed="true">
+    <Position X="8" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAIAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Assets\Scripts\PlayerClasses\PlayerClassHandlerDropdown.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerClassHandler" Collapsed="true">
+    <Position X="2.5" Y="6" Width="1.75" />
+    <InheritanceLine Type="DataHandler&lt;T&gt;" FixedToPoint="true">
+      <Path>
+        <Point X="3.25" Y="4.713" />
+        <Point X="3.25" Y="4.846" />
+        <Point X="2.398" Y="4.846" />
+        <Point X="2.398" Y="6.312" />
+        <Point X="2.5" Y="6.312" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerClasses\PlayerClassHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerClassNetwork" Collapsed="true">
+    <Position X="6" Y="6" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAACAAACAAAAAAAAAIAAAAAEEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerClasses\PlayerClassNetwork.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="playerClassHandler" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MarkNetwork" Collapsed="true">
+    <Position X="5.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAgEEGAAAAAAAAAAAAQBAAAAgAAACAAAgAAAAEI=</HashCode>
+      <FileName>Assets\Scripts\MarkSystem\MarkNetwork.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="markHandler" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

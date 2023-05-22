@@ -1,31 +1,28 @@
 using NetworkFramework.EventSystem.EventParameter;
 using UnityEngine;
 
-namespace Weapons
+public class WeaponBulletUI : MonoBehaviour
 {
-    public class WeaponBulletUI : MonoBehaviour
-    {
-        [SerializeField] private CurrentPlayerWeapon currentPlayerWeapon;
-        
-        [SerializeField] private GameEventString bulletChanged;
-        [SerializeField] private GameEventString clipSizeChanged;
+	[SerializeField] private CurrentPlayerWeapon currentPlayerWeapon;
 
-        private Weapon CurrentWeapon => currentPlayerWeapon.CurrentWeapon.Weapon;
+	[SerializeField] private GameEventString bulletChanged;
+	[SerializeField] private GameEventString clipSizeChanged;
 
-        public void OnWeaponShooting()
-        {
-            bulletChanged.Raise(CurrentWeapon.CurrentBullets.ToString());
-        }
+	private Weapon CurrentWeapon => currentPlayerWeapon.CurrentWeapon.Weapon;
 
-        public void OnWeaponReloading(bool state)
-        {
-            bulletChanged.Raise(CurrentWeapon.CurrentBullets.ToString());
-        }
+	public void OnWeaponShooting()
+	{
+		bulletChanged.Raise(CurrentWeapon.CurrentBullets.ToString());
+	}
 
-        public void OnWeaponChanged()
-        {
-            bulletChanged.Raise(CurrentWeapon.CurrentBullets.ToString());
-            clipSizeChanged.Raise(CurrentWeapon.WeaponInfo.ClipSize.ToString());
-        }
-    }
+	public void OnWeaponReloading(bool state)
+	{
+		bulletChanged.Raise(CurrentWeapon.CurrentBullets.ToString());
+	}
+
+	public void OnWeaponChanged()
+	{
+		bulletChanged.Raise(CurrentWeapon.CurrentBullets.ToString());
+		clipSizeChanged.Raise(CurrentWeapon.WeaponInfo.ClipSize.ToString());
+	}
 }

@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FirstPersonWeaponChange">
+    <Position X="0.5" Y="1.5" Width="3" />
+    <InheritanceLine Type="NetworkFramework.NetcodeComponents.NetworkComponentManager&lt;T&gt;" FixedToPoint="true">
+      <Path>
+        <Point X="8.5" Y="1.191" />
+        <Point X="8.5" Y="1.345" />
+        <Point X="3.654" Y="1.345" />
+        <Point X="3.654" Y="3.188" />
+        <Point X="3.5" Y="3.188" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAABAABAACAAAAAAAAACAAAAgAAAAAAAAAAAAAAABEA=</HashCode>
+      <FileName>Assets\Scripts\Weapons\FirstPersonWeaponChange.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeaponChange">
+    <Position X="0.5" Y="4.5" Width="3" />
+    <InheritanceLine Type="NetworkFramework.NetcodeComponents.NetworkComponentManager&lt;T&gt;" FixedToPoint="true">
+      <Path>
+        <Point X="8.5" Y="1.191" />
+        <Point X="8.5" Y="1.345" />
+        <Point X="3.654" Y="1.345" />
+        <Point X="3.654" Y="5.312" />
+        <Point X="3.5" Y="5.312" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Weapons\WeaponChange.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerControllerManager">
+    <Position X="4.25" Y="1.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>ACUAAAAAACAAAAgAACAAIAAFAAAAAQAEAIAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerController\PlayerControllerManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerClassManager" Collapsed="true">
+    <Position X="8.25" Y="5.25" Width="3" />
+    <InheritanceLine Type="NetworkFramework.NetcodeComponents.NetworkComponentManager&lt;T&gt;" FixedToPoint="true">
+      <Path>
+        <Point X="8.5" Y="1.191" />
+        <Point X="8.5" Y="1.345" />
+        <Point X="8.148" Y="1.345" />
+        <Point X="8.148" Y="5.625" />
+        <Point X="8.25" Y="5.625" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerClasses\PlayerClassManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MarkSystemManager">
+    <Position X="8.25" Y="1.5" Width="3" />
+    <InheritanceLine Type="NetworkFramework.NetcodeComponents.NetworkComponentManager&lt;T&gt;" FixedToPoint="true">
+      <Path>
+        <Point X="8.5" Y="1.191" />
+        <Point X="8.5" Y="1.345" />
+        <Point X="8.148" Y="1.345" />
+        <Point X="8.148" Y="2.938" />
+        <Point X="8.25" Y="2.938" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAACgAAAAACAAAAAAAAAAAAACAACAA=</HashCode>
+      <FileName>Assets\Scripts\MarkSystem\MarkSystemManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HeathPlayerManager" Collapsed="true">
+    <Position X="8.25" Y="4.25" Width="3" />
+    <InheritanceLine Type="NetworkFramework.NetcodeComponents.NetworkComponentManager&lt;T&gt;" FixedToPoint="true">
+      <Path>
+        <Point X="8.5" Y="1.191" />
+        <Point X="8.5" Y="1.345" />
+        <Point X="8.148" Y="1.345" />
+        <Point X="8.148" Y="4.625" />
+        <Point X="8.25" Y="4.625" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\HealthSystem\HeathPlayerManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkFramework.NetcodeComponents.NetworkComponentManager&lt;T&gt;" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\NetworkFramework\NetcodeComponents\NetworkComponentManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CurrentPlayerWeapon">
+    <Position X="4.25" Y="5.75" Width="3" />
+    <InheritanceLine Type="NetworkFramework.NetcodeComponents.NetworkComponentManager&lt;T&gt;" FixedToPoint="true">
+      <Path>
+        <Point X="8.5" Y="1.191" />
+        <Point X="8.5" Y="1.345" />
+        <Point X="8.148" Y="1.345" />
+        <Point X="8.148" Y="7.75" />
+        <Point X="7.25" Y="7.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AIIBAAAAgiAAAAAAAAAAAAAAAAAAAGAAAAEAAAAQAAA=</HashCode>
+      <FileName>Assets\Scripts\Weapons\CurrentPlayerWeapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeaponShot">
+    <Position X="0.5" Y="6.25" Width="3" />
+    <InheritanceLine Type="NetworkFramework.NetcodeComponents.NetworkComponentManager&lt;T&gt;" FixedToPoint="true">
+      <Path>
+        <Point X="8.5" Y="1.191" />
+        <Point X="8.5" Y="1.345" />
+        <Point X="3.654" Y="1.345" />
+        <Point X="3.654" Y="7.812" />
+        <Point X="3.5" Y="7.812" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AIAAAABAAAAgAAAAAAAAACAAAAAAAAAACAgAAQAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Weapons\WeaponShot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
