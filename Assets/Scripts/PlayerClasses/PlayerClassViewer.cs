@@ -5,6 +5,7 @@ public class PlayerClassViewer : MonoBehaviour
 {
     [SerializeField] private PlayerClassNetwork playerClassNetwork;
     [SerializeField] private SkinnedMeshRenderer rendererModel;
+    [SerializeField] private GameObject headGameObject;
 
     private void Start()
     {
@@ -28,5 +29,6 @@ public class PlayerClassViewer : MonoBehaviour
             GetComponentInChildren<SkinnedMeshRenderer>();
         rendererModel.sharedMesh = playerModel.sharedMesh;
         ModelHelper.SetOwnerModelSettings(playerClassNetwork, rendererModel.gameObject);
+        ModelHelper.SetOwnerModelSettings(playerClassNetwork, headGameObject);
     }
 }

@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   networkComponent: {fileID: 0}
+  healthChanged: {fileID: 11400000, guid: ad434b905484fd441b8c7f6693cf012c, type: 2}
