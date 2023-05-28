@@ -171,6 +171,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1260965872481481814, guid: c571239d2392aad45bd74c559d91d220,
         type: 3}
+      propertyPath: bobSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260965872481481814, guid: c571239d2392aad45bd74c559d91d220,
+        type: 3}
+      propertyPath: bobLimit.x
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260965872481481814, guid: c571239d2392aad45bd74c559d91d220,
+        type: 3}
+      propertyPath: bobLimit.y
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260965872481481814, guid: c571239d2392aad45bd74c559d91d220,
+        type: 3}
+      propertyPath: maxRotation
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260965872481481814, guid: c571239d2392aad45bd74c559d91d220,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260965872481481814, guid: c571239d2392aad45bd74c559d91d220,
+        type: 3}
       propertyPath: zAxisMultiply
       value: 1
       objectReference: {fileID: 0}

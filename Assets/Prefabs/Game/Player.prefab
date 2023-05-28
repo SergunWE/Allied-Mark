@@ -1609,6 +1609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   motor: {fileID: 6792300607253367750}
   yMinimumValue: -100
+  controllerGrounded: {fileID: 11400000, guid: a1cc4ad8ad487574e84b5a6b33dbbf32, type: 2}
   maxStableMoveSpeed: 6
   stableMovementSharpness: 15
   orientationSharpness: 10
@@ -1625,7 +1626,6 @@ MonoBehaviour:
   bonusOrientationMethod: 0
   bonusOrientationSharpness: 10
   gravity: {x: 0, y: -30, z: 0}
-  meshRoot: {fileID: 6905493694356878798}
   cameraFollowPoint: {fileID: 6902796497971015322}
 --- !u!1 &6839878956885275966
 GameObject:
