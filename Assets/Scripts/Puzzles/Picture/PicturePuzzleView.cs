@@ -7,6 +7,15 @@ public class PicturePuzzleView : MonoBehaviour
     [SerializeField] private PicturePuzzleNetwork picturePuzzleNetwork;
     [SerializeField] private Button[] buttons;
 
+    private void Awake()
+    {
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            int i1 = i;
+            buttons[i].onClick.AddListener(() => picturePuzzleNetwork.ChangeCell(i1));
+        }
+    }
+    
     private void OnEnable()
     {
         picturePuzzleNetwork.OnGridCreated += OnGridCreated;

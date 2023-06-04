@@ -6,23 +6,23 @@ using UnityEngine.InputSystem;
 
 public class MarkSystemManager : NetworkComponentManager<PlayerClassNetwork>
 {
-    [SerializeField] private Camera playerCamera;
-
     private MarkInfo _playerMark;
 
     private List<(MarkNetwork, MarkInfoNetwork)> _markedObject;
+    private Transform _playerCameraTransform;
 
     protected override void Start()
     {
         base.Start();
         _playerMark = networkComponent.PlayerClassInfo.markInfo;
         _markedObject = new List<(MarkNetwork, MarkInfoNetwork)>(_playerMark.maxMarkCount);
+        _playerCameraTransform = CameraHelper.GetPlayerCamera.transform;
     }
 
     public void OnClick(InputAction.CallbackContext context)
     {
         if (!context.started) return;
-        var obj = RaycastHelper.GetObject(playerCamera.transform);
+        var obj = RaycastHelper.GetObject(_playerCameraTransform);
         if(obj == null) return;
         var component = obj.GetComponentInParent<MarkNetwork>();
         if (component == null) return;

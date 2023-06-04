@@ -228,6 +228,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Puzzle",
+            "id": "3e874468-df14-4c28-8717-d84c3a168cca",
+            "actions": [
+                {
+                    "name": "Start",
+                    "type": "Button",
+                    "id": "cc7d7e33-8467-4bbe-a5b7-856f4eeaeb6e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9d5b100a-b9e8-49a6-8910-6027fd6e4679",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

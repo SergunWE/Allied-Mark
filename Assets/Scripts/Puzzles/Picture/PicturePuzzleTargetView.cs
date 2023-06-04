@@ -7,7 +7,7 @@ public class PicturePuzzleTargetView : MonoBehaviour
     [SerializeField] private PicturePuzzleNetwork picturePuzzleNetwork;
     
     [SerializeField] private Button[] targetButtons;
-    
+
     private void OnEnable()
     {
         picturePuzzleNetwork.OnGridCreated += OnGridChanged;

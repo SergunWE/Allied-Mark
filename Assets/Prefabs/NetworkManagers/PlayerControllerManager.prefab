@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8046641238855341294}
   - component: {fileID: 4600460564341679364}
   - component: {fileID: 8046641238855341295}
+  - component: {fileID: 4218744792446955901}
+  - component: {fileID: 5021390875921347294}
   m_Layer: 0
   m_Name: PlayerControllerManager
   m_TagString: Untagged
@@ -45,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7066893a7fce144db23881b3dae9886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterController: {fileID: 0}
+  networkComponent: {fileID: 0}
   characterCamera: {fileID: 0}
 --- !u!114 &8046641238855341295
 MonoBehaviour:
@@ -125,8 +127,84 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: b25a058a-b25a-4da4-9c75-f02c06467b95
     m_ActionName: Weapon/Test[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c11ce364-b120-4877-93d7-b0b3fc9a98db
+    m_ActionName: Weapon/AncillaryWeapon[/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d91f87d6-b0d6-454c-a1db-b6fdd9d1c175
+    m_ActionName: Weapon/Shot[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5387f5d4-5b81-448d-9aa3-ce6545818d10
+    m_ActionName: Weapon/Reload[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 98ba7f16-177b-49f0-92e4-4cf9b74251dc
+    m_ActionName: Mark/Set mark[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cc7d7e33-8467-4bbe-a5b7-856f4eeaeb6e
+    m_ActionName: Puzzle/Start[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &4218744792446955901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8046641238855341292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e839e4c12473014b9b3d3faccc0f61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: a20129db11286aa41868ae3005916971, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8046641238855341295}
+        m_TargetAssemblyTypeName: UnityEngine.InputSystem.PlayerInput, Unity.InputSystem
+        m_MethodName: DeactivateInput
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5021390875921347294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8046641238855341292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e839e4c12473014b9b3d3faccc0f61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: afe4767b9af6f84458db39167fbb5107, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8046641238855341295}
+        m_TargetAssemblyTypeName: UnityEngine.InputSystem.PlayerInput, Unity.InputSystem
+        m_MethodName: ActivateInput
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
