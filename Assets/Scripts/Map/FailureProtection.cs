@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class FailureProtection : MonoBehaviour
 {
-    [SerializeField] private Transform returnPosition;
-    
     private void OnTriggerEnter(Collider other)
     {
         if (!other.transform.TryGetComponent<NetworkObject>(out var networkObject)) return;
         if (!networkObject.IsOwner) return;
-        networkObject.transform.GetComponent<KinematicCharacterMotor>().SetPosition(returnPosition.position);
+        networkObject.transform.GetComponent<KinematicCharacterMotor>().SetPosition(Vector3.zero);
     }
 }

@@ -3,23 +3,35 @@ using UnityEngine.InputSystem;
 
 public class PuzzleControlManager : MonoBehaviour
 {
-    [SerializeField] private GameEvent puzzleStarted;
-    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private GameEvent puzzleDisplayed;
+    [SerializeField] private GameEvent puzzleHidden;
+    
     private Transform _playerCameraTransform;
+    private PuzzleLock _lastPuzzle;
     
     protected void Start()
     {
         _playerCameraTransform = CameraHelper.GetPlayerCamera.transform;
     }
     
-    public void OnClick(InputAction.CallbackContext context)
+    public void OnStartPuzzleClicked(InputAction.CallbackContext context)
     {
         if (!context.started) return;
-        var obj = RaycastHelper.GetObject(_playerCameraTransform, 5f);
+        var obj = RaycastHelper.GetObject(_playerCameraTransform, 3f);
         if(obj == null) return;
         var component = obj.GetComponentInParent<PuzzleLock>();
         if (component == null) return;
-        puzzleStarted.Raise();
+        _lastPuzzle = component;
+        _lastPuzzle.ShowPuzzle();
+        puzzleDisplayed.Raise();
+    }
+
+    public void OnStopPuzzleClicked(InputAction.CallbackContext context)
+    {
+        if (!context.started || _lastPuzzle == null) return;
+        _lastPuzzle.HidePuzzle();
+        puzzleHidden.Raise();
+        _lastPuzzle = null;
     }
 
     public void OnPuzzleStarted()

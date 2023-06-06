@@ -4,14 +4,18 @@ using UnityEngine;
 public class PuzzleLock : NetworkBehaviour
 {
     [SerializeField] private PicturePuzzleNetwork puzzleNetwork;
-    [SerializeField] private GameEvent puzzleComplete;
+    [SerializeField] private GameEvent puzzleHidden;
 
     private Transform _playerCameraTransform;
 
-
-    private void Start()
+    public void ShowPuzzle()
     {
-        
+        puzzleNetwork.transform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    public void HidePuzzle()
+    {
+        puzzleNetwork.transform.GetChild(0).gameObject.SetActive(false);
     }
 
     private void OnEnable()
@@ -30,6 +34,8 @@ public class PuzzleLock : NetworkBehaviour
         {
             NetworkObject.Despawn();
         }
-        puzzleComplete.Raise();
+
+        HidePuzzle();
+        puzzleHidden.Raise();
     }
 }
