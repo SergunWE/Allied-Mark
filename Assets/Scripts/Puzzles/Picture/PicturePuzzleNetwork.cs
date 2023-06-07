@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class PicturePuzzleNetwork : NetworkBehaviour
 {
-    private readonly NetworkList<PuzzleCell> _currentGrid = new(new List<PuzzleCell>(CellCount));
-    private readonly NetworkList<PuzzleCell> _targetGrid = new(new List<PuzzleCell>(CellCount));
+    private NetworkList<PuzzleCell> _currentGrid;
+    private NetworkList<PuzzleCell> _targetGrid;
     public readonly NetworkVariable<ulong> LastPlayerId = new(ulong.MaxValue);
 
     public PuzzleCell[] LocalCurrentGrid { get; private set; }
@@ -23,6 +24,12 @@ public class PicturePuzzleNetwork : NetworkBehaviour
     public override void OnNetworkDespawn()
     {
         _currentGrid.OnListChanged -= OnGridChanged;
+    }
+
+    private void Awake()
+    {
+        _currentGrid = new NetworkList<PuzzleCell>(new List<PuzzleCell>());
+        _targetGrid = new NetworkList<PuzzleCell>(new List<PuzzleCell>());
     }
 
     private void Start()
@@ -81,7 +88,7 @@ public class PicturePuzzleNetwork : NetworkBehaviour
     {
         LocalCurrentGrid[networkListEvent.Index] = networkListEvent.Value;
         OnCurrentGridChanged?.Invoke(networkListEvent.Index);
-        
+
         if (!LocalCurrentGrid.SequenceEqual(LocalTargetGrid)) return;
         Debug.Log("Puzzle complete");
         OnPuzzleComplete?.Invoke();

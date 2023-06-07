@@ -8,16 +8,7 @@ public struct PuzzleCell : INetworkSerializable, IEquatable<PuzzleCell>, IEquali
 
    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
    {
-      if (serializer.IsReader)
-      {
-         var reader = serializer.GetFastBufferReader();
-         reader.ReadValueSafe(out Value);
-      }
-      else
-      {
-         var writer = serializer.GetFastBufferWriter();
-         writer.WriteValueSafe(Value);
-      }
+      serializer.SerializeValue(ref Value);
    }
 
    public bool Equals(PuzzleCell other)
