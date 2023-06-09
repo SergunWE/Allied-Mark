@@ -9,6 +9,7 @@ public class PicturePuzzleTurnView : MonoBehaviour
 
     private void OnEnable()
     {
+        OnCurrentGridChanged(0, picturePuzzleNetwork.LastPlayerId.Value);
         picturePuzzleNetwork.LastPlayerId.OnValueChanged += OnCurrentGridChanged;
     }
 
@@ -19,6 +20,11 @@ public class PicturePuzzleTurnView : MonoBehaviour
 
     private void OnCurrentGridChanged(ulong prevValue, ulong newValue)
     {
+        if (newValue == ulong.MaxValue)
+        {
+            notificationText.text = "Ожидание хода";
+            return;
+        }
         notificationText.text = NetworkManager.Singleton.LocalClientId == newValue
             ? "Ход союзника"
             : "Ваш ход";

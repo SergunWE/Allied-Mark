@@ -22,7 +22,7 @@ public abstract class PuzzleNetwork : NetworkBehaviour
 
     protected virtual void Awake()
     {
-        CurrentGrid = new NetworkList<PuzzleCell>(new List<PuzzleCell>(cellCount));
+        CurrentGrid = new NetworkList<PuzzleCell>(new List<PuzzleCell>());
     }
 
     protected virtual void Start()

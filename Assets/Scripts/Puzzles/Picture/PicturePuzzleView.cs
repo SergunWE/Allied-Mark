@@ -18,6 +18,7 @@ public class PicturePuzzleView : MonoBehaviour
     
     private void OnEnable()
     {
+        OnGridCreated();
         picturePuzzleNetwork.OnGridCreated += OnGridCreated;
         picturePuzzleNetwork.OnCurrentGridChanged += OnCurrentGridChanged;
     }
@@ -30,6 +31,7 @@ public class PicturePuzzleView : MonoBehaviour
 
     private void OnGridCreated()
     {
+        if(picturePuzzleNetwork.LocalCurrentGrid == null) return;
         for (int i = 0; i < picturePuzzleNetwork.LocalCurrentGrid.Length; i++)
         {
             OnCurrentGridChanged(i);

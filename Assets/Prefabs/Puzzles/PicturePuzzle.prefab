@@ -3148,6 +3148,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3429093328281910239}
+  - component: {fileID: 5604340688319937902}
   m_Layer: 5
   m_Name: Target
   m_TagString: Untagged
@@ -3191,6 +3192,36 @@ RectTransform:
   m_AnchoredPosition: {x: 434, y: 174}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5604340688319937902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3429093328281910208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f3266683f6c4740953fcd23e985fc62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  picturePuzzleNetwork: {fileID: 8766549598853430176}
+  targetButtons:
+  - {fileID: 3429093327890040242}
+  - {fileID: 3429093327536213228}
+  - {fileID: 3429093327958946475}
+  - {fileID: 3429093327747422009}
+  - {fileID: 3429093329059301571}
+  - {fileID: 3429093328101551473}
+  - {fileID: 3429093328314944170}
+  - {fileID: 3429093328801719996}
+  - {fileID: 3429093327159165854}
+  - {fileID: 3429093327407419176}
+  - {fileID: 3429093327838161874}
+  - {fileID: 3429093327781001222}
+  - {fileID: 3429093329151259981}
+  - {fileID: 3429093329175675856}
+  - {fileID: 3429093328111710611}
+  - {fileID: 3429093327223342064}
 --- !u!1 &3429093328314944172
 GameObject:
   m_ObjectHideFlags: 0
@@ -3745,6 +3776,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3429093328841525849}
+  - component: {fileID: 4804235454056685505}
   m_Layer: 5
   m_Name: Current
   m_TagString: Untagged
@@ -3788,6 +3820,36 @@ RectTransform:
   m_AnchoredPosition: {x: 58, y: -20}
   m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4804235454056685505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3429093328841525850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07fd88fefcbd4798954d34fa6e143547, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  picturePuzzleNetwork: {fileID: 8766549598853430176}
+  buttons:
+  - {fileID: 3429093327203195957}
+  - {fileID: 3429093327684839300}
+  - {fileID: 3429093327923958172}
+  - {fileID: 3429093327852697805}
+  - {fileID: 3429093328323892762}
+  - {fileID: 3429093327991041755}
+  - {fileID: 3429093327378853835}
+  - {fileID: 3429093328845917648}
+  - {fileID: 3429093328015910795}
+  - {fileID: 3429093327350328963}
+  - {fileID: 3429093328773655680}
+  - {fileID: 3429093328000989325}
+  - {fileID: 3429093327199404155}
+  - {fileID: 3429093327210336510}
+  - {fileID: 3429093327466513925}
+  - {fileID: 3429093327384979430}
 --- !u!1 &3429093328845917650
 GameObject:
   m_ObjectHideFlags: 0
@@ -3931,6 +3993,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3429093328912634698}
   - component: {fileID: 3429093328912634696}
+  - component: {fileID: 1515541225619980544}
   - component: {fileID: 3429093328912634697}
   m_Layer: 5
   m_Name: TurnText
@@ -3967,6 +4030,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3429093328912634699}
   m_CullTransparentMesh: 1
+--- !u!114 &1515541225619980544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3429093328912634699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 801f8039b89e4913905e6c150a6793d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  picturePuzzleNetwork: {fileID: 8766549598853430176}
+  notificationText: {fileID: 3429093328912634697}
 --- !u!114 &3429093328912634697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4430,9 +4507,6 @@ GameObject:
   - component: {fileID: 8766549598853430175}
   - component: {fileID: 8766549598853430176}
   - component: {fileID: 8766549598853430177}
-  - component: {fileID: 7633231848246161167}
-  - component: {fileID: 3860666671607660468}
-  - component: {fileID: 6973148119074532558}
   m_Layer: 0
   m_Name: PicturePuzzle
   m_TagString: Untagged
@@ -4485,77 +4559,3 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &7633231848246161167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8766549598853430178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 801f8039b89e4913905e6c150a6793d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  picturePuzzleNetwork: {fileID: 8766549598853430176}
-  notificationText: {fileID: 3429093328912634697}
---- !u!114 &3860666671607660468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8766549598853430178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07fd88fefcbd4798954d34fa6e143547, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  picturePuzzleNetwork: {fileID: 8766549598853430176}
-  buttons:
-  - {fileID: 3429093327203195957}
-  - {fileID: 3429093327684839300}
-  - {fileID: 3429093327923958172}
-  - {fileID: 3429093327852697805}
-  - {fileID: 3429093328323892762}
-  - {fileID: 3429093327991041755}
-  - {fileID: 3429093327378853835}
-  - {fileID: 3429093328845917648}
-  - {fileID: 3429093328015910795}
-  - {fileID: 3429093327350328963}
-  - {fileID: 3429093328773655680}
-  - {fileID: 3429093328000989325}
-  - {fileID: 3429093327199404155}
-  - {fileID: 3429093327210336510}
-  - {fileID: 3429093327466513925}
-  - {fileID: 3429093327384979430}
---- !u!114 &6973148119074532558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8766549598853430178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f3266683f6c4740953fcd23e985fc62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  picturePuzzleNetwork: {fileID: 8766549598853430176}
-  targetButtons:
-  - {fileID: 3429093327890040242}
-  - {fileID: 3429093327536213228}
-  - {fileID: 3429093327958946475}
-  - {fileID: 3429093327747422009}
-  - {fileID: 3429093329059301571}
-  - {fileID: 3429093328101551473}
-  - {fileID: 3429093328314944170}
-  - {fileID: 3429093328801719996}
-  - {fileID: 3429093327159165854}
-  - {fileID: 3429093327407419176}
-  - {fileID: 3429093327838161874}
-  - {fileID: 3429093327781001222}
-  - {fileID: 3429093329151259981}
-  - {fileID: 3429093329175675856}
-  - {fileID: 3429093328111710611}
-  - {fileID: 3429093327223342064}

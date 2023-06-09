@@ -33,7 +33,7 @@ public class PicturePuzzleNetwork : PuzzleNetwork
             }
         }
         
-        base.Awake();
+        base.Start();
     }
 
     public void ChangeCell(int index)

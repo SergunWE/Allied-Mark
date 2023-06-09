@@ -10,6 +10,7 @@ public class PicturePuzzleTargetView : MonoBehaviour
 
     private void OnEnable()
     {
+        OnGridChanged();
         picturePuzzleNetwork.OnGridCreated += OnGridChanged;
     }
     
@@ -20,6 +21,7 @@ public class PicturePuzzleTargetView : MonoBehaviour
     
     private void OnGridChanged()
     {
+        if(picturePuzzleNetwork.LocalTargetGrid == null) return;
         for (int i = 0; i < picturePuzzleNetwork.LocalTargetGrid.Length; i++)
         {
             Color color;
