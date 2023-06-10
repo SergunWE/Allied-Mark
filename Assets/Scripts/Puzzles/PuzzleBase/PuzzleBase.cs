@@ -1,12 +1,10 @@
 using Unity.Netcode;
 using UnityEngine;
 
-public class PuzzleLock : NetworkBehaviour
+public abstract class PuzzleBase : NetworkBehaviour
 {
-    [SerializeField] private PicturePuzzleNetwork puzzleNetwork;
-    [SerializeField] private GameEvent puzzleHidden;
-
-    private Transform _playerCameraTransform;
+    [SerializeField] protected PicturePuzzleNetwork puzzleNetwork;
+    [SerializeField] protected GameEvent puzzleHidden;
 
     public void ShowPuzzle()
     {
@@ -28,14 +26,5 @@ public class PuzzleLock : NetworkBehaviour
         puzzleNetwork.OnPuzzleComplete -= OnPuzzleComplete;
     }
 
-    private void OnPuzzleComplete()
-    {
-        if (IsOwner)
-        {
-            NetworkObject.Despawn();
-        }
-
-        HidePuzzle();
-        puzzleHidden.Raise();
-    }
+    protected abstract void OnPuzzleComplete();
 }

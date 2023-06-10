@@ -42,7 +42,7 @@ public class PicturePuzzleView : MonoBehaviour
     {
         Color color;
         
-        switch (picturePuzzleNetwork.LocalCurrentGrid[index].Value)
+        switch (picturePuzzleNetwork.LocalCurrentGrid[index].CellValue)
         {
             case 0:
                 color = Color.red;;

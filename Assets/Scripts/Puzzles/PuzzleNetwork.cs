@@ -6,14 +6,17 @@ using UnityEngine;
 public abstract class PuzzleNetwork : NetworkBehaviour
 {
     [SerializeField] protected int cellCount;
+    [field:SerializeField] public int PuzzleTimeSeconds { get; private set; }
     
     protected NetworkList<PuzzleCell> CurrentGrid;
     public readonly NetworkVariable<ulong> LastPlayerId = new(ulong.MaxValue);
-    public PuzzleCell[] LocalCurrentGrid { get; protected set; }
-    
+    public readonly NetworkVariable<long> StartPuzzleTimeTicks = new();
+
     public event Action<int> OnCurrentGridChanged;
     public event Action OnGridCreated;
     public event Action OnPuzzleComplete;
+    
+    public PuzzleCell[] LocalCurrentGrid { get; protected set; }
 
     public override void OnNetworkDespawn()
     {
@@ -29,16 +32,16 @@ public abstract class PuzzleNetwork : NetworkBehaviour
     {
         if (IsOwner)
         {
-            for (var i = 0; i < cellCount; i++)
+            for (int i = 0; i < cellCount; i++)
             {
-                CurrentGrid.Add(new PuzzleCell {Value = GetRandomCellValue()});
+                CurrentGrid.Add(new PuzzleCell {CellValue = GetRandomCellValue()});
             }
         }
 
         if (IsClient)
         {
             LocalCurrentGrid = new PuzzleCell[cellCount];
-            for (var i = 0; i < cellCount; i++)
+            for (int i = 0; i < cellCount; i++)
             {
                 LocalCurrentGrid[i] = CurrentGrid[i];
             }

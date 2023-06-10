@@ -25,7 +25,7 @@ public class PicturePuzzleTargetView : MonoBehaviour
         for (int i = 0; i < picturePuzzleNetwork.LocalTargetGrid.Length; i++)
         {
             Color color;
-            switch (picturePuzzleNetwork.LocalTargetGrid[i].Value)
+            switch (picturePuzzleNetwork.LocalTargetGrid[i].CellValue)
             {
                 case 0:
                     color = Color.red;

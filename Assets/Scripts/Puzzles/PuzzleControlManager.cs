@@ -7,7 +7,7 @@ public class PuzzleControlManager : MonoBehaviour
     [SerializeField] private GameEvent puzzleHidden;
     
     private Transform _playerCameraTransform;
-    private PuzzleLock _lastPuzzle;
+    private PuzzleBase _lastPuzzle;
     
     protected void Start()
     {
@@ -19,7 +19,7 @@ public class PuzzleControlManager : MonoBehaviour
         if (!context.started) return;
         var obj = RaycastHelper.GetObject(_playerCameraTransform, 3f);
         if(obj == null) return;
-        var component = obj.GetComponentInParent<PuzzleLock>();
+        var component = obj.GetComponentInParent<PuzzleBase>();
         if (component == null) return;
         _lastPuzzle = component;
         _lastPuzzle.ShowPuzzle();

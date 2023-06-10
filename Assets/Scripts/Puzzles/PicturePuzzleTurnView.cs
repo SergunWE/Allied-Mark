@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class PicturePuzzleTurnView : MonoBehaviour
 {
-    [SerializeField] private PicturePuzzleNetwork picturePuzzleNetwork;
+    [SerializeField] private PuzzleNetwork puzzleNetwork;
     [SerializeField] private TMP_Text notificationText;
 
     private void OnEnable()
     {
-        OnCurrentGridChanged(0, picturePuzzleNetwork.LastPlayerId.Value);
-        picturePuzzleNetwork.LastPlayerId.OnValueChanged += OnCurrentGridChanged;
+        OnCurrentGridChanged(0, puzzleNetwork.LastPlayerId.Value);
+        puzzleNetwork.LastPlayerId.OnValueChanged += OnCurrentGridChanged;
     }
 
     private void OnDisable()
     {
-        picturePuzzleNetwork.LastPlayerId.OnValueChanged -= OnCurrentGridChanged;
+        puzzleNetwork.LastPlayerId.OnValueChanged -= OnCurrentGridChanged;
     }
 
     private void OnCurrentGridChanged(ulong prevValue, ulong newValue)

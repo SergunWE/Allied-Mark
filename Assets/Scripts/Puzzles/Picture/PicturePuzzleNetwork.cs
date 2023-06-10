@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Netcode;
@@ -18,21 +19,21 @@ public class PicturePuzzleNetwork : PuzzleNetwork
     {
         if (IsOwner)
         {
-            for (var i = 0; i < cellCount; i++)
+            for (int i = 0; i < cellCount; i++)
             {
-                _targetGrid.Add(new PuzzleCell {Value = GetRandomCellValue()});
+                _targetGrid.Add(new PuzzleCell(GetRandomCellValue()));
             }
         }
 
         if (IsClient)
         {
             LocalTargetGrid = new PuzzleCell[cellCount];
-            for (var i = 0; i < cellCount; i++)
+            for (int i = 0; i < cellCount; i++)
             {
                 LocalTargetGrid[i] = _targetGrid[i];
             }
         }
-        
+
         base.Start();
     }
 
@@ -44,20 +45,23 @@ public class PicturePuzzleNetwork : PuzzleNetwork
     [ServerRpc(RequireOwnership = false)]
     private void ChangeCellServerRpc(int index, ServerRpcParams serverRpcParams = default)
     {
-        var clientId = serverRpcParams.Receive.SenderClientId;
+        //check who is playing the turn
+        ulong clientId = serverRpcParams.Receive.SenderClientId;
         if (LastPlayerId.Value == clientId) return;
         if (NetworkManager.ConnectedClients.Count > 1)
         {
             LastPlayerId.Value = clientId;
         }
 
-        if (CurrentGrid[index].Value == 3)
+        //changes the state of the cell
+        CurrentGrid.Insert(index,
+            CurrentGrid[index].CellValue == 3
+                ? new PuzzleCell(0)
+                : new PuzzleCell(CurrentGrid[index].CellValue + 1));
+        //if it is the first turn, set the start time of the puzzle
+        if (StartPuzzleTimeTicks.Value == 0)
         {
-            CurrentGrid[index] = new PuzzleCell {Value = 0};
-        }
-        else
-        {
-            CurrentGrid[index] = new PuzzleCell {Value = CurrentGrid[index].Value + 1};
+            StartPuzzleTimeTicks.Value = DateTime.UtcNow.Ticks;
         }
     }
 

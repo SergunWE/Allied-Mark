@@ -1610,7 +1610,7 @@ MonoBehaviour:
   motor: {fileID: 6792300607253367750}
   yMinimumValue: -100
   controllerGrounded: {fileID: 11400000, guid: a1cc4ad8ad487574e84b5a6b33dbbf32, type: 2}
-  maxStableMoveSpeed: 6
+  maxStableMoveSpeed: 15
   stableMovementSharpness: 15
   orientationSharpness: 10
   orientationMethod: 0
