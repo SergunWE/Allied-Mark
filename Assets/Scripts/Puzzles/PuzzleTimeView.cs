@@ -14,6 +14,7 @@ public class PuzzleTimeView : MonoBehaviour
 
     private void OnEnable()
     {
+        if(puzzleNetwork.StartPuzzleTimeTicks.Value != 0) StartCoroutine(TimeUpdate());
         puzzleNetwork.StartPuzzleTimeTicks.OnValueChanged += OnFirstTurnMade;
         puzzleNetwork.OnPuzzleComplete += OnPuzzleComplete;
     }
@@ -27,12 +28,12 @@ public class PuzzleTimeView : MonoBehaviour
     private void Awake()
     {
         _puzzleTime = TimeSpan.FromSeconds(puzzleNetwork.PuzzleTimeSeconds);
-        puzzleTimeText.text = _puzzleTime.ToString(@"mm\:ss");
+        puzzleTimeText.text = _puzzleTime == TimeSpan.Zero ? "" : _puzzleTime.ToString(@"mm\:ss");
     }
 
     private void OnFirstTurnMade(long prevValue, long newValue)
     {
-        if(newValue == 0) return;
+        if (_puzzleTime == TimeSpan.Zero) return;
         _startPuzzleTime = new DateTime(newValue);
         StartCoroutine(TimeUpdate());
     }
